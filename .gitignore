@@ -6,3 +6,4 @@ doc/api
 doc/app
 public/system/avatars/
 config/database.yml
+db/*.sqlite3
