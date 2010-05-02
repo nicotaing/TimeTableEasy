@@ -9,7 +9,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100404001252) do
+ActiveRecord::Schema.define(:version => 20100421114236) do
+
+  create_table "campus", :force => true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.integer  "volume"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "study_period_id"
+    t.integer  "modality_id"
+  end
+
+  add_index "courses", ["modality_id"], :name => "index_courses_on_modality_id"
+  add_index "courses", ["study_period_id"], :name => "index_courses_on_study_period_id"
+
+  create_table "cursus", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "event_series", :force => true do |t|
     t.integer  "frequency",  :default => 1
@@ -30,9 +55,29 @@ ActiveRecord::Schema.define(:version => 20100404001252) do
     t.datetime "updated_at"
     t.text     "description"
     t.integer  "event_series_id"
+    t.integer  "room_id"
+    t.integer  "course_id"
   end
 
+  add_index "events", ["course_id"], :name => "index_events_on_course_id"
   add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"
+  add_index "events", ["room_id"], :name => "index_events_on_room_id"
+
+  create_table "modalities", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_exam"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "campus_id"
+  end
+
+  add_index "rooms", ["campus_id"], :name => "index_rooms_on_campus_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -43,6 +88,16 @@ ActiveRecord::Schema.define(:version => 20100404001252) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "study_periods", :force => true do |t|
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cursus_id"
+  end
+
+  add_index "study_periods", ["cursus_id"], :name => "index_study_periods_on_cursus_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
