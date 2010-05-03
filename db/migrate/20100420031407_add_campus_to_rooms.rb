@@ -5,5 +5,6 @@ class AddCampusToRooms < ActiveRecord::Migration
   end
 
   def self.down
+    remove_column :rooms, :campus_id
   end
 end

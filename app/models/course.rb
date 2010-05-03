@@ -13,7 +13,7 @@
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :name, :volume
+  attr_accessible :name, :volume, :study_period_id, :modality_id
   
   has_many :events, :dependent => :destroy
   belongs_to :study_period
