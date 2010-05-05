@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20100421114236) do
     t.string   "title"
     t.datetime "starttime"
     t.datetime "endtime"
-    t.boolean  "all_day"
+    t.boolean  "all_day",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20100421114236) do
   end
 
   add_index "events", ["course_id"], :name => "index_events_on_course_id"
+  add_index "events", ["event_series_id"], :name => "index_events_on_event_series_id"
   add_index "events", ["room_id"], :name => "index_events_on_room_id"
 
   create_table "modalities", :force => true do |t|

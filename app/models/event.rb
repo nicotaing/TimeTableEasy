@@ -25,6 +25,8 @@ class Event < ActiveRecord::Base
   belongs_to :room
   belongs_to :course
   
+  before_save :check_volume
+  
   REPEATS = [
               "Does not repeat",
               "Daily"          ,
@@ -66,14 +68,21 @@ class Event < ActiveRecord::Base
     event_series.save
   end
   
-  #fonction pour déterminer le nombre d'heure déjà plannifié pour un cour 
-  ###To Do: fixer starttime et endtime à celui des périodes d'études
-  def has_currently(starttime, endtime, course_id)
+  ###To Do: afficher les erreurs pour indiquer qu'il
+  def check_volume
+    volume_wished = self.diff_between(self.starttime, self.endtime) 
+    currently_volume = self.has_currently
+    limit = self.course.volume
+    
+    limit >= volume_wished + currently_volume
+  end
+  
+  def has_currently
     events = Event.find_by_sql ["SELECT id, title, starttime, endtime, 
       course_id 
     FROM events 
     WHERE course_id = ? 
-    AND endtime BETWEEN ? AND ?", course_id, starttime, endtime]
+    AND endtime BETWEEN ? AND ?", self.course_id, self.course.study_period.startdate, self.course.study_period.enddate]
     
     res=[]
     events.each do |e|
