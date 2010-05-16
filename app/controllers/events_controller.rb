@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   
+  before_filter :require_user
+  
   def new
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
@@ -8,7 +10,7 @@ class EventsController < ApplicationController
     if params[:event][:period] == "Does not repeat"
       @event = Event.new(params[:event])
     else
-      #      @event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
+      #@event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
       @event_series = EventSeries.new(params[:event])
     end
   end
@@ -16,7 +18,6 @@ class EventsController < ApplicationController
   def index
     
   end
-  
   
   def get_events
     @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
