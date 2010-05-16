@@ -2,9 +2,45 @@
 # Campus
 ###
 
-Campus.create()
+Campus.create(:name => "Paris", :city => "Paris")
+Campus.create(:name => "Marseille", :city => "Marseille")
+Campus.create(:name => "Caen", :city => "Caen")
+Campus.create(:name => "San Francisco", :city => "San Francisco")
+Campus.create(:name => "Miami", :city => "Miami")
+Campus.create(:name => "Londres", :city => "Londres")
 
 
+###
+# Users
+###
+
+# Eleves
+
+# Fabien Legoupillot
+# Password : password
+User.find_or_create_by_email(
+  :email => "fabien.legoupillot@gmail.com",
+  :first_name => "Fabien",
+  :last_name  => "Legoupillot",
+  :password => "password",
+  :password_confirmation => "password"
+).save!
+
+10.times do |i|
+  User.find_or_create_by_email(
+    :email => "student#{i}@globus.com",
+    :first_name => "Student#{i}",
+    :last_name  => "Student#{i}Name",
+    :password => "password",
+    :password_confirmation => "password"
+  ).save!
+end
+
+# Professeurs
+
+# Campus-Manager
+
+# Administrateurs
 
 
 ###
