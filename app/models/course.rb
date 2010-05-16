@@ -3,13 +3,13 @@
 #
 # Table name: courses
 #
-#  id              :integer(4)      not null, primary key
+#  id              :integer         not null, primary key
 #  name            :string(255)
-#  volume          :integer(4)
+#  volume          :integer
 #  created_at      :datetime
 #  updated_at      :datetime
-#  study_period_id :integer(4)
-#  modality_id     :integer(4)
+#  study_period_id :integer
+#  modality_id     :integer
 #
 
 class Course < ActiveRecord::Base

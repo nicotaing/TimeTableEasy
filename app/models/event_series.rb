@@ -1,18 +1,3 @@
-# == Schema Information
-# Schema version: 20100421114236
-#
-# Table name: event_series
-#
-#  id         :integer(4)      not null, primary key
-#  frequency  :integer(4)      default(1)
-#  period     :string(255)     default("monthly")
-#  starttime  :datetime
-#  endtime    :datetime
-#  all_day    :boolean(1)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 class EventSeries < ActiveRecord::Base
   attr_accessor :title, :description, :commit_button
   
@@ -63,3 +48,18 @@ class EventSeries < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: event_series
+#
+#  id         :integer         not null, primary key
+#  frequency  :integer         default(1)
+#  period     :string(255)     default("monthly")
+#  starttime  :datetime
+#  endtime    :datetime
+#  all_day    :boolean         default(FALSE)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

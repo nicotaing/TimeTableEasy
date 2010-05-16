@@ -3,12 +3,12 @@
 #
 # Table name: study_periods
 #
-#  id         :integer(4)      not null, primary key
+#  id         :integer         not null, primary key
 #  startdate  :datetime
 #  enddate    :datetime
 #  created_at :datetime
 #  updated_at :datetime
-#  cursus_id  :integer(4)
+#  cursus_id  :integer
 #
 
 class StudyPeriod < ActiveRecord::Base

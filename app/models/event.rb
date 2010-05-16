@@ -1,21 +1,3 @@
-# == Schema Information
-# Schema version: 20100421114236
-#
-# Table name: events
-#
-#  id              :integer(4)      not null, primary key
-#  title           :string(255)
-#  starttime       :datetime
-#  endtime         :datetime
-#  all_day         :boolean(1)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  description     :text
-#  event_series_id :integer(4)
-#  room_id         :integer(4)
-#  course_id       :integer(4)
-#
-
 class Event < ActiveRecord::Base
   attr_accessor :period, :frequency, :commit_button
   
@@ -98,3 +80,21 @@ class Event < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: events
+#
+#  id              :integer         not null, primary key
+#  title           :string(255)
+#  starttime       :datetime
+#  endtime         :datetime
+#  all_day         :boolean         default(FALSE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  description     :text
+#  event_series_id :integer
+#  room_id         :integer
+#  course_id       :integer
+#
+

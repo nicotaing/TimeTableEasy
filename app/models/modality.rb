@@ -3,9 +3,9 @@
 #
 # Table name: modalities
 #
-#  id         :integer(4)      not null, primary key
+#  id         :integer         not null, primary key
 #  name       :string(255)
-#  is_exam    :boolean(1)
+#  is_exam    :boolean
 #  created_at :datetime
 #  updated_at :datetime
 #
