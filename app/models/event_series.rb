@@ -49,6 +49,7 @@ class EventSeries < ActiveRecord::Base
   
 end
 
+
 # == Schema Information
 #
 # Table name: event_series

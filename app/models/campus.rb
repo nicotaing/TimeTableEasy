@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100421114236
+# Schema version: 20100516033807
 #
 # Table name: campus
 #

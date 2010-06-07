@@ -6,29 +6,63 @@ class EventsController < ApplicationController
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
   
+  def new_university
+    @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
+  end
+  
   def create
     if params[:event][:period] == "Does not repeat"
       @event = Event.new(params[:event])
+      @event.save
+      redirect_to '/events'
     else
       #@event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
       @event_series = EventSeries.new(params[:event])
+      @event_series.save
+      redirect_to '/events'
     end
   end
   
+  # Display calendar
   def index
-    
   end
-  
-  def get_events
-    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}'"] )
+
+  def get_all
+    #University
+    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and 
+                                                endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and 
+                                                category = 'university'"] )
     events = [] 
     @events.each do |event|
-      events << {:id => event.id, :title => event.title, :description => event.description || "Some cool description here...", :start => "#{event.starttime.iso8601}", :end => "#{event.endtime.iso8601}", :allDay => event.all_day, :recurring => (event.event_series_id)? true: false}
+      events << {
+        :id => event.id, 
+        :title => event.title, 
+        :description => event.description || "Some cool description here...", 
+        :start => "#{event.starttime.iso8601}", 
+        :end => "#{event.endtime.iso8601}", 
+        :allDay => event.all_day, 
+        :recurring => (event.event_series_id)? true: false,
+        :className => 'university'}
     end
+      
+    #Personal
+    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and 
+                                                  endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and 
+                                                  category = 'personal'"] )
+    @events.each do |event|
+      events << {
+        :id => event.id, 
+        :title => event.title, 
+        :description => event.description || "Some cool description here...", 
+        :start => "#{event.starttime.iso8601}", 
+        :end => "#{event.endtime.iso8601}", 
+        :allDay => event.all_day, 
+        :recurring => (event.event_series_id)? true: false,
+        :className => 'perso'}
+    end
+    
     render :text => events.to_json
   end
-  
-  
   
   def move
     @event = Event.find_by_id params[:id]

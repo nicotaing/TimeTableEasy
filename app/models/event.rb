@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id              :integer         not null, primary key
+#  title           :string(255)
+#  starttime       :datetime
+#  endtime         :datetime
+#  all_day         :boolean         default(FALSE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  description     :text
+#  event_series_id :integer
+#  room_id         :integer
+#  course_id       :integer
+#  creator_id      :integer
+#  category        :integer
+#
+
 class Event < ActiveRecord::Base
   attr_accessor :period, :frequency, :commit_button
   
@@ -7,7 +26,8 @@ class Event < ActiveRecord::Base
   belongs_to :room
   belongs_to :course
   
-  before_save :check_volume
+  # TODO: ne le faire que si c'est un cours, pas quand c'est un event personnel
+  #before_save :check_volume
   
   REPEATS = [
               "Does not repeat",
@@ -80,21 +100,4 @@ class Event < ActiveRecord::Base
   end
   
 end
-
-# == Schema Information
-#
-# Table name: events
-#
-#  id              :integer         not null, primary key
-#  title           :string(255)
-#  starttime       :datetime
-#  endtime         :datetime
-#  all_day         :boolean         default(FALSE)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  description     :text
-#  event_series_id :integer
-#  room_id         :integer
-#  course_id       :integer
-#
 
