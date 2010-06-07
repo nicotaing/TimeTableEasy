@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100607223321) do
+ActiveRecord::Schema.define(:version => 20100607230334) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -36,16 +36,8 @@ ActiveRecord::Schema.define(:version => 20100607223321) do
     t.datetime "updated_at"
   end
 
-  create_table "event_series", :force => true do |t|
-    t.integer  "frequency",  :default => 1
-    t.string   "period",     :default => "monthly"
-    t.datetime "starttime"
-    t.datetime "endtime"
-    t.boolean  "all_day",    :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "category"
-  end
+# Could not dump table "event_series" because of following StandardError
+#   Unknown type 'id' for column 'creator_id'
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -120,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20100607223321) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
 end

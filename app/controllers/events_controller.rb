@@ -49,6 +49,7 @@ class EventsController < ApplicationController
     #Personal
     @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and 
                                                   endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and 
+                                                  creator_id = #{@current_user.id} and 
                                                   category = 'personal'"] )
     @events.each do |event|
       events << {
