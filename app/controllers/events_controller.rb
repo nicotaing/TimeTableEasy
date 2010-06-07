@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def create
     if params[:event][:period] == "Does not repeat"
       @event = Event.new(params[:event])
+      @event.creator_id = @current_user.id
       @event.save
       redirect_to '/events'
     else

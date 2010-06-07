@@ -1,0 +1,29 @@
+<div id="sidebar">
+	<div id="ucard">
+		<img src="/images/avatar-stephane.png" width="480" height="480" alt="Avatar Stephane"> 
+		<b><%= @current_user.first_name %> <%= @current_user.last_name %></b><br>
+		Master of Science - IT<br>
+		M1 @ San Francisco<br>
+		<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;
+		<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+		
+		
+	</div>
+	<div id="actions">
+		<ul>
+			<li><%=link_to 'Create Event', '/events/new' %></li>
+			<li><%=link_to 'Manage University', '/events/new_university' %></li>
+			<li><%=link_to 'Manage Campus', '/events/new_university' %></li>
+			<li><%=link_to 'Manage Courses', '/events/new_university' %></li>
+			<li><%=link_to 'Manage Students', '/events/new' %></li>
+		</ul>
+	</div>
+	
+	<div id="selectCalendar">
+		<ul>
+			<li id="el_university"><div><input type="checkbox" name="university"checked="checked"  id="university"></div><label for="university">University</label></li>
+			<li id="el_campus"><div><input type="checkbox" name="campus" checked="checked"  id="campus"></div><label for="campus">Campus</label></li>
+			<li id="el_courses"><div><input type="checkbox" name="courses" checked="checked"  id="courses"></div><label for="courses">My Courses</label></li>
+			<li id="el_perso"><div><input type="checkbox" name="perso" checked="checked" id="perso"></div><label for="perso">My Calendar</label></li>
+		</ul>
+	</div>

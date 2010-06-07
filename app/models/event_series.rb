@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: event_series
+#
+#  id         :integer         not null, primary key
+#  frequency  :integer         default(1)
+#  period     :string(255)     default("monthly")
+#  starttime  :datetime
+#  endtime    :datetime
+#  all_day    :boolean         default(FALSE)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class EventSeries < ActiveRecord::Base
   attr_accessor :title, :description, :commit_button
   
@@ -18,7 +32,7 @@ class EventSeries < ActiveRecord::Base
     
     while frequency.send(p).from_now(st) <= end_time
 #      puts "#{nst}           :::::::::          #{net}" if nst and net
-      self.events.create(:title => title, :description => description, :all_day => all_day, :starttime => nst, :endtime => net)
+      self.events.create(:title => title, :description => description, :all_day => all_day, :starttime => nst, :endtime => net, :creator_id => @current_user.id)
       nst = st = frequency.send(p).from_now(st)
       net = et = frequency.send(p).from_now(et)
       
@@ -50,17 +64,4 @@ class EventSeries < ActiveRecord::Base
 end
 
 
-# == Schema Information
-#
-# Table name: event_series
-#
-#  id         :integer         not null, primary key
-#  frequency  :integer         default(1)
-#  period     :string(255)     default("monthly")
-#  starttime  :datetime
-#  endtime    :datetime
-#  all_day    :boolean         default(FALSE)
-#  created_at :datetime
-#  updated_at :datetime
-#
 
