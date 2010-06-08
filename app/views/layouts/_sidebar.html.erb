@@ -21,15 +21,9 @@
 	<div id="actions">
 		<ul>
 			<li><%=link_to 'Create Event', '/events/new' %></li>
-		
-			<% if @current_user.role == 'admin' %>
-				<li><%=link_to 'Manage University', '/events/new_university' %></li>						
-			<% end %>
-		
+					
 			<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
-				<li><%=link_to 'Manage Campus', '/campus' %></li>
-				<li><%=link_to 'Manage Courses', '/courses' %></li>
-				<li><%=link_to 'Manage Students', '/events/new' %></li>
+				<li><%=link_to 'Manage', '/events/new' %></li>
 			<% end %>
 		</ul>
 	</div>
