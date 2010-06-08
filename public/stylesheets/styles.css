@@ -33,7 +33,7 @@ body{
 	font-size:30px;
 	font-weight:bold;
 	color:white;
-	text-shadow:0px 1px 1px #000000;
+	text-shadow:0px 1px 3px #000000;
 	padding:10px;
 }
 
@@ -132,11 +132,11 @@ ul#view_selector li a.right{
 	font-size:13px;
 	text-shadow:0px 0px 2px white;line-height:1.35em;
 	}
-	
+
 	#ucard a{
 		color:#3366cc;
 	}
-	
+
 	#ucard a:hover{
 		color:#1144aa;
 	}
@@ -172,6 +172,14 @@ ul#view_selector li a.right{
 .courses,
 .fc-agenda .courses .fc-event-time,
 .courses a {
+	background-color:rgb(255,209,41);
+	border-color: #7a6310;
+	color: #7a6310;
+}
+
+.courses_eval,
+.fc-agenda .courses_eval .fc-event-time,
+.courses_eval a {
 	background-color:rgb(255,209,41);
 	border-color: #7a6310;
 	color: #7a6310;
@@ -256,4 +264,74 @@ background-color:rgb(151,219,48);
 		    color-stop(0.5, rgb(160,80,0)),
 		    color-stop(1, rgb(204,102,0))
 		);
+}
+
+table#crud {
+	text-shadow:0px 1px 0px white;
+	width:100%;
+}
+
+table#crud tr td.title{
+	font-size:16px;
+	font-weight:bold;
+	text-align:right;
+	width:100px;
+}
+
+table#crud tr td span.help{
+	padding-left:10px;
+	color:#888888;
+}
+
+table#crud a{
+	color:#3366cc;
+}
+
+table#crud a:hover{
+	color:#1144aa;
+}
+
+ul#tabs{
+	list-style: none  inside;
+	margin:0px;
+	padding:0px;
+	margin-top:-10px;
+}
+
+ul#tabs li{
+	display:inline;
+}
+
+ul#tabs li a{
+	display:block;
+	float:left;
+	padding:10px;
+	padding-top:7px;
+	padding-bottom:7px;
+	background:white;
+	font-size:16px;
+	color:#333333;-webkit-border-top-right-radius: 5px;-webkit-border-top-left-radius: 5px;
+	text-decoration:none;
+	margin-right:10px;
+	margin-bottom:-9px;
+	opacity:0.5;
+}
+
+ul#tabs li a:hover{
+	opacity:1;
+}
+
+ul#tabs li a.active{
+	opacity:1;
+	color:#ffffff;
+	background:color:#333333;background:-webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(1, #555555),
+	    color-stop(0, #222222)
+	);;
+	text-shadow:0px -1px 0px #000000;
+	padding-bottom:8px;
+	
 }

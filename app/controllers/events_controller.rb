@@ -14,7 +14,6 @@ class EventsController < ApplicationController
       @event.save
       redirect_to '/events'
     else
-      #@event_series = EventSeries.new(:frequency => params[:event][:frequency], :period => params[:event][:repeats], :starttime => params[:event][:starttime], :endtime => params[:event][:endtime], :all_day => params[:event][:all_day])
       @event_series = EventSeries.new(params[:event])
       @event_series.save
       redirect_to '/events'
@@ -185,6 +184,28 @@ class EventsController < ApplicationController
     cal.to_ical
   end
   
+  
+################
+######Create Events
+################
+
+#######New University
+  def event_new_university
+    @event = Event.new
+  end
+
+  def event_create_university
+    if params[:event][:period] == "Does not repeat"
+      #@event = Event.new(params[:event])
+      #@event.creator_id = @current_user.id
+      #@event.save
+      redirect_to '/google'
+    else
+      #@event_series = EventSeries.new(params[:event])
+      #@event_series.save
+      redirect_to '/events'
+    end
+  end
 end
 
 
