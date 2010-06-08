@@ -1,8 +1,15 @@
-<td class="title"></td><td>
-	<ul id="tabs">
-		<li><a href="new_event-university.html" class="active">University</a></li>
-		<li><a href="new_event-campus.html">Campus</a></li>
-		<li><a href="new_event.html">Class</a></li>
-		<li><a href="new_event-personal.html">Personal</a></li>
-	</ul>
-</td><td class="help"></td>
+<% unless @current_user.role == "student" %>
+	<td class="title"></td><td>
+		<ul id="tabs">
+			<% if @current_user.role == "admin" %>	
+				<li><a href="/events/new/university" class="<%= @tab_university %>">University</a></li>
+			<% end %>
+			<% if @current_user.role == "admin" || @current_user.role == "cm" %>	
+				<li><a href="/events/new/campus" class="<%= @tab_campus %>">Campus</a></li>
+			<% end %>
+			<li><a href="/events/new/class" class="<%= @tab_class %>">Class</a></li>
+			<li><a href="/events/new/personal" class="<%= @tab_personal %>">Personal</a></li>
+		</ul>
+	</td>
+	<td class="help"></td>
+<% end %>

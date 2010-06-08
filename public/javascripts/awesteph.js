@@ -1,28 +1,7 @@
 $(document).ready(function() {
 
-	var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
-	
-
+	// Display the calendar
 	$('#calendar').fullCalendar({
-		// US Holidays
-		events: $.fullCalendar.gcalFeed('http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic'),
-
-		eventClick: function(event) {
-			// opens events in a popup window
-			window.open(event.url, 'gcalevent', 'width=700,height=600');
-			return false;
-		},
-
-		loading: function(bool) {
-			if (bool) {
-				$('#loading').show();
-			}else{
-				$('#loading').hide();
-			}
-		},
 		editable: true,
 		height: 580,
 		header: {
@@ -30,92 +9,94 @@ $(document).ready(function() {
 			center: 'Hello',
 			right: ''
 		},
-			events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1),
-					className: 'university'
-				},
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2),
-					className: 'campus'
-				},
-				{
-					id: 999,
-					title: 'EVAL Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: false,
-					className: 'courses_eval'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+4, 16, 0),
-					allDay: false,
-					className: 'perso'
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false,
-					className: 'perso'
-				},
-				{
-					title: 'Fabien Birthday',
-					start: new Date(2010, 12, 5, 12, 0),
-					end: new Date(2010, 12, 5, 14, 0),
-					allDay: true,
-					className: 'campus'
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false,
-					className: 'university'
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/',
-					className: 'university'
-				}
-			]
-
+		//defaultView: 'agendaWeek',
+		dragOpacity: "0.5",
+    eventClick: function(event, jsEvent, view){
+        showEventDetails(event);
+    },
+		eventClick: function(event) {
+			// opens events in a popup window
+			window.open(event.url, 'gcalevent', 'width=700,height=600');
+			return false;
+		},
+		loading: function(bool) {
+			apply_filters();
+		},
+		// Events
+		events: "/events/get_all",
 	});
+		
+	// Filters
+	$("#university").click(function() {
+		$(".university").toggle();
+	});
+	$("#campus").click(function() {
+		$(".campus").toggle();
+	});
+	$("#courses").click(function() {
+		$(".courses").toggle();
+	});
+	$("#perso").click(function() {
+		$(".perso").toggle();
+	});
+	
+	// Apply the filters
+	function apply_filters(){
+		$.each( ['university','campus','courses','perso'], function(i, n){
+			if(!$('input:checkbox[name='+n+']').is(':checked')){
+				$('.'+n).hide();
+			}
+		});
+	}
+	
+	// Today
 	$("#today").click(function() {
 		$('#calendar').fullCalendar('today');
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
+		apply_filters();
 	});
+	
+	// Next
 	$("#next").click(function() {
 		$('#calendar').fullCalendar('next');
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
+		apply_filters();
 	});
+	
+	// Prev
 	$("#prev").click(function() {
 		$('#calendar').fullCalendar('prev');
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
+		apply_filters();
 	});
+	
+	// Monthly
 	$("#month").click(function() {
 		$('#calendar').fullCalendar('changeView', 'month' );
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
 		$('#month').addClass('selected_style');
+		apply_filters();
 	});
+	
+	// Weekly
 	$("#agendaWeek").click(function() {
 		$('#calendar').fullCalendar('changeView', 'agendaWeek' );
 		$('#month').removeClass('selected');
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
+		apply_filters();
 	});
+	
+	// Daily
 	$("#agendaDay").click(function() {
 		$('#calendar').fullCalendar('changeView', 'agendaDay' );
 		var view = $('#calendar').fullCalendar('getView');
 		document.all.CalendarTitle.innerHTML = view.title;
+		apply_filters();
 	});
+		
 });
