@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @title = "Edit Profile"
     @user = @current_user
   end
   

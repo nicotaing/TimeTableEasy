@@ -12,7 +12,7 @@
 <body>
 	<div id="container">
 		<div id="container-inner">
-			<%= render :partial => 'layouts/top_bar' %>
+				<%= render :partial => 'layouts/top_bar' %>
 			
 			<div id="content">
 				<div id="content-inner">
@@ -20,7 +20,9 @@
 						<br/><br/>
 						<%= yield %>
 					</div>
-					<%= render :partial => 'layouts/sidebar' %>
+					<% if @current_user %>
+						<%= render :partial => 'layouts/sidebar' %>
+					<% end %>
 					</div>
 				</div>
 			</div>
