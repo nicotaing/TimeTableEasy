@@ -7,22 +7,19 @@
 <div id="content">
 	<div id="content-inner">
 		<div id="events">
-			
-			<% @campus.each do |campus| %>
-				<table>
-					<tr>
-						<td><%=h campus.name %></td>
-						<td><%= link_to 'Show', campus %></td>
-						<td>Edit</td>
-					    <td><%= link_to 'Destroy', campus, :confirm => "Are you sure to delete?", :method => :delete %></td>
-					</tr>
-				</table>
-			<% end %>
-			
-			<p><%= link_to 'Create a New Campus', '/campus/new'%></p>
+			<p>
+			  <b>Name:</b>
+			  <%=h @courses.name %>
+			</p>
+
+			<p>
+
+			<%= link_to 'Back', courses_path %>
 		</div>
 		<%= render :partial => 'events/sidebar' %>
 		</div>
 	</div>
 </div>
+
+
 

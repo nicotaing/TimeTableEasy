@@ -19,7 +19,7 @@
 			
 			<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
 				<li><%=link_to 'Manage Campus', '/campus' %></li>
-				<li><%=link_to 'Manage Courses', '/events/new_university' %></li>
+				<li><%=link_to 'Manage Courses', '/courses' %></li>
 				<li><%=link_to 'Manage Students', '/events/new' %></li>
 			<% end %>
 		</ul>

@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :user_sessions
   map.resources :campus
+  map.resources :courses
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
