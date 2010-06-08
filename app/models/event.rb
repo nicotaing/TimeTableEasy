@@ -14,7 +14,8 @@
 #  room_id         :integer
 #  course_id       :integer
 #  creator_id      :integer
-#  category        :integer
+#  campus_id       :integer
+#  category        :string(255)
 #
 
 class Event < ActiveRecord::Base

@@ -61,7 +61,11 @@ User.find_or_create_by_email(
   :password => "password",
   :password_confirmation => "password",
   :role => "student",
-  :campus_id => Campus.find_by_name("Paris").id
+  :campus_id => Campus.find_by_name("Paris").id,
+  :avatar_file_name => "fabien.png", 
+  :avatar_content_type => "image/png", 
+  :avatar_file_size => 50939, 
+  :avatar_updated_at => "2010-06-08 07:34:48"
 ).save!
 # sylvain@globus.com / password
 User.find_or_create_by_email(
@@ -71,7 +75,11 @@ User.find_or_create_by_email(
   :password => "password",
   :password_confirmation => "password",
   :role => "student",
-  :campus_id => Campus.find_by_name("Paris").id
+  :campus_id => Campus.find_by_name("Paris").id,
+  :avatar_file_name => "sylvain.jpeg", 
+  :avatar_content_type => "image/jpeg", 
+  :avatar_file_size => 50939, 
+  :avatar_updated_at => "2010-06-08 07:34:48"
 ).save!
 # stephane@globus.com / password
 User.find_or_create_by_email(
@@ -81,7 +89,11 @@ User.find_or_create_by_email(
   :password => "password",
   :password_confirmation => "password",
   :role => "student",
-  :campus_id => Campus.find_by_name("San Francisco").id
+  :campus_id => Campus.find_by_name("San Francisco").id,
+  :avatar_file_name => "stephane.png", 
+  :avatar_content_type => "image/png", 
+  :avatar_file_size => 50939, 
+  :avatar_updated_at => "2010-06-08 07:34:48"
 ).save!
 # nicolas@globus.com / password
 User.find_or_create_by_email(
@@ -91,7 +103,11 @@ User.find_or_create_by_email(
   :password => "password",
   :password_confirmation => "password",
   :role => "student",
-  :campus_id => Campus.find_by_name("San Francisco").id
+  :campus_id => Campus.find_by_name("San Francisco").id,
+  :avatar_file_name => "nicolas.png", 
+  :avatar_content_type => "image/jpeg", 
+  :avatar_file_size => 50939, 
+  :avatar_updated_at => "2010-06-08 07:34:48"
 ).save!
 
 ### University Events
