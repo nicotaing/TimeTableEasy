@@ -1,4 +1,5 @@
-# rake db:reset
+# rake db:migrate
+# rake db:seed
 
 ###
 # Campus
@@ -123,10 +124,16 @@ Event.create(
   :category => "campus"
 )
 
-
-
-
 # San Francisco
+Event.create(
+  :title => "San Francisco",
+  :starttime => 2.day.from_now,
+  :endtime => (2.day + 1.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :campus_id => Campus.find_by_name("San Francisco"),
+  :category => "campus"
+)
 
 
 

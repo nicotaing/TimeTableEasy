@@ -65,7 +65,7 @@ class EventsController < ApplicationController
       end
     end
     
-    # Classes
+    # TODO: Classes
     if @current_user.role = 'student'
       
       
