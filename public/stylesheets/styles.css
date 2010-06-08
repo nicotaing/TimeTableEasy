@@ -117,7 +117,7 @@ ul#view_selector li a.right{
 }
 
 #sidebar{width:316px;}
-#events{float:right; width:668px; margin-right:40px;}
+#events{float:right; width:668px; margin-right:40px;color:#000000;}
 
 #ucard{ margin-top:-1px;
 	color:#555555;
