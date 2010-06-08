@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100607223321) do
+ActiveRecord::Schema.define(:version => 20100607230334) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20100607223321) do
     t.integer  "room_id"
     t.integer  "course_id"
     t.integer  "creator_id"
+    t.integer  "campus_id"
     t.string   "category"
   end
 
@@ -112,6 +113,8 @@ ActiveRecord::Schema.define(:version => 20100607223321) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
+    t.integer  "campus_id"
   end
 
 end

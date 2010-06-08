@@ -1,3 +1,6 @@
+# rake db:migrate
+# rake db:seed
+
 ###
 # Campus
 ###
@@ -9,38 +12,129 @@ Campus.create(:name => "San Francisco", :city => "San Francisco")
 Campus.create(:name => "Miami", :city => "Miami")
 Campus.create(:name => "Londres", :city => "Londres")
 
-
 ###
 # Users
 ###
 
-# Eleves
-
-# Fabien Legoupillot
-# Password : password
+# Administrateurs
+# admin@globus.com / password
 User.find_or_create_by_email(
-  :email => "fabien.legoupillot@gmail.com",
+  :email => "admin@globus.com",
+  :first_name => "Admin",
+  :last_name  => "Globus",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "admin"
+).save!
+
+# Campus-Manager
+# paris@globus.com / password
+User.find_or_create_by_email(
+  :email => "paris@globus.com",
+  :first_name => "CM",
+  :last_name  => "Paris",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "cm",
+  :campus_id => Campus.find_by_name("Paris").id
+).save!
+# sf@globus.com / password
+User.find_or_create_by_email(
+  :email => "sf@globus.com",
+  :first_name => "CM",
+  :last_name  => "San Francisco",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "cm",
+  :campus_id => Campus.find_by_name("San Francisco").id
+).save!
+
+# Professeurs
+#TODO
+
+# Eleves
+# fabien@globus.com / password
+User.find_or_create_by_email(
+  :email => "fabien@globus.com",
   :first_name => "Fabien",
   :last_name  => "Legoupillot",
   :password => "password",
-  :password_confirmation => "password"
+  :password_confirmation => "password",
+  :role => "student",
+  :campus_id => Campus.find_by_name("Paris").id
+).save!
+# sylvain@globus.com / password
+User.find_or_create_by_email(
+  :email => "sylvain@globus.com",
+  :first_name => "Sylvain",
+  :last_name  => "Kalache",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "student",
+  :campus_id => Campus.find_by_name("Paris").id
+).save!
+# stephane@globus.com / password
+User.find_or_create_by_email(
+  :email => "stephane@globus.com",
+  :first_name => "Stéphane",
+  :last_name  => "Rangaya",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "student",
+  :campus_id => Campus.find_by_name("San Francisco").id
+).save!
+# nicolas@globus.com / password
+User.find_or_create_by_email(
+  :email => "nicolas@globus.com",
+  :first_name => "Nicolas",
+  :last_name  => "Taing",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "student",
+  :campus_id => Campus.find_by_name("San Francisco").id
 ).save!
 
-10.times do |i|
-  User.find_or_create_by_email(
-    :email => "student#{i}@globus.com",
-    :first_name => "Student#{i}",
-    :last_name  => "Student#{i}Name",
-    :password => "password",
-    :password_confirmation => "password"
-  ).save!
-end
+# University Events
+Event.create(
+  :title => "House Party",
+  :starttime => 1.day.from_now,
+  :endtime => (1.day + 3.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+Event.create(
+  :title => "Pic Nic",
+  :starttime => 1.day.from_now,
+  :endtime => (1.day + 3.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
 
-# Professeurs
+# Campus Events
+# Paris
+Event.create(
+  :title => "Paris",
+  :starttime => 2.day.from_now,
+  :endtime => (2.day + 1.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :campus_id => Campus.find_by_name("Paris"),
+  :category => "campus"
+)
 
-# Campus-Manager
+# San Francisco
+Event.create(
+  :title => "San Francisco",
+  :starttime => 2.day.from_now,
+  :endtime => (2.day + 1.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :campus_id => Campus.find_by_name("San Francisco"),
+  :category => "campus"
+)
 
-# Administrateurs
 
 
 ###

@@ -1,37 +1,77 @@
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
+<div id="topbar">
+	<div id="title">
+		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline">Edit Profile</div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
+	</div>
+</div>
+<div id="content">
+	<div id="content-inner">
+		<div id="events"><br/><br/>
+			<p>
+			  <b>Email:</b>
+			  <%=h @user.email %>
+			</p>
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
+			<p>
+			  <b>Login count:</b>
+			  <%=h @user.login_count %>
+			</p>
 
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
+			<p>
+			  <b>Last request at:</b>
+			  <%=h @user.last_request_at %>
+			</p>
 
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
+			<p>
+			  <b>Last login at:</b>
+			  <%=h @user.last_login_at %>
+			</p>
 
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
+			<p>
+			  <b>Current login at:</b>
+			  <%=h @user.current_login_at %>
+			</p>
 
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
+			<p>
+			  <b>Last login ip:</b>
+			  <%=h @user.last_login_ip %>
+			</p>
 
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+			<p>
+			  <b>Current login ip:</b>
+			  <%=h @user.current_login_ip %>
+			</p>
 
 
-<%= link_to 'Edit', edit_account_path %>
+			<%= link_to 'Edit', edit_account_path %>
+		</div>
+		
+		<div id="sidebar">
+			<div id="ucard">
+				<img src="/images/avatar-stephane.png" width="480" height="480" alt="Avatar Stephane"> 
+				<b><%= @current_user.first_name %> <%= @current_user.last_name %></b><br>
+				Master of Science - IT<br>
+				M1 @ San Francisco<br>
+				<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;
+				<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+				
+				
+			</div>
+			<div id="actions">
+				<ul>
+				<li><%=link_to_remote 'Create Event', :url => {:controller => :events, :action => :new}, 
+																							:before => "$('#loading').show()", 
+																							:complete => "$('#loading').hide()" %>
+				</li>
+				  
+				
+				
+				<li><a href="">Create Student</a></li>
+				</li>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+
+
