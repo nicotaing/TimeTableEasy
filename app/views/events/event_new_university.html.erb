@@ -12,8 +12,8 @@
 		</td>
 	</tr>
 	<tr><td class="title"></td><td colspan="2">
-			<%=f.radio_button :type => "lasts" %>
-			<input type="radio" name="duration" value="lasts" id="lasts"> <label for="lasts">Lasts</label> <select><option value="00">0</option>
+			<%= radio_button 'duration', 'lasts', 'lasts' %> <%=f.label :lasts%> 
+			<select><option value="00">0</option>
 			<option selected="selected" value="01">1</option>
 			<option value="02">2</option>
 			<option value="03">3</option>
