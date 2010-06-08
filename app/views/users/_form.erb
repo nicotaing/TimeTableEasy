@@ -1,5 +1,10 @@
 <%= form.label :email %><br />
 <%= form.text_field :email %><br />
+
+
+<%= image_tag @user.avatar.url(:thumb) %>
+<%= form.label :avatar %><br />
+<%= form.file_field :avatar %>
 <br />
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
