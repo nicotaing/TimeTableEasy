@@ -94,7 +94,7 @@ User.find_or_create_by_email(
   :campus_id => Campus.find_by_name("San Francisco").id
 ).save!
 
-# University Events
+### University Events
 Event.create(
   :title => "House Party",
   :starttime => 1.day.from_now,
@@ -112,7 +112,7 @@ Event.create(
   :category => "university"
 )
 
-# Campus Events
+### Campus Events
 # Paris
 Event.create(
   :title => "Paris",
@@ -120,7 +120,7 @@ Event.create(
   :endtime => (2.day + 1.hours).from_now,
   :description => "Welcome!",
   :creator_id => User.find_by_email("admin@globus.com").id,
-  :campus_id => Campus.find_by_name("Paris"),
+  :campus_id => Campus.find_by_name("Paris").id,
   :category => "campus"
 )
 
@@ -131,11 +131,27 @@ Event.create(
   :endtime => (2.day + 1.hours).from_now,
   :description => "Welcome!",
   :creator_id => User.find_by_email("admin@globus.com").id,
-  :campus_id => Campus.find_by_name("San Francisco"),
+  :campus_id => Campus.find_by_name("San Francisco").id,
   :category => "campus"
 )
 
-
+### Personal Events
+Event.create(
+  :title => "Cinema",
+  :starttime => 1.day.from_now,
+  :endtime => (1.day + 3.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("fabien@globus.com").id,
+  :category => "personal"
+)
+Event.create(
+  :title => "Movies",
+  :starttime => 3.day.from_now,
+  :endtime => (3.day + 6.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("fabien@globus.com").id,
+  :category => "personal"
+)
 
 ###
 #Cursus
