@@ -1,0 +1,42 @@
+<div id="topbar">
+	<ul id="view_selector">
+		<li><a href="#" class="right" id="next"><img src="/images/ra.png" width="7" height="14" alt="Ra"></a></li>
+		<li><a href="#" class="center" id="month">Monthly</a></li>
+		<li><a href="#" class="center " id="agendaWeek">Weekly</a></li>
+		<li><a href="#" class="center" id="agendaDay">Daily</a></li>
+		<li><a href="#" class="center" id="today"><img src="/images/today.png" width="14" height="14" alt="Today"></a></li>
+		<li><a href="#" class="left" id="prev"><img src="/images/la.png" width="7" height="14" alt="La"></a></li>
+	</ul>
+	<div id="title">
+		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline">June 2010</div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
+	</div>
+</div>
+
+<div id="content">
+	<div id="content-inner">
+		<div id="events">
+			<h1>New campus</h1>
+
+			<% form_for(@campus) do |f| %>
+			  <%= f.error_messages %>
+
+			  <p>
+			    Campus Name<br />
+			    <%= f.text_field :name %>
+			  </p>
+
+			  <p>
+			    <%= f.submit 'Create' %>
+			  </p>
+			<% end %>
+
+			<%= link_to 'Back', campus_path %>
+
+		</div>
+		<%= render :partial => 'events/sidebar' %>
+		</div>
+	</div>
+</div>
+
+
+
