@@ -9,7 +9,7 @@
 	
 			<% if @current_user.role == 'admin' %>
 				Administrator<br><br>
-			<% elsif @current_user.role == 'admin' || @current_user.role == 'cm' %>
+			<% elsif @current_user.role == 'cm' %>
 				Campus Manager<br><br>
 			<% elsif @current_user.role == 'student' %>
 				Master of Science - IT<br>
@@ -20,20 +20,42 @@
 	</div>
 	<div id="actions">
 		<ul>
-			<li><%=link_to 'New Event', '/events/new/university' %></li>
+			<li>
+				<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
+					<%=link_to 'New Event', '/events/new/class' %>
+				<% else %>
+					<%=link_to 'New Event', '/events/new/personal' %>
+				<% end %>
+			</li>
 					
 			<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
-				<li><%=link_to 'Manage', '/events/new' %></li>
+				<li><%=link_to 'Manage', '/campus' %></li>
 			<% end %>
 		</ul>
 	</div>
 
 	<div id="selectCalendar">
 		<ul>
-			<li id="el_university"><div><input type="checkbox" name="university"checked="checked"  id="university"></div><label for="university">University</label></li>
-			<li id="el_campus"><div><input type="checkbox" name="campus" checked="checked"  id="campus"></div><label for="campus">Campus</label></li>
-			<li id="el_courses"><div><input type="checkbox" name="courses" checked="checked"  id="courses"></div><label for="courses">My Courses</label></li>
-			<li id="el_perso"><div><input type="checkbox" name="perso" checked="checked" id="perso"></div><label for="perso">My Calendar</label></li>
+			<li id="el_university">
+				<div><input type="checkbox" name="university"checked="checked"  id="university"></div>
+				<label for="university">University</label>
+			</li>
+			<% if @current_user.role == 'cm' || @current_user.role == 'professor' || @current_user.role == 'student' %>
+				<li id="el_campus">
+					<div><input type="checkbox" name="campus" checked="checked"  id="campus"></div>
+					<label for="campus">Campus</label>
+				</li>
+			<% end %>
+			<% if @current_user.role == 'professor' || @current_user.role == 'student' %>
+			<li id="el_courses">
+				<div><input type="checkbox" name="courses" checked="checked"  id="courses"></div>
+				<label for="courses">My Courses</label>
+			</li>
+			<% end %>
+			<li id="el_perso">
+				<div><input type="checkbox" name="perso" checked="checked" id="perso"></div>
+				<label for="perso">My Calendar</label>
+			</li>
 		</ul>
 	</div>
 </div>

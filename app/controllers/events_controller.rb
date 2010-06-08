@@ -6,15 +6,19 @@ class EventsController < ApplicationController
     @title = "Create Event"
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
     
-    if params[:id] == "university" 
+    if params[:id] == "university" && @current_user.role == 'admin'
       @tab_university = 'active'
       render :new_university
-    elsif params[:id] == "campus"  
+      
+    elsif params[:id] == "campus" && (@current_user.role == 'admin' || @current_user.role == 'cm')
+      @campus = Campus.all
       @tab_campus = 'active'   
       render :new_campus
-    elsif params[:id] == "class"
+      
+    elsif params[:id] == "class" && (@current_user.role == 'admin' || @current_user.role == 'cm')
       @tab_class = 'active'      
       render :new_class
+      
     else              
       @tab_personal = 'active'
       render :new_personal

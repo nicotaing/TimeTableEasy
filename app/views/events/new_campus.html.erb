@@ -6,25 +6,17 @@
 		<tr>
 			<%= render :partial => 'events/tab' %>
 		</tr>
-		
-		<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
-		<tr><td class="title">Campus</td><td>
-			<select>
-				<option value="San Francisco, CA" selected=selected disabled>Select a campus</option>
-				<option value="San Francisco, CA" disabled>USA</option>
-				<option value="San Francisco, CA" >San Francisco, CA</option>
-				<option value="San Francisco, CA" >Portland, OR</option>
-				<option value="San Francisco, CA" >New York City, NY</option>
-				<option value="San Francisco, CA" disabled>FRANCE</option>
-				<option value="San Francisco, CA" >Paris</option>
-				<option value="San Francisco, CA">Caen</option>
-				<option value="San Francisco, CA" >Nantes</option>
-				<option value="San Francisco, CA" >Marseilles</option>
-				<option value="San Francisco, CA">Bordeaux</option>
-			</select>
+
+		<% if @current_user.role == "admin" %>	
+			<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>	
+		<tr>
+			<td class="title">Campus</td><td>		
+				<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
 			</td><td class="help"></td>
 		</tr>
-		
+		<% else %>	
+			<%=f.hidden_field :campus_id, :value => @current_user.campus_id %>
+		<% end %>
 			
 		<tr>
 			<td colspan="3">
