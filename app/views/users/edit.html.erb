@@ -6,9 +6,21 @@
 <div id="content">
 	<div id="content-inner">
 		<div id="events"><br/><br/>
-			<% form_for @user, :url => account_path do |f| %>
+			<% form_for @user, :url => account_path , :html => { :multipart => true } do |f| %>
 			  <%= f.error_messages %>
-			  <%= render :partial => "form", :object => f %>
+			  <%= f.label :email %><br />
+				<%= f.text_field :email %><br />
+
+
+				<%= image_tag @user.avatar.url(:thumb) %>
+				<%= f.label :avatar %>
+				<%= f.file_field :avatar %>
+				<br />
+				<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+				<%= f.password_field :password %><br />
+				<br />
+				<%= f.label :password_confirmation %><br />
+				<%= f.password_field :password_confirmation %><br />
 			  <%= f.submit "Update" %>
 			<% end %>
 
