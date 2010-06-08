@@ -1,6 +1,7 @@
 class AddToEvent < ActiveRecord::Migration
   def self.up
     add_column :events, :creator_id, :integer
+    add_column :events, :campus_id, :integer
     add_column :events, :category, :string
   end
 

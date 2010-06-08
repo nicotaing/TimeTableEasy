@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20100607230334) do
     t.integer  "room_id"
     t.integer  "course_id"
     t.integer  "creator_id"
+    t.integer  "campus_id"
     t.string   "category"
   end
 
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20100607230334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.integer  "campus_id"
   end
 
 end

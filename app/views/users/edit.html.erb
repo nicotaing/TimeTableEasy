@@ -15,29 +15,7 @@
 			<br /><%= link_to "My calendar", '/events' %>
 		</div>
 		
-		<div id="sidebar">
-			<div id="ucard">
-				<img src="/images/avatar-stephane.png" width="480" height="480" alt="Avatar Stephane"> 
-				<b><%= @current_user.first_name %> <%= @current_user.last_name %></b><br>
-				Master of Science - IT<br>
-				M1 @ San Francisco<br>
-				<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;
-				<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
-				
-				
-			</div>
-			<div id="actions">
-				<ul>
-				<li><%=link_to_remote 'Create Event', :url => {:controller => :events, :action => :new}, 
-																							:before => "$('#loading').show()", 
-																							:complete => "$('#loading').hide()" %>
-				</li>
-				  
-				
-				
-				<li><a href="">Create Student</a></li>
-				</li>
-			</div>
+		<%= render :partial => 'events/sidebar' %>
 			
 			
 		</div>

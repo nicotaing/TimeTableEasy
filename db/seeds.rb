@@ -11,7 +11,6 @@ Campus.create(:name => "San Francisco", :city => "San Francisco")
 Campus.create(:name => "Miami", :city => "Miami")
 Campus.create(:name => "Londres", :city => "Londres")
 
-
 ###
 # Users
 ###
@@ -35,7 +34,8 @@ User.find_or_create_by_email(
   :last_name  => "Paris",
   :password => "password",
   :password_confirmation => "password",
-  :role => "cm"
+  :role => "cm",
+  :campus_id => Campus.find_by_name("Paris").id
 ).save!
 # sf@globus.com / password
 User.find_or_create_by_email(
@@ -44,7 +44,8 @@ User.find_or_create_by_email(
   :last_name  => "San Francisco",
   :password => "password",
   :password_confirmation => "password",
-  :role => "cm"
+  :role => "cm",
+  :campus_id => Campus.find_by_name("San Francisco").id
 ).save!
 
 # Professeurs
@@ -58,7 +59,8 @@ User.find_or_create_by_email(
   :last_name  => "Legoupillot",
   :password => "password",
   :password_confirmation => "password",
-  :role => "student"
+  :role => "student",
+  :campus_id => Campus.find_by_name("Paris").id
 ).save!
 # sylvain@globus.com / password
 User.find_or_create_by_email(
@@ -67,7 +69,8 @@ User.find_or_create_by_email(
   :last_name  => "Kalache",
   :password => "password",
   :password_confirmation => "password",
-  :role => "student"
+  :role => "student",
+  :campus_id => Campus.find_by_name("Paris").id
 ).save!
 # stephane@globus.com / password
 User.find_or_create_by_email(
@@ -76,7 +79,8 @@ User.find_or_create_by_email(
   :last_name  => "Rangaya",
   :password => "password",
   :password_confirmation => "password",
-  :role => "student"
+  :role => "student",
+  :campus_id => Campus.find_by_name("San Francisco").id
 ).save!
 # nicolas@globus.com / password
 User.find_or_create_by_email(
@@ -85,13 +89,44 @@ User.find_or_create_by_email(
   :last_name  => "Taing",
   :password => "password",
   :password_confirmation => "password",
-  :role => "student"
+  :role => "student",
+  :campus_id => Campus.find_by_name("San Francisco").id
 ).save!
 
+# University Events
+Event.create(
+  :title => "House Party",
+  :starttime => 1.day.from_now,
+  :endtime => (1.day + 3.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+Event.create(
+  :title => "Pic Nic",
+  :starttime => 1.day.from_now,
+  :endtime => (1.day + 3.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+
+# Campus Events
+# Paris
+Event.create(
+  :title => "Paris",
+  :starttime => 2.day.from_now,
+  :endtime => (2.day + 1.hours).from_now,
+  :description => "Welcome!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :campus_id => Campus.find_by_name("Paris"),
+  :category => "campus"
+)
 
 
 
 
+# San Francisco
 
 
 
