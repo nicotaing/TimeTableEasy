@@ -1,24 +1,12 @@
-<div id="topbar">
-	<div id="title">
-		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline">Login</div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
-	</div>
-</div>
-
-<div id="content">
-	<div id="content-inner">
-		<div id="events">
-			<% form_for @user_session, :url => user_sessions_path do |f| %>
-			  <%= f.error_messages %>
-			  <%= f.label :email %><br />
-			  <%= f.text_field :email %><br />
-			  <br />
-			  <%= f.label :password %><br />
-			  <%= f.password_field :password %><br />
-			  <br />
-			  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-			  <br />
-			  <%= f.submit "Login" %>
-			<% end %>
-		</div>
-	</div>
-</div>
+<% form_for @user_session, :url => user_sessions_path do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :email %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label :password %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
+  <br />
+  <%= f.submit "Login" %>
+<% end %>

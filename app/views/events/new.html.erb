@@ -1,61 +1,44 @@
-<div id="topbar">
-	<ul id="view_selector">
-		<li><a href="/" class="alone" id="home"><img src="/images/today.png" width="14" height="14" alt="Today"> Home</a></li>
-	</ul><div id="title">
-		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline">Create Event</div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
-	</div>
-</div>
-<div id="content">
-	<div id="content-inner">
-		<div id="events"><br/><br/>
-			<% form_for @event, :url => {:action => :create} do |f| %>
-			<p>
-			  <%=f.label :title %>
-			  <br/>
-			  <%=f.text_field :title %>
-			</p>
-			<p>
-			  <%=f.label :description %>
-			  <br/>
-			  <%=f.text_area :description, :rows => 4, :cols => 30 %>
-			</p>
-			<p>
-			  <%=f.label :starttime, 'Start Time' %>
-			  <br/>
-			  <%=f.datetime_select :starttime %>
-			</p>
-			<p>
-			  <%=f.label :endtime, 'End Time' %>
-			  <br/>
-			  <%=f.datetime_select :endtime %>
-			</p>
-			<p>
-			  <%=f.label :all_day %>
-			  <%=f.check_box :all_day %>
-			</p>
-			<p>
-			  <%=f.label :period, "Repeats" %>
-			  <%=f.select :period, Event::REPEATS,{}, :onchange => "showPeriodAndFrequency(this.value);" %>
-			</p>
-			<p id = "frequency" style = "display:none;">
-			  <%=f.label :frequency, "Repeat every" %>
-			  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
-			</p>
-			
-			<%=f.hidden_field :category, :value => 'personal' %>
-			
-			<%=f.hidden_field :id, :value => @event.id %>
-			<p>
-			  <%=f.submit 'Create' %> 
-			</p>
-			<%end %>
+<% form_for @event, :url => {:action => :create} do |f| %>
+<p>
+  <%=f.label :title %>
+  <br/>
+  <%=f.text_field :title %>
+</p>
+<p>
+  <%=f.label :description %>
+  <br/>
+  <%=f.text_area :description, :rows => 4, :cols => 30 %>
+</p>
+<p>
+  <%=f.label :starttime, 'Start Time' %>
+  <br/>
+  <%=f.datetime_select :starttime %>
+</p>
+<p>
+  <%=f.label :endtime, 'End Time' %>
+  <br/>
+  <%=f.datetime_select :endtime %>
+</p>
+<p>
+  <%=f.label :all_day %>
+  <%=f.check_box :all_day %>
+</p>
+<p>
+  <%=f.label :period, "Repeats" %>
+  <%=f.select :period, Event::REPEATS,{}, :onchange => "showPeriodAndFrequency(this.value);" %>
+</p>
+<p id = "frequency" style = "display:none;">
+  <%=f.label :frequency, "Repeat every" %>
+  <%=f.select :frequency, (1..30).to_a %> <span id = "period"></span>
+</p>
 
-			<br /><%= link_to "My calendar", '/events' %>
-		</div>
-		
-		<%= render :partial => 'sidebar' %>
-			
-			
-		</div>
-	</div>
-</div>
+<%=f.hidden_field :category, :value => 'personal' %>
+
+<%=f.hidden_field :id, :value => @event.id %>
+<p>
+  <%=f.submit 'Create' %> 
+</p>
+<%end %>
+
+<br /><%= link_to "My calendar", '/events' %>
+

@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_filter :require_user
   
   def new
+    @title = "Create Event"
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
   
@@ -26,6 +27,8 @@ class EventsController < ApplicationController
   
   # Display calendar
   def index
+    @title = "June 2010"
+    @display_calendar = true
   end
 
   def get_all

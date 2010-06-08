@@ -1,13 +1,4 @@
-<div id="topbar">
-	<div id="title">
-		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline"><%= @title %></div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
-	</div>
-</div>
-
-<div id="content">
-	<div id="content-inner">
-		<div id="events">
-			
+	
 			<% @campus.each do |campus| %>
 				<table>
 					<tr>
@@ -20,9 +11,5 @@
 			<% end %>
 			
 			<p><%= link_to 'Create a New Campus', '/campus/new'%></p>
-		</div>
-		<%= render :partial => 'events/sidebar' %>
-		</div>
-	</div>
-</div>
+
 

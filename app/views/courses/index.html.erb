@@ -1,29 +1,14 @@
-<div id="topbar">
-	<div id="title">
-		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline"><%= @title %></div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
-	</div>
-</div>
+<% @courses.each do |course| %>
+	<table>
+		<tr>
+			<td><%=h course.name %></td>
+			<td><%= link_to 'Show', course %></td>
+			<td>Edit</td>
+		    <td><%= link_to 'Destroy', course, :confirm => "Are you sure to delete?", :method => :delete %></td>
+		</tr>
+	</table>
+<% end %>
 
-<div id="content">
-	<div id="content-inner">
-		<div id="events">
-			
-			<% @courses.each do |course| %>
-				<table>
-					<tr>
-						<td><%=h course.name %></td>
-						<td><%= link_to 'Show', course %></td>
-						<td>Edit</td>
-					    <td><%= link_to 'Destroy', course, :confirm => "Are you sure to delete?", :method => :delete %></td>
-					</tr>
-				</table>
-			<% end %>
-			
-			<p><%= will_paginate @courses %></p>
-			<p><%= link_to 'Create a courses', '/courses'%></p>
-		</div>
-		<%= render :partial => 'events/sidebar' %>
-		</div>
-	</div>
-</div>
+<p><%= will_paginate @courses %></p>
+<p><%= link_to 'Create a courses', '/courses'%></p>
 

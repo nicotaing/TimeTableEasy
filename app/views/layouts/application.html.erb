@@ -12,7 +12,19 @@
 <body>
 	<div id="container">
 		<div id="container-inner">
-			<%= yield %>
+			<%= render :partial => 'layouts/top_bar' %>
+			
+			<div id="content">
+				<div id="content-inner">
+					<div id="events">
+						<br/><br/>
+						<%= yield %>
+					</div>
+					<%= render :partial => 'layouts/sidebar' %>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </body>

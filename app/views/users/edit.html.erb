@@ -1,33 +1,17 @@
-<div id="topbar">
-	<div id="title">
-		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline">Edit Profile</div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
-	</div>
-</div>
-<div id="content">
-	<div id="content-inner">
-		<div id="events"><br/><br/>
-			<% form_for @user, :url => account_path , :html => { :multipart => true } do |f| %>
-			  <%= f.error_messages %>
-			  <%= f.label :email %><br />
-				<%= f.text_field :email %><br />
-				<br />
-				<%= f.label :avatar %><br/>
-				<%= f.file_field :avatar %><br/>
-				<br />
-				<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
-				<%= f.password_field :password %><br />
-				<br />
-				<%= f.label :password_confirmation %><br />
-				<%= f.password_field :password_confirmation %><br />
-			  <%= f.submit "Update" %>
-			<% end %>
+<% form_for @user, :url => account_path , :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :email %><br />
+	<%= f.text_field :email %><br />
+	<br />
+	<%= f.label :avatar %><br/>
+	<%= f.file_field :avatar %><br/>
+	<br />
+	<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+	<%= f.password_field :password %><br />
+	<br />
+	<%= f.label :password_confirmation %><br />
+	<%= f.password_field :password_confirmation %><br />
+  <%= f.submit "Update" %>
+<% end %>
 
-			<br /><%= link_to "My calendar", '/events' %>
-		</div>
-		
-		<%= render :partial => 'events/sidebar' %>
-			
-			
-		</div>
-	</div>
-</div>
+<br /><%= link_to "My calendar", '/events' %>
