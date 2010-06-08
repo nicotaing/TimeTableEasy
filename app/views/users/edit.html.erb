@@ -10,11 +10,9 @@
 			  <%= f.error_messages %>
 			  <%= f.label :email %><br />
 				<%= f.text_field :email %><br />
-
-
-				<%= image_tag @user.avatar.url(:thumb) %>
-				<%= f.label :avatar %>
-				<%= f.file_field :avatar %>
+				<br />
+				<%= f.label :avatar %><br/>
+				<%= f.file_field :avatar %><br/>
 				<br />
 				<%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
 				<%= f.password_field :password %><br />

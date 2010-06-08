@@ -1,6 +1,10 @@
 <div id="sidebar">
 	<div id="ucard">
-		<img src="/images/avatar-stephane.png" alt="Avatar Stephane"> 
+		<% if @current_user.avatar.url == '/avatars/original/missing.png' %>
+			<img/>
+		<% else %>
+			<%= image_tag @current_user.avatar.url(:thumb) %>
+		<% end %>
 		<b><%= @current_user.first_name %> <%= @current_user.last_name %></b><br>
 		
 		<% if @current_user.role == 'admin' %>
@@ -12,8 +16,7 @@
 			M1 @ San Francisco<br>
 		<% end %>
 		
-		<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;
-		<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+		<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;<%= link_to "Log out", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
 	</div>
 	<div id="actions">
 		<ul>

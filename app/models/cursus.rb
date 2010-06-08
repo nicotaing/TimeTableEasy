@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100516033807
+# Schema version: 20100608022458
 #
 # Table name: cursus
 #

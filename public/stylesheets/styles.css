@@ -112,12 +112,20 @@ ul#view_selector li a.center{
 	border-left:0px;-webkit-border-top-left-radius: 0;-webkit-border-bottom-left-radius: 0;
 }
 
+ul#view_selector li a.alone{
+}
+
+ul#view_selector li a.alone img{
+	vertical-align:-3px;
+}
+
+
 ul#view_selector li a.right{
 	border-left:0px;-webkit-border-top-left-radius: 0;-webkit-border-bottom-left-radius: 0;
 }
 
 #sidebar{width:316px;}
-#events{float:right; width:668px; margin-right:40px;color:#000000;}
+#events{float:right; width:668px; margin-right:40px;color:#333333;}
 
 #ucard{ margin-top:-1px;
 	color:#555555;

@@ -10,6 +10,9 @@
 #  all_day    :boolean         default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
+#  category   :string(255)
+#  creator_id :
+#  campus_id  :integer
 #
 
 class EventSeries < ActiveRecord::Base
