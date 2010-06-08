@@ -46,6 +46,7 @@ class CampusController < ApplicationController
     end
   end
   
+  # GET /campus/1/edit
   def edit
     @campus = Campus.find(params[:id])
     @title = "Editing "+ @campus.name + " Campus"
@@ -64,6 +65,16 @@ class CampusController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @campus.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def destroy
+    @campus = Campus.find(params[:id])
+    @campus.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(campus_url) }
+      format.xml  { head :ok }
     end
   end
 end
