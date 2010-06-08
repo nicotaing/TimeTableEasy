@@ -7,10 +7,6 @@ class EventsController < ApplicationController
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
   end
   
-  def new_university
-    @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
-  end
-  
   def create
     if params[:event][:period] == "Does not repeat"
       @event = Event.new(params[:event])

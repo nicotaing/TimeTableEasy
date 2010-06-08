@@ -1,13 +1,13 @@
+<table>
 <% @courses.each do |course| %>
-	<table>
 		<tr>
 			<td><%=h course.name %></td>
 			<td><%= link_to 'Show', course %></td>
 			<td>Edit</td>
 		    <td><%= link_to 'Destroy', course, :confirm => "Are you sure to delete?", :method => :delete %></td>
 		</tr>
-	</table>
 <% end %>
+</table>
 
 <p><%= will_paginate @courses %></p>
 <p><%= link_to 'Create a courses', '/courses'%></p>

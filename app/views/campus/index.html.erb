@@ -1,15 +1,15 @@
+<table>
+<% @campus.each do |campus| %>
 	
-			<% @campus.each do |campus| %>
-				<table>
-					<tr>
-						<td><%=h campus.name %></td>
-						<td><%= link_to 'Show', campus %></td>
-						<td>Edit</td>
-					    <td><%= link_to 'Destroy', campus, :confirm => "Are you sure to delete?", :method => :delete %></td>
-					</tr>
-				</table>
-			<% end %>
-			
-			<p><%= link_to 'Create a New Campus', '/campus/new'%></p>
+		<tr>
+			<td><%=h campus.name %></td>
+			<td><%= link_to 'Show', campus %></td>
+			<td>Edit</td>
+		    <td><%= link_to 'Destroy', campus, :confirm => "Are you sure to delete?", :method => :delete %></td>
+		</tr>
+
+<% end %>
+</table>
+<p><%= link_to 'Create a New Campus', '/campus/new'%></p>
 
 
