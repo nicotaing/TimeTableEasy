@@ -20,7 +20,7 @@
 	</div>
 	<div id="actions">
 		<ul>
-			<li><%=link_to 'New Event', '/event_new_university' %></li>
+			<li><%=link_to 'New Event', '/events/new/university' %></li>
 					
 			<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
 				<li><%=link_to 'Manage', '/events/new' %></li>

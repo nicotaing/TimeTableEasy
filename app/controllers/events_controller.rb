@@ -5,18 +5,35 @@ class EventsController < ApplicationController
   def new
     @title = "Create Event"
     @event = Event.new(:endtime => 1.hour.from_now, :period => "Does not repeat")
+    
+    if params[:id] == "university" 
+      @tab_university = 'active'
+      render :new_university
+    elsif params[:id] == "campus"  
+      @tab_campus = 'active'   
+      render :new_campus
+    elsif params[:id] == "class"
+      @tab_class = 'active'      
+      render :new_class
+    else              
+      @tab_personal = 'active'
+      render :new_personal
+    end
+    
   end
   
   def create
-    if params[:event][:period] == "Does not repeat"
-      @event = Event.new(params[:event])
-      @event.creator_id = @current_user.id
-      @event.save
-      redirect_to '/events'
-    else
-      @event_series = EventSeries.new(params[:event])
-      @event_series.save
-      redirect_to '/events'
+    @event = Event.new(params[:event])
+    @event.creator_id = @current_user.id
+    
+    respond_to do |format| 
+      if @event.save
+        format.html { redirect_to("/events", :notice => 'Event was successfully created.') }
+        format.xml  { render :xml => @event, :status => :created, :location => @event }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
@@ -183,29 +200,7 @@ class EventsController < ApplicationController
     cal.publish
     cal.to_ical
   end
-  
-  
-################
-######Create Events
-################
 
-#######New University
-  def event_new_university
-    @event = Event.new
-  end
-
-  def event_create_university
-    if params[:event][:period] == "Does not repeat"
-      #@event = Event.new(params[:event])
-      #@event.creator_id = @current_user.id
-      #@event.save
-      redirect_to '/google'
-    else
-      #@event_series = EventSeries.new(params[:event])
-      #@event_series.save
-      redirect_to '/events'
-    end
-  end
 end
 
 

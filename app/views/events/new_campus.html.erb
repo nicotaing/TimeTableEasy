@@ -1,0 +1,113 @@
+<% form_for @event, :url => {:action => :create} do |f| %>
+
+	<%=f.hidden_field :category, :value => 'campus' %>
+
+	<table border="0" cellspacing="0" cellpadding="5" id="crud">
+		<tr>
+			<%= render :partial => 'events/tab' %>
+		</tr>
+		
+		<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
+		<tr><td class="title">Campus</td><td>
+			<select>
+				<option value="San Francisco, CA" selected=selected disabled>Select a campus</option>
+				<option value="San Francisco, CA" disabled>USA</option>
+				<option value="San Francisco, CA" >San Francisco, CA</option>
+				<option value="San Francisco, CA" >Portland, OR</option>
+				<option value="San Francisco, CA" >New York City, NY</option>
+				<option value="San Francisco, CA" disabled>FRANCE</option>
+				<option value="San Francisco, CA" >Paris</option>
+				<option value="San Francisco, CA">Caen</option>
+				<option value="San Francisco, CA" >Nantes</option>
+				<option value="San Francisco, CA" >Marseilles</option>
+				<option value="San Francisco, CA">Bordeaux</option>
+			</select>
+			</td><td class="help"></td>
+		</tr>
+		
+			
+		<tr>
+			<td colspan="3">
+				<span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">When ?</td>
+			<td colspan="2"><%=f.datetime_select :starttime %></td>
+		</tr>
+		<tr>
+			<td class="title">End ?</td>
+			<td colspan="2"><%=f.datetime_select :endtime %></td>
+		</tr>
+		<tr>
+			<td class="title"></td>
+			<td colspan="2">
+				<%= radio_button "event", "all_day", "false" %>
+				<label for="lasts">Lasts</label> 
+				<select>
+					<option value="00">0</option>
+					<option selected="selected" value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+				</select> hour(s)
+			</td>
+		</tr>
+	
+		<tr>
+			<td class="title"></td>
+			<td colspan="2">
+				<%= radio_button "event", "all_day", "true" %>
+				<%= f.label :all_the_day %>
+			</td>
+		</tr>
+		
+			<tr>
+				<td colspan="3">
+					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+				</td>
+			</tr>
+			<tr>
+			
+				<td class="title" style="vertical-align:top;">Title</td>
+				<td>
+					<%=f.text_field :title, :size => 20 %>
+					<span class="help">The Title will be displayed in all the views of the calendar.</span>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;">Location</td>
+				<td>
+					<%=f.text_field :location, :size => 20 %>
+					<span class="help">You can specify a location if you want to.</span>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;">Notes</td>
+				<td>
+					<%=f.text_area :description, :rows => 4, :cols => 40 %>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+				</td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;"></td>
+				<td>
+					<%=f.submit 'Create Event' %>
+					or <a href="/">Cancel</a>
+				</td>
+				<td class="help"></td>
+			</tr>
+	</table>
+
+<% end %>
