@@ -1,4 +1,5 @@
 # == Schema Information
+# Schema version: 20100608022458
 #
 # Table name: events
 #
@@ -6,7 +7,7 @@
 #  title           :string(255)
 #  starttime       :datetime
 #  endtime         :datetime
-#  all_day         :boolean         default(FALSE)
+#  all_day         :boolean
 #  created_at      :datetime
 #  updated_at      :datetime
 #  description     :text
