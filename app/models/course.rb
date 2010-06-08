@@ -17,4 +17,8 @@ class Course < ActiveRecord::Base
   
   has_many :events, :dependent => :destroy
   belongs_to :study_period
+  
+  cattr_reader :per_page
+  @@per_page = 10
+  
 end

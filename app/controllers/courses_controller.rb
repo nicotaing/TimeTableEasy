@@ -3,7 +3,8 @@ class CoursesController < ApplicationController
   
   def index
     @title = "Courses List"
-    @courses = Course.all
+    #@courses = Course.all
+    @courses = Course.paginate :page => params[:page]
     
     respond_to do |format|
       format.html # new.html.erb

@@ -19,6 +19,7 @@
 				</table>
 			<% end %>
 			
+			<p><%= will_paginate @courses %></p>
 			<p><%= link_to 'Create a courses', '/courses'%></p>
 		</div>
 		<%= render :partial => 'events/sidebar' %>
