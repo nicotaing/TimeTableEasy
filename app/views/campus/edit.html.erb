@@ -1,0 +1,34 @@
+<div id="topbar">
+	<div id="title">
+		<img src="/images/eva_g.png" width="16" height="58" alt="Eva G"><span class="center"><div id="CalendarTitle" style="display:inline"><%= @title %></div></span><img src="/images/eva_d.png" width="16" height="58" alt="Eva D">
+	</div>
+</div>
+
+<div id="content">
+	<div id="content-inner">
+		<div id="events">
+			<% form_for(@campus) do |f| %>
+			  <%= f.error_messages %>
+
+			  <p>
+			    <%= f.label :name %><br />
+			    <%= f.text_field :name %>
+			  </p>
+			  <p>
+			    <%= f.label :city %><br />
+			    <%= f.text_field :city %>
+			  </p>
+			  <p>
+			    <%= f.submit 'Update' %>
+			  </p>
+			<% end %>
+
+			<%= link_to 'Show', @campus %> |
+			<%= link_to 'Back', campus_path %>
+		</div>
+		<%= render :partial => 'events/sidebar' %>
+		</div>
+	</div>
+</div>
+
+

@@ -5,11 +5,21 @@ class CampusController < ApplicationController
   def index
     @title = "Campus List"
     @campus = Campus.all
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @campus }
+    end
   end
   
   def new
     @title = "Create a New Campus"
     @campus = Campus.new
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @campus }
+    end
   end
   
   def create
@@ -36,4 +46,24 @@ class CampusController < ApplicationController
     end
   end
   
+  def edit
+    @campus = Campus.find(params[:id])
+    @title = "Editing "+ @campus.name + " Campus"
+  end
+  
+  # PUT /campus/1
+  # PUT /campus/1.xml
+  def update
+    @campus = Campus.find(params[:id])
+
+    respond_to do |format|
+      if @campus.update_attributes(params[:campus])
+        format.html { redirect_to(@campus, :notice => 'Campus was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @campus.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 end
