@@ -4,6 +4,7 @@ class AddToEvent < ActiveRecord::Migration
     add_column :events, :campus_id, :integer
     add_column :events, :category, :string
     add_column :events, :location, :string
+    add_column :events, :modality_id, :string
   end
 
   def self.down
@@ -11,5 +12,6 @@ class AddToEvent < ActiveRecord::Migration
     remove_column :events, :campus_id
     remove_column :events, :category
     remove_column :events, :location
+    remove_column :events, :modality_id
   end
 end

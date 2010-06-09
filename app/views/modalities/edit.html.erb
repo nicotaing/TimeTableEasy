@@ -1,0 +1,12 @@
+<h1>Editing modality</h1>
+
+<% form_for(@modality) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @modality %> |
+<%= link_to 'Back', modalities_path %>
