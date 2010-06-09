@@ -9,11 +9,13 @@ class ManageController < ApplicationController
   def campus
     @title = "Manage"
     @tab_campus = 'active'
+    @campus = Campus.all
   end
   
   def cursus
     @title = "Manage"
     @tab_cursus = 'active'
+    @cursus = Cursus.all
   end
   
   def users
