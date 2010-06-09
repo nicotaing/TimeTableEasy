@@ -31,4 +31,22 @@ class CoursesController < ApplicationController
     end
   end
   
+  def remaining
+    @course = Course.find(26)
+    
+    render :text => @course.has_currently
+  end
+  
+  def hours
+    @course = Course.find(params[:id])
+    
+    hours = []
+    hours << {
+      :volume => @course.volume,
+      :used => @course.has_currently,
+      :remaining => @course.volume - @course.has_currently }
+      
+    render :text => hours.to_json
+  end
+  
 end

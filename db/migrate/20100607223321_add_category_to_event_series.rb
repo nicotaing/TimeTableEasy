@@ -4,6 +4,7 @@ class AddCategoryToEventSeries < ActiveRecord::Migration
     add_column :event_series, :creator_id, :id
     add_column :event_series, :campus_id, :integer
     add_column :event_series, :location, :string
+    add_column :event_series, :professor_id, :string
   end
 
   def self.down

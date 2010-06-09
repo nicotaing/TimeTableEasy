@@ -247,13 +247,7 @@ background-color:rgb(151,219,48);
 }
 
 #actions ul li a:hover{
-	opacity:1;-webkit-transition: 0.1s linear;background:-webkit-gradient(
-	    linear,
-	    left bottom,
-	    left top,
-	    color-stop(1, rgb(255,255,255)),
-	    color-stop(0, rgb(195,176,157))
-	);color:#ffffff;
+	opacity:1;-webkit-transition: 0.1s linear;color:#ffffff;
 		text-shadow:0px -1px 0px black;
 		background:-webkit-gradient(
 		    linear,
@@ -264,6 +258,18 @@ background-color:rgb(151,219,48);
 		    color-stop(0.5, rgb(160,80,0)),
 		    color-stop(1, rgb(204,102,0))
 		);
+}
+
+#actions ul li a:active{
+	opacity:1;-webkit-transition: 0.1s linear;background:-webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(1, rgb(255,255,255)),
+	    color-stop(0, rgb(195,176,157))
+	);color:#ffffff;
+		text-shadow:0px -1px 0px black;
+		background:rgb(102,51,0);
 }
 
 table#crud {
@@ -330,8 +336,139 @@ ul#tabs li a.active{
 	    left top,
 	    color-stop(1, #555555),
 	    color-stop(0, #222222)
-	);;
+	);
 	text-shadow:0px -1px 0px #000000;
 	padding-bottom:8px;
 	
+}
+
+table#prices{
+	width:100%;
+	font-size:13px;
+	text-align:center;
+	line-height:2.5em;
+}
+
+table#prices tr.ct{
+	background:rgba(255,255,255,0.9);
+}
+
+table#prices tr.bold{
+	font-weight:bold;
+}
+
+table#prices tr td#bigdeal{
+	background:white;
+	font-size:15px;
+	background:#29abcd;
+	color:white;
+	text-shadow:0px -1px 1px #2E6F80;
+	border-left:1px solid #2E6F80;
+	border-right:1px solid #2E6F80;
+}
+
+table#prices tr.ct.top td#bigdeal{
+padding:10px;
+font-size:30px;
+font-weight:Bold;background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(1, #94D5E6),
+    color-stop(0, #29abcd)
+);	
+}
+
+table#prices tr.ct.top td.right{
+	-webkit-border-top-right-radius: 10px;
+}
+table#prices tr.ct.bottom td.right{
+	-webkit-border-bottom-right-radius: 10px;
+}
+table#prices tr.ct.top td.left{
+	-webkit-border-top-left-radius: 10px;
+}
+table#prices tr.ct.bottom td.left{
+	-webkit-border-bottom-left-radius: 10px;
+}
+
+table#prices tr.ct.bottom td{
+padding-bottom:10px;
+}
+table#prices tr.ct.top td{
+font-size:18px;
+font-weight:Bold;background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(1, #555555),
+    color-stop(0, #333333)
+);	
+	color:white;
+	text-shadow:0px -1px 0px black;
+}
+
+table#prices tr td#bigdeal_top{
+-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius:5px;
+	background:#94D5E6;
+	font-size:10px;
+	font-weight:Bold;
+	text-transform: uppercase;
+	color:#2E6F80;
+	border-top:1px solid #2E6F80;
+	border-left:1px solid #2E6F80;
+	border-right:1px solid #2E6F80;
+	
+}
+
+table#prices tr td#bigdeal_bottom{
+-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	background:#29abcd;
+	font-size:1px;
+	border-bottom:1px solid #2E6F80;
+	border-left:1px solid #2E6F80;
+	border-right:1px solid #2E6F80;background:-webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(1, #29abcd),
+	    color-stop(0, #94D5E6)
+	);
+}
+
+table#tree{
+	margin:10px;
+	margin-left:20px;
+	font-size:15px;
+	width:95%;
+}
+
+
+table#tree tr td.actions{
+	text-align:right;
+	font-size:13px;
+}
+
+table#userlist tr td{
+	padding:4px;
+}
+
+table#userlist tr:nth-child(odd) {background: #dddddd}
+
+table#userlist{
+	font-size:13px;
+	width:100%;
+	font-family:Monaco;
+	font-size:11px;
+}
+
+table#userlist tr td.actions{
+	text-align:right;
+	font-size:12px;
+	font-family:Helvetica;
+}
+
+table#userlist tr td.number{
 }

@@ -5,6 +5,7 @@ class AddToEvent < ActiveRecord::Migration
     add_column :events, :category, :string
     add_column :events, :location, :string
     add_column :events, :modality_id, :string
+    add_column :events, :professor_id, :string
   end
 
   def self.down

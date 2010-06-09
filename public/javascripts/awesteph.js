@@ -103,6 +103,7 @@ $(document).ready(function() {
 	*	 Create a Class Event
 	*
 	*/
+	$('#event_modality_id').attr('disabled','disabled');
 	// when choose a campus
 	$("#event_campus_id").click(function() {
 		// get cursus
@@ -152,14 +153,22 @@ $(document).ready(function() {
 	// when choose a subject
 	$("#event_class").click(function() {
 		// active the subjects
-		$('#event_modality').attr('disabled',''); 
+		$('#event_modality_id').attr('disabled',''); 
+		$('#event_starttime_1i').attr('disabled',''); 
+		$('#event_starttime_2i').attr('disabled','');
+		$('#event_starttime_3i').attr('disabled','');
+		$('#event_starttime_4i').attr('disabled','');
+		$('#event_starttime_5i').attr('disabled','');
+		$('#event_lasts').attr('disabled','');
 	});
 	
 	
 	
 	
 	
-		
+	
+	
+	 
 });
 
 

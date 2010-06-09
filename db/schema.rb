@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20100609023829) do
     t.string   "category"
     t.string   "location"
     t.string   "modality_id"
+    t.string   "professor_id"
   end
 
   add_index "events", ["course_id"], :name => "index_events_on_course_id"

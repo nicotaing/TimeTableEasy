@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :cursus
 
+  map.resource :manage
   
   map.root :controller => "events"
   

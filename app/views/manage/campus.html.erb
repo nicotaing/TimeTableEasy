@@ -1,0 +1,153 @@
+	<table border="0" cellspacing="0" cellpadding="5" id="crud">
+		<tr>
+			<%= render :partial => 'tab' %>
+		</tr>
+		<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
+			<tr><td class="title" style="vertical-align:top;">Campus</td><td>
+				<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="Add Campus" id="some_name">
+				</td><td class="help"></td>
+			</tr>
+			<tr><td class="title" style="vertical-align:top;">Class</td><td><select>
+				<option value="San Francisco, CA" selected=selected disabled>Campus</option>
+				<option value="San Francisco, CA" disabled>USA</option>
+				<option value="San Francisco, CA" >San Francisco, CA</option>
+				<option value="San Francisco, CA" >Portland, OR</option>
+				<option value="San Francisco, CA" >New York City, NY</option>
+				<option value="San Francisco, CA" disabled>FRANCE</option>
+				<option value="San Francisco, CA" >Paris</option>
+				<option value="San Francisco, CA">Caen</option>
+				<option value="San Francisco, CA" >Nantes</option>
+				<option value="San Francisco, CA" >Marseilles</option>
+				<option value="San Francisco, CA">Bordeaux</option>
+			</select>
+				<select>
+					<option disabled>Cursus</option>
+					<option>Master of Science — IT</option>
+				</select><select>
+				<option disabled>Study Period</option>
+				<option>B1</option>
+				<option>B2</option>
+				<option>B3</option>
+				<option>M1</option>
+				<option>M2</option>
+			</select>
+				<input type="text" name="some_name" value="" id="some_name" style="width:40px"> <input type="submit" name="some_name" value="Add Class" id="some_name">
+				</td><td class="help"></td>
+			</tr>
+			<tr><td colspan="3"><div style="border : solid 2px #999999 solid; background : rgba(255,255,255,0.5); color : #333333; width : 100%; height : 480px;overflow : auto; ">
+				<table id="tree">
+					<tr id="node-1">
+				    	<td colspan="2">San Francisco, CA</td><td class="actions"><a href="">Delete</a></td>
+				  	</tr>
+					<tr id="node-1-1" class="child-of-node-1">
+				    	<td colspan="2">Master of Science – IT</td><td class="actions"></td>
+				  	</tr>
+				  	<tr id="node-1-1-1" class="child-of-node-1-1">
+				    	<td colspan="2">B1</td><td class="actions"></td>
+				  	</tr>
+				 	<tr id="node-1-1-1-1" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-A</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-1-2" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-B</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-1-3" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-C</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-1-4" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-D</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-1-5" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-F</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-1-6" class="child-of-node-1-1-1">
+					    <td colspan="2">B1-E</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2" class="child-of-node-1-1">
+						<td colspan="2">B2</td><td class="actions"></td>
+					</tr>
+					<tr id="node-1-1-2-1" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-A</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2-2" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-B</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2-3" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-C</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2-4" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-D</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2-5" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-F</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-2-6" class="child-of-node-1-1-2">
+					    <td colspan="2">B1-E</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3" class="child-of-node-1-1">
+						<td colspan="2">B3</td><td class="actions"></td>
+					</tr>
+					<tr id="node-1-1-3-1" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-A</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3-2" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-B</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3-3" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-C</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3-4" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-D</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3-5" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-F</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-3-6" class="child-of-node-1-1-3">
+					    <td colspan="2">B1-E</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4" class="child-of-node-1-1">
+						<td colspan="2">M1</td><td class="actions"></td>
+					</tr>
+					<tr id="node-1-1-4-1" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-A</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4-2" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-B</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4-3" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-C</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4-4" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-D</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4-5" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-F</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-4-6" class="child-of-node-1-1-4">
+					    <td colspan="2">B1-E</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5" class="child-of-node-1-1">
+						<td colspan="2">M2</td><td class="actions"></td>
+					</tr>
+					<tr id="node-1-1-5-1" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-A</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5-2" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-B</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5-3" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-C</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5-4" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-D</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5-5" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-F</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					<tr id="node-1-1-5-6" class="child-of-node-1-1-5">
+					    <td colspan="2">B1-E</td><td class="actions"><a href="javascript:popUp('popup-manage-class-students.html')">Manage Students</a> or <a href="">Delete</a></td>
+					</tr>
+					
+				</table>
+			</div></td></tr>
+	</table>

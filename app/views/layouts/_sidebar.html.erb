@@ -28,8 +28,10 @@
 				<% end %>
 			</li>
 					
-			<% if @current_user.role == 'admin' || @current_user.role == 'cm' %>
-				<li><%=link_to 'Manage', '/campus' %></li>
+			<% if @current_user.role == 'admin' %>
+				<li><%=link_to 'Manage', '/manage/university' %></li>
+			<% elsif @current_user.role == 'cm' %>
+				<li><%=link_to 'Manage', '/manage/campus' %></li>
 			<% end %>
 		</ul>
 	</div>

@@ -21,4 +21,21 @@ class Course < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
   
+  
+  
+  def has_currently
+    events = Event.find_by_sql ["SELECT id, title, starttime, endtime, 
+      course_id 
+    FROM events 
+    WHERE course_id = ? 
+    AND endtime BETWEEN ? AND ?", self.id, self.study_period.startdate, self.study_period.enddate]
+    
+    res=[]
+    events.each do |e|
+      res << diff_between(e.starttime, e.endtime)
+    end
+    
+    res.sum
+  end
+  
 end

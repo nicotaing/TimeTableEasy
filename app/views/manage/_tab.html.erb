@@ -1,0 +1,15 @@
+<% unless @current_user.role == "student" %>
+	<td class="title"></td><td>
+		<ul id="tabs">
+			<% if @current_user.role == "admin" %>	
+				<li><a href="/manage/university" class="<%= @tab_university %>">University</a></li>
+			<% end %>
+			<% if @current_user.role == "admin" || @current_user.role == "cm" %>	
+				<li><a href="/manage/campus" class="<%= @tab_campus %>">Campus</a></li>
+			<% end %>
+			<li><a href="/manage/cursus" class="<%= @tab_cursus %>">Cursus</a></li>
+			<li><a href="/manage/users" class="<%= @tab_users %>">Users</a></li>
+		</ul>
+	</td>
+	<td class="help"></td>
+<% end %>
