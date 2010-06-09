@@ -27,17 +27,6 @@ class EventsController < ApplicationController
   end
   
   def create
-    
-    #if params[:event][:category] != "class"
-      
-     # if params[:event][:all_day] == "false" 
-      #  duration = params[:event][:endtime]
-        #params[:event][:description] = duration.to_i
-      #  endtime = params[:event][:starttime] + 3.hours
-      #  params[:event][:endtime] = endtime
-      #end
-    
-    #end
     @event = Event.new(params[:event])
     
     if params[:event][:category] != "class"
@@ -152,25 +141,49 @@ class EventsController < ApplicationController
   
   def edit
     @event = Event.find_by_id(params[:id])
+    @diff_sec = @event.diff_between(@event.starttime, @event.endtime)
+    @diff_hours = @diff_sec / 1.hours
+    @options = []
+    
+    (1..10).each do |i|
+      if i == @diff_hours
+        @options<< "<option selected=selected value=\"#{i}\">#{i}</option>"
+      else
+        @options<< "<option value=\"#{i}\">#{i}</option>"
+      end
+    end
+    
+    if @event.category == "university" && @current_user.role == 'admin'
+      render :edit_university, :layout => false
+      
+    elsif  @event.category == "campus" && (@current_user.role == 'admin' || @current_user.role == 'cm')  
+      render :edit_campus, :layout => false
+      
+    elsif @event.category  == "class" && (@current_user.role == 'admin' || @current_user.role == 'cm')     
+      render :edit_class, :layout => false
+      
+    else              
+      render :edit_personal, :layout => false
+    end
+    
   end
   
   def update
     @event = Event.find_by_id(params[:event][:id])
-    if params[:event][:commit_button] == "Update All Occurrence"
-      @events = @event.event_series.events #.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
-      @event.update_events(@events, params[:event])
-    elsif params[:event][:commit_button] == "Update All Following Occurrence"
-      @events = @event.event_series.events.find(:all, :conditions => ["starttime > '#{@event.starttime.to_formatted_s(:db)}' "])
-      @event.update_events(@events, params[:event])
-    else
-      @event.attributes = params[:event]
-      @event.save
-    end
+    
+    if params[:event][:category] != "class"
+      
+      if params[:event][:all_day] == "false" 
+        endtime = @event.starttime + params[:event][:endtime].to_i.hours
+      end
 
-    render :update do |page|
-      page<<"$('#calendar').fullCalendar( 'refetchEvents' )"
-      page<<"$('#desc_dialog').dialog('destroy')" 
     end
+    
+    params[:event][:endtime] = endtime
+    @event.attributes = params[:event]
+    @event.save
+
+    redirect_to root_path
     
   end  
   
