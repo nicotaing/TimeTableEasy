@@ -99,4 +99,81 @@ $(document).ready(function() {
 		apply_filters();
 	});
 		
+	/* 
+	*	 Create a Class Event
+	*
+	*/
+	// when choose a campus
+	$("#event_campus_id").click(function() {
+		// get cursus
+		$.getJSON('/cursus.js', function(data) {
+			var options = '';
+			$.each(data, function(i,item){
+				options += '<option value="'+ item.cursus.id +'" >'+ item.cursus.name +'</option>';
+			});
+			$("#event_cursus").html(options);
+		});
+		// active the cursuses
+		$('#event_cursus').attr('disabled',''); 
+	});
+	
+	// when choose a cursus
+	$("#event_cursus").click(function() {
+		
+		var campus_id = $("#event_campus_id").val();
+		
+		// get classes
+		$.getJSON('/classes.js?campus_id='+campus_id, function(data) {
+			var options = '';
+			$.each(data, function(i,item){
+				options += '<option value="'+ item.classe.id +'" >'+ item.classe.name +'</option>';
+			});
+			$("#event_class").html(options);
+		});
+		// active the classes
+		$('#event_class').attr('disabled',''); 
+	});
+	
+	// when choose a class
+	$("#event_class").click(function() {
+		var class_id = $("#event_class").val();
+		// get courses
+		$.getJSON('/courses.js?classe_id='+class_id, function(data) {
+			var options = '';
+			$.each(data, function(i,item){
+				options += '<option value="'+ item.course.id +'" >'+ item.course.name +'</option>';
+			});
+			$('#event_course').html(options);
+		});
+		// active the subjects
+		$('#event_course').attr('disabled',''); 
+	});
+	
+	// when choose a subject
+	$("#event_class").click(function() {
+		// active the subjects
+		$('#event_modality').attr('disabled',''); 
+	});
+	
+	
+	
+	
+	
+		
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

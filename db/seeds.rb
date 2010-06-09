@@ -194,6 +194,18 @@ StudyPeriod.create( :startdate => "09/10/2010", :enddate => "01/10/2011", :cursu
 StudyPeriod.create( :startdate => "01/11/2011", :enddate => "07/05/2011", :cursus_id => 3 )
 
 ###
+##Classes
+###
+Campus.all.each do |c|
+  Classe.create(:name => "B1 #{c.name}", :campus_id => c.id, :study_period_id => 1)
+  Classe.create(:name => "B2 #{c.name}", :campus_id => c.id, :study_period_id => 2)
+  Classe.create(:name => "M1 #{c.name}", :campus_id => c.id, :study_period_id => 3)
+  Classe.create(:name => "M2 #{c.name}", :campus_id => c.id, :study_period_id => 4)
+  Classe.create(:name => "M3 #{c.name}", :campus_id => c.id, :study_period_id => 5)
+end
+
+
+###
 ##Modalities
 ###
 ["Lectures", "E-Learning", "Pratical Case Studies"].each do |m|

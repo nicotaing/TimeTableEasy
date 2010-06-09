@@ -1,4 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :modalities
+
+  map.resources :classes
+
+  map.resources :cursus
+
+  map.resources :cursuses
+
+  map.resources :cursus
+
   
   map.root :controller => "events"
   

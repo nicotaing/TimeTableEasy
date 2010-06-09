@@ -19,16 +19,13 @@
 		<% end %>
 			
 		<tr><td class="title">Cursus</td><td>
-			<select>
+			<select id="event_cursus" disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a cursus</option>
-				<option value="San Francisco, CA" >Master of Science – IT</option>
-				<option value="San Francisco, CA" >Master of Science – Finance</option>
-				<option value="San Francisco, CA" >Master of Science – Gogo dancer</option>
 			</select>
 			</td><td class="help"></td>
 		</tr>
 		<tr><td class="title">Class</td><td>
-			<select>
+			<select id="event_class" disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
 				<option value="San Francisco, CA" disabled>B3</option>
 				<option value="San Francisco, CA" >Class A</option>
@@ -42,19 +39,19 @@
 			</td><td class="help"></td>
 		</tr>	
 		<tr><td colspan="3"><span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
+			
+			
+			<tr><td class="title">Subject</td><td>
+				<select id="event_course" disabled="disabled">
+					<option value="San Francisco, CA" selected=selected disabled>Select a subject</option>
+					<option value="San Francisco, CA" >IT Law</option>
+					<option value="San Francisco, CA" >Mathematics</option>
+				</select>
+				</td><td class="help"></td>
+			</tr>
 
 			<tr><td class="title">Modality</td><td>
-				<select>
-					<option value="San Francisco, CA" selected=selected disabled>Select a modality</option>
-					<option value="San Francisco, CA" disabled>Teaching</option>
-					<option value="San Francisco, CA" >Classroom Courses</option>
-					<option value="San Francisco, CA" >Distance Learning Courses</option>
-					<option value="San Francisco, CA" >Practical Case Studies</option>
-					<option value="San Francisco, CA" disabled>Assessments</option>
-					<option value="San Francisco, CA" >Examinations</option>
-					<option value="San Francisco, CA" >Practical Case Studies</option>
-					<option value="San Francisco, CA" >Individual Orals</option>
-				</select>
+				<%= select :event, :modality_id, Modality.all.collect{|p| [p.name, p.id]}, :html_options => {:disabled => "disabled"} %>
 				</td><td class="help"></td>
 			</tr>
 			<tr><td class="title"></td><td colspan="2">
@@ -63,7 +60,7 @@
 			</tr>
 		<tr><td class="title">
 			When ?</td><td colspan="2">
-				<select id="event_starttime_1i" name="event[starttime(1i)]">
+				<select id="event_starttime_1i" name="event[starttime(1i)]" disabled="disabled">
 				<option value="2005">2005</option>
 				<option value="2006">2006</option>
 				<option value="2007">2007</option>
@@ -76,7 +73,7 @@
 				<option value="2014">2014</option>
 				<option value="2015">2015</option>
 				</select>
-				<select id="event_starttime_2i" name="event[starttime(2i)]">
+				<select id="event_starttime_2i" name="event[starttime(2i)]" disabled="disabled">
 				<option value="1">January</option>
 				<option value="2">February</option>
 				<option value="3">March</option>
@@ -90,7 +87,7 @@
 				<option value="11">November</option>
 				<option value="12">December</option>
 				</select>
-				<select id="event_starttime_3i" name="event[starttime(3i)]">
+				<select id="event_starttime_3i" name="event[starttime(3i)]" disabled="disabled">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -123,7 +120,7 @@
 				<option value="30">30</option>
 				<option value="31">31</option>
 				</select>
-				 &mdash; <select id="event_starttime_4i" name="event[starttime(4i)]">
+				 &mdash; <select id="event_starttime_4i" name="event[starttime(4i)]" disabled="disabled">
 				<option value="00">00</option>
 				<option value="01">01</option>
 				<option value="02">02</option>
@@ -149,7 +146,7 @@
 				<option value="22">22</option>
 				<option value="23">23</option>
 				</select>
-				 : <select id="event_starttime_5i" name="event[starttime(5i)]">
+				 : <select id="event_starttime_5i" name="event[starttime(5i)]" disabled="disabled">
 				<option value="00">00</option>
 				<option value="01">01</option>
 				<option value="02">02</option>
@@ -214,7 +211,7 @@
 			</td>
 		</tr>
 		<tr><td class="title"></td><td colspan="2">
-				<label for="lasts">Lasts</label> <select><option value="00">0</option>
+				<label for="lasts">Lasts</label> <select disabled="disabled"><option value="00">0</option>
 				<option selected="selected" value="01">1</option>
 				<option value="02">2</option>
 				<option value="03">3</option>
@@ -228,7 +225,7 @@
 		<tr>	
 		<tr><td colspan="3"><span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
 		<tr><td class="title">Teacher</td><td colspan="2">
-			<select>
+			<select disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a teacher</option>
 				<option value="San Francisco, CA" >Mark</option>
 				<option value="San Francisco, CA" >Guilia</option>
@@ -236,7 +233,7 @@
 			</td>
 		</tr>
 		<tr><td class="title">Room</td><td colspan="2">
-			<select>
+			<select disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a room</option>
 				<option value="San Francisco, CA" >Building 42 – Room 23</option>
 				<option value="San Francisco, CA" >Building 42 – Room 30</option>
@@ -247,11 +244,11 @@
 			
 			<tr><td colspan="3"><span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
 			<tr><td class="title" style="vertical-align:top;">Notes</td><td>
-				<textarea name="Name" rows="4" cols="40"></textarea>
+				<textarea name="Name" rows="4" cols="40" disabled="disabled"></textarea>
 				</td><td class="help"></td>
 			</tr>
 			<tr><td colspan="3"><span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr><tr><td class="title" style="vertical-align:top;"></td><td>
-				<input type="submit" name="Create Event" value="Create Event" id="Create Event"> or <a href="index_loggued.html">Cancel</a>
+				<input type="submit" name="Create Event" value="Create Event" id="Create Event" disabled="disabled"> or <a href="index_loggued.html">Cancel</a>
 				</td><td class="help"></td>
 			</tr>
 	</table>

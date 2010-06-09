@@ -13,5 +13,7 @@
 class Campus < ActiveRecord::Base
   attr_accessible :name, :city
   
+  has_many :classes, :dependent => :destroy
   has_many :rooms, :dependent => :destroy
+  
 end
