@@ -162,8 +162,10 @@ class EventsController < ApplicationController
     elsif @event.category  == "class" && (@current_user.role == 'admin' || @current_user.role == 'cm')     
       render :edit_class, :layout => false
       
-    else              
+    elsif @event.category == "personal" && (@current_user.id == @event.creator_id)              
       render :edit_personal, :layout => false
+    else
+      render :forbidden
     end
     
   end
