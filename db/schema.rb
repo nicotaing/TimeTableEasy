@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100609023829) do
+ActiveRecord::Schema.define(:version => 20100609224824) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20100609023829) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cursus_id"
+    t.string   "name"
   end
 
   add_index "study_periods", ["cursus_id"], :name => "index_study_periods_on_cursus_id"
