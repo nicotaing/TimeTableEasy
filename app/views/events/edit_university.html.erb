@@ -1,0 +1,78 @@
+<% form_for @event, :url => {:action => :update} do |f| %>
+
+	<%=f.hidden_field :category %>
+	<%=f.hidden_field :id %>
+
+	<table border="0" cellspacing="0" cellpadding="5" id="crud">
+		<tr>
+			<td colspan="3">
+				<span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">When ?</td>
+			<td colspan="2"><%=f.datetime_select :starttime %></td>
+		</tr>
+		<tr>
+			<td class="title"></td>
+			<td colspan="2">
+				<%= radio_button "event", "all_day", "false" %>
+				<label for="lasts">Lasts</label> 
+				<%= select_tag 'event[endtime]', @options  %>
+ 				hour(s)
+			</td>
+		</tr>
+	
+		<tr>
+			<td class="title"></td>
+			<td colspan="2">
+				<%= radio_button "event", "all_day", "true" %>
+				<%= f.label :all_the_day %>
+			</td>
+		</tr>
+		
+			<tr>
+				<td colspan="3">
+					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+				</td>
+			</tr>
+			<tr>
+			
+				<td class="title" style="vertical-align:top;">Title</td>
+				<td>
+					<%=f.text_field :title, :size => 20 %>
+					<span class="help">The Title will be displayed in all the views of the calendar.</span>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;">Location</td>
+				<td>
+					<%=f.text_field :location, :size => 20 %>
+					<span class="help">You can specify a location if you want to.</span>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;">Notes</td>
+				<td>
+					<%=f.text_area :description, :rows => 4, :cols => 40 %>
+				</td>
+				<td class="help"></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+				</td>
+			</tr>
+			<tr>
+				<td class="title" style="vertical-align:top;"></td>
+				<td>
+					<%=f.submit 'Update' %>
+					or <a href="/">Cancel</a>
+				</td>
+				<td class="help"></td>
+			</tr>
+	</table>
+
+<% end %>
