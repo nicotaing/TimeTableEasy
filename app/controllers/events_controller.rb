@@ -72,7 +72,8 @@ class EventsController < ApplicationController
         :end => "#{event.endtime.iso8601}", 
         :allDay => event.all_day, 
         :recurring => (event.event_series_id)? true: false,
-        :className => 'university'}
+        :className => 'university',
+        :url => "/events/edit/#{event.id}"}
     end
     
     # Campus
@@ -90,7 +91,8 @@ class EventsController < ApplicationController
           :end => "#{event.endtime.iso8601}", 
           :allDay => event.all_day, 
           :recurring => (event.event_series_id)? true: false,
-          :className => 'campus'}
+          :className => 'campus',
+          :url => "/events/edit/#{event.id}"}
       end
     end
     
@@ -114,7 +116,8 @@ class EventsController < ApplicationController
         :end => "#{event.endtime.iso8601}", 
         :allDay => event.all_day, 
         :recurring => (event.event_series_id)? true: false,
-        :className => 'perso'}
+        :className => 'perso',
+        :url => "/events/edit/#{event.id}"}
     end
     
     render :text => events.to_json
