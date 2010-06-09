@@ -19,6 +19,7 @@ class ManageController < ApplicationController
   def users
     @title = "Manage"
     @tab_users = 'active'
+    @users = User.all
   end
   
 end
