@@ -1,0 +1,18 @@
+<h1>Listing cursus</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @cursus.each do |cursus| %>
+  <tr>
+    <td><%= link_to 'Show', cursus %></td>
+    <td><%= link_to 'Edit', edit_cursus_path(cursus) %></td>
+    <td><%= link_to 'Destroy', cursus, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New cursus', new_cursus_path %>
