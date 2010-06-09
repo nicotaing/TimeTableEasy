@@ -1,25 +1,16 @@
-<% form_for @event, :url => {:action => :update} do |f| %>
+<% form_for @event, :url => {:action => :create} do |f| %>
 
 	<%=f.hidden_field :category %>
 	<%=f.hidden_field :id %>
 
-	<table border="0" cellspacing="0" cellpadding="5" id="crud">
-		<% if @current_user.role == "admin" %>	
-			<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>	
-		<tr>
-			<td class="title">Campus</td><td>		
-				<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
-			</td><td class="help"></td>
-		</tr>
-		<% else %>	
-			<%=f.hidden_field :campus_id, :value => @current_user.campus_id %>
+	<table border="0" cellspacing="0" cellpadding="5" id="crud">	
+		<% if @current_user.role == "admin" || @current_user.role == "cm" %>	
+			<tr>
+				<td colspan="3">
+					<span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
+				</td>
+			</tr>
 		<% end %>
-			
-		<tr>
-			<td colspan="3">
-				<span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
-			</td>
-		</tr>
 		<tr>
 			<td class="title">When ?</td>
 			<td colspan="2"><%=f.datetime_select :starttime %></td>
