@@ -160,7 +160,7 @@ class EventsController < ApplicationController
     if @event.category == "university" && @current_user.role == 'admin'
       render :edit_university, :layout => 'popup'
       
-    elsif  @event.category == "campus" && (@current_user.role == 'admin' || @current_user.role == 'cm')  
+    elsif  @event.category == "campus" && (@current_user.role == 'admin' || @current_user.role == 'cm')  && (@event.campus_id == @current_user.campus_id)
       render :edit_campus, :layout => 'popup'
       
     elsif @event.category  == "class" && (@current_user.role == 'admin' || @current_user.role == 'cm')     
@@ -169,9 +169,12 @@ class EventsController < ApplicationController
     elsif @event.category == "personal" && (@current_user.id == @event.creator_id)              
       render :edit_personal, :layout => 'popup'
     else
-      render :forbidden
+      render :edit_norights, :layout => 'popup'
     end
     
+  end
+  
+  def nothing
   end
   
   def update

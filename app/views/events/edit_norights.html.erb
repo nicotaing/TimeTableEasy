@@ -1,10 +1,9 @@
-<% form_for @event, :url => {:action => :update} do |f| %>
+<% form_for @event, :url => {:action => :nothing} do |f| %>
 
 	<%=f.hidden_field :category %>
 	<%=f.hidden_field :id %>
 
 	<table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
-
 		<tr>
 			<td class="title" style="vertical-align:top;">Title</td>
 			<td>
@@ -29,45 +28,24 @@
 			<td class="help"></td>
 		</tr>
 		<tr>
-		<% if @current_user.role == "admin" %>	
-			<td class="title">Campus</td><td>		
-				<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]} %> 
-			</td><td class="help"></td>
-		
-		<% else %>
-			<td class="title">Campus</td><td>	
-				<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}, {}, { :disabled => "disabled" } %> 
-			</td><td class="help"></td>
-		<% end %>
-		</tr>
-		<tr>
 			<td class="title">When ?</td>
-			<td colspan="2"><%=f.datetime_select :starttime %></td>
+			<td colspan="2"><%=f.datetime_select :starttime, :disabled => "true" %></td>
 		</tr>
 		<tr>
 			<td class="title"></td>
 			<td colspan="2">
-				<%= radio_button "event", "all_day", "false" %>
+				<%= radio_button "event", "all_day", "false", :disabled => "true" %>
 				<label for="lasts">Lasts</label> 
-				<%= select_tag 'event[endtime]', @options  %>
-				hour(s)
+				<%= select_tag 'event[endtime]', @options, :disabled => "true"  %>
+ 				hour(s)
 			</td>
 		</tr>
-	
 		<tr>
 			<td class="title"></td>
 			<td colspan="2">
-				<%= radio_button "event", "all_day", "true" %>
+				<%= radio_button "event", "all_day", "true", :disabled => "true" %>
 				<%= f.label :all_the_day %>
 			</td>
-		</tr>
-		<tr>
-			<td class="title" style="vertical-align:top;"></td>
-			<td>
-				<%=f.submit 'Update' %>
-				or <a href="javascript: self.close ()">Close</a>
-			</td>
-			<td class="help"></td>
 		</tr>
 	</table>
 
