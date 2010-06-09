@@ -39,7 +39,7 @@
 						<td class="firstname"><%= user.first_name %></td>
 						<td><%= user.role %></td>
 						<td class="actions">
-							<a href="">More Details</a> or
+							<%= link_to 'More Details', "javascript:popUpUser('/users/edit/#{user.id}')" %> or
 							<%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %>
 						</td>
 					</tr>

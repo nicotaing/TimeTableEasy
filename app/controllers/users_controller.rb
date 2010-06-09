@@ -25,7 +25,20 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Edit Profile"
-    @user = @current_user
+    @user = User.find(params[:id])
+    
+    if @current_user.role == 'admin' && ((@user.role == 'student') || (@user.role == 'cm') || (@user.role == 'teacher'))
+      
+      if @user.role == "student"
+        render :edit_student, :layout => 'popup'
+      end
+    
+    elsif @user.role == @current_user.role  
+      render :edit_his_own_info, :layout => 'popup'
+    elsif @user.role == "student"
+      render :show_student, :layout => 'popup'
+    end
+    
   end
   
   def update
@@ -35,6 +48,15 @@ class UsersController < ApplicationController
       redirect_to edit_users_path(@current_user)
     else
       render :action => :edit
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to('/manage/users') }
     end
   end
   
