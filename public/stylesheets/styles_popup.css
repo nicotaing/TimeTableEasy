@@ -1,0 +1,74 @@
+body{
+	font-size:14px;
+	font-family:Helvetica;
+	color:#cccccc;
+	margin:0px;
+	padding:0px;
+}
+
+a{
+	color:#3366cc;
+}
+
+a:hover{
+	color:#1144aa;
+}
+#header{
+	margin-top:-5px;
+	background: url('/images/eva_c.png') repeat-x;
+	font-size:30px;
+	font-weight:bold;
+	color:white;
+	text-shadow:0px 1px 3px #000000;
+	padding:10px;
+}
+
+#content{
+	color:#333333;
+	padding:15px;
+	padding-top:0px;
+}
+
+#content h1{
+	font-size:16px;
+}
+
+#content p{
+	line-height:1.5em;
+}
+
+table{
+	text-align:left;
+	width:100%;
+	border-left:1px solid #2E6F80;
+	border-right:1px solid #2E6F80;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius:5px;
+		background:#94D5E6;
+		border-top:1px solid #2E6F80;
+}
+
+table tr td{
+	background:white;
+	border-bottom:1px solid #2E6F80;
+}
+
+table tr th{
+		font-size:10px;
+		font-weight:Bold;
+		text-transform: uppercase;
+		color:#2E6F80;
+		-webkit-border-top-right-radius: 5px;
+		-webkit-border-top-left-radius:5px;
+}
+
+table.blank,
+table.blank tr,
+table.blank tr td{
+	border:none;
+	font-size:12px;
+}
+
+table.blank tr td span.help{
+	display:none;
+}

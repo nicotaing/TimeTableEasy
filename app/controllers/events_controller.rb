@@ -147,6 +147,7 @@ class EventsController < ApplicationController
     @diff_sec = @event.diff_between(@event.starttime, @event.endtime)
     @diff_hours = @diff_sec / 1.hours
     @options = []
+    @title = "Event Details"
     
     (1..10).each do |i|
       if i == @diff_hours
@@ -157,16 +158,16 @@ class EventsController < ApplicationController
     end
     
     if @event.category == "university" && @current_user.role == 'admin'
-      render :edit_university, :layout => false
+      render :edit_university, :layout => 'popup'
       
     elsif  @event.category == "campus" && (@current_user.role == 'admin' || @current_user.role == 'cm')  
-      render :edit_campus, :layout => false
+      render :edit_campus, :layout => 'popup'
       
     elsif @event.category  == "class" && (@current_user.role == 'admin' || @current_user.role == 'cm')     
-      render :edit_class, :layout => false
+      render :edit_class, :layout => 'popup'
       
     elsif @event.category == "personal" && (@current_user.id == @event.creator_id)              
-      render :edit_personal, :layout => false
+      render :edit_personal, :layout => 'popup'
     else
       render :forbidden
     end
