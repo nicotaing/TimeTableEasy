@@ -36,17 +36,8 @@
 			<td colspan="2">
 				<%= radio_button "event", "all_day", "false" %>
 				<label for="lasts">Lasts</label> 
-				<select>
-					<option value="00">0</option>
-					<option selected="selected" value="01">1</option>
-					<option value="02">2</option>
-					<option value="03">3</option>
-					<option value="04">4</option>
-					<option value="05">5</option>
-					<option value="06">6</option>
-					<option value="07">7</option>
-					<option value="08">8</option>
-				</select> hour(s)
+				<%= select_tag 'event[endtime]', '<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>'  %>
+				hour(s)
 			</td>
 		</tr>
 	

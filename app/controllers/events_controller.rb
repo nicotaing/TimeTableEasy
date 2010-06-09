@@ -27,7 +27,28 @@ class EventsController < ApplicationController
   end
   
   def create
+    
+    #if params[:event][:category] != "class"
+      
+     # if params[:event][:all_day] == "false" 
+      #  duration = params[:event][:endtime]
+        #params[:event][:description] = duration.to_i
+      #  endtime = params[:event][:starttime] + 3.hours
+      #  params[:event][:endtime] = endtime
+      #end
+    
+    #end
     @event = Event.new(params[:event])
+    
+    if params[:event][:category] != "class"
+      
+      if params[:event][:all_day] == "false" 
+        @event.endtime = @event.starttime + params[:event][:endtime].to_i.hours
+      end
+
+    end
+    
+    
     @event.creator_id = @current_user.id
     
     respond_to do |format| 
