@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100609224824
+# Schema version: 20100610022642
 #
 # Table name: users
 #
@@ -27,15 +27,12 @@
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  classe_id           :integer
 #
 
 class User < ActiveRecord::Base
   acts_as_authentic
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "48x48>" }
   belongs_to :classe
-  
-  def campus
-    
-  end
   
 end

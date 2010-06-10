@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100609224824
+# Schema version: 20100610022642
 #
 # Table name: classes
 #
@@ -14,5 +14,6 @@
 class Classe < ActiveRecord::Base
   belongs_to :campus
   belongs_to :study_period
-  has_many :students
+  has_many :users
+    
 end

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100609224824
+# Schema version: 20100610022642
 #
 # Table name: users
 #
@@ -27,6 +27,7 @@
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  classe_id           :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

@@ -20,10 +20,11 @@ class ClassesController < ApplicationController
   # GET /classes/1
   # GET /classes/1.xml
   def show
+    @title = "Manage Students"
     @classe = Classe.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'popup' }
       format.xml  { render :xml => @classe }
     end
   end

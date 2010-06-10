@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100609224824
+# Schema version: 20100610022642
 #
 # Table name: modalities
 #
