@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100609224824) do
+ActiveRecord::Schema.define(:version => 20100610022642) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -43,9 +43,6 @@ ActiveRecord::Schema.define(:version => 20100609224824) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-# Could not dump table "event_series" because of following StandardError
-#   Unknown type 'id' for column 'creator_id'
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -97,8 +94,8 @@ ActiveRecord::Schema.define(:version => 20100609224824) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "study_periods", :force => true do |t|
-    t.date     "startdate"
-    t.date     "enddate"
+    t.datetime "startdate"
+    t.datetime "enddate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cursus_id"
@@ -131,6 +128,9 @@ ActiveRecord::Schema.define(:version => 20100609224824) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "classe_id"
   end
+
+  add_index "users", ["classe_id"], :name => "index_users_on_classe_id"
 
 end

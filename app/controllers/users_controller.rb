@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       elsif @user.role == "cm"
         render :edit_cm, :layout => 'popup'
       elsif @user.role == "teacher"
-          render :edit_teacher, :layout => 'popup'
+        render :edit_teacher, :layout => 'popup'
       end
     
     elsif @user.role == @current_user.role  

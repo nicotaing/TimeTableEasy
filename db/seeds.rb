@@ -65,7 +65,8 @@ User.find_or_create_by_email(
   :avatar_file_name => "fabien.png", 
   :avatar_content_type => "image/png", 
   :avatar_file_size => 50939, 
-  :avatar_updated_at => "2010-06-08 07:34:48"
+  :avatar_updated_at => "2010-06-08 07:34:48",
+  :classe_id => 14
 ).save!
 # sylvain@globus.com / password
 User.find_or_create_by_email(
@@ -79,7 +80,8 @@ User.find_or_create_by_email(
   :avatar_file_name => "sylvain.jpeg", 
   :avatar_content_type => "image/jpeg", 
   :avatar_file_size => 50939, 
-  :avatar_updated_at => "2010-06-08 07:34:48"
+  :avatar_updated_at => "2010-06-08 07:34:48",
+  :classe_id => 4
 ).save!
 # stephane@globus.com / password
 User.find_or_create_by_email(
@@ -93,7 +95,8 @@ User.find_or_create_by_email(
   :avatar_file_name => "stephane.png", 
   :avatar_content_type => "image/png", 
   :avatar_file_size => 50939, 
-  :avatar_updated_at => "2010-06-08 07:34:48"
+  :avatar_updated_at => "2010-06-08 07:34:48",
+  :classe_id => 17
 ).save!
 # nicolas@globus.com / password
 User.find_or_create_by_email(
@@ -107,7 +110,8 @@ User.find_or_create_by_email(
   :avatar_file_name => "nicolas.png", 
   :avatar_content_type => "image/jpeg", 
   :avatar_file_size => 50939, 
-  :avatar_updated_at => "2010-06-08 07:34:48"
+  :avatar_updated_at => "2010-06-08 07:34:48",
+  :classe_id => 18
 ).save!
 
 # mark@globus.com / password 
@@ -214,9 +218,9 @@ StudyPeriod.create( :name => "Semester 2",:startdate => "01/11/2011", :enddate =
 Campus.all.each do |c|
   Classe.create(:name => "B1 #{c.name}", :campus_id => c.id, :study_period_id => 1)
   Classe.create(:name => "B2 #{c.name}", :campus_id => c.id, :study_period_id => 2)
-  Classe.create(:name => "M1 #{c.name}", :campus_id => c.id, :study_period_id => 3)
-  Classe.create(:name => "M2 #{c.name}", :campus_id => c.id, :study_period_id => 4)
-  Classe.create(:name => "M3 #{c.name}", :campus_id => c.id, :study_period_id => 5)
+  Classe.create(:name => "B3 #{c.name}", :campus_id => c.id, :study_period_id => 3)
+  Classe.create(:name => "M1 #{c.name}", :campus_id => c.id, :study_period_id => 4)
+  Classe.create(:name => "M2 #{c.name}", :campus_id => c.id, :study_period_id => 5)
 end
 
 

@@ -1,0 +1,72 @@
+<% form_for @user, :url => {:action => :update}  do |f| %>
+
+<%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
+	<tr>
+		<td class="title" style="vertical-align:top;">ID</td>
+		<td><%= f.text_field :id %></span></td>
+		<%=f.hidden_field :id %>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Lastname</td>
+		<td><%= f.text_field :last_name %></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Firstname</td>
+		<td><%= f.text_field :first_name %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Email Address</td>
+		<td><%= f.text_field :email %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+	<td class="title" style="vertical-align:top;">Avatar</td>
+		<td><%= f.file_field :avatar %><br<span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<% if @user.role = "student" %>
+	<tr>
+		<td class="title">Campus</td><td>
+		<%= select :user, :campus_id, Campus.all.collect{|p| [p.name, p.id]}, {}, { :disabled => "disabled" }%>
+		</td><td class="help"></td>
+	</tr>
+	<tr><td class="title">Cursus</td><td>
+		<%= select :user, :class_id, @user.classe.study_period.cursus.collect{|p| [p.name, p.id]}, {}, { :disabled => "disabled" }%>
+	</tr>
+	<tr><td class="title">Class</td><td>
+		<select>
+			<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
+			<option value="San Francisco, CA" disabled>B3</option>
+			<option value="San Francisco, CA" >Class A</option>
+			<option value="San Francisco, CA" disabled>M1</option>
+			<option value="San Francisco, CA" >Class A</option>
+			<option value="San Francisco, CA" >Class B</option>
+			<option value="San Francisco, CA" disabled>M2</option>
+			<option value="San Francisco, CA" >Class A</option>
+			<option value="San Francisco, CA" >Class B</option>>
+		</select>
+		</td><td class="help"></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td class="title" style="vertical-align:top;">Password</td>
+		<td><%= f.password_field :password %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Password (Confirmation)</td>
+		<td><%= f.password_field :password_confirmation %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;"></td><td style="width:70%;">
+		<input type="submit" name="Create Event" value="Save" id="Create Event"> or <a href="javascript: self.close()">Cancel</a></td>
+		<td class="help"></td>
+	</tr>
+</table>
+<% end %>
