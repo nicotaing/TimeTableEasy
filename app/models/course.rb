@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100610022642
+# Schema version: 20100610093702
 #
 # Table name: courses
 #
@@ -15,7 +15,7 @@
 class Course < ActiveRecord::Base
   attr_accessible :name, :volume, :study_period_id, :modality_id
   
-  has_many :events, :dependent => :destroy
+  has_many :modas, :dependent => :destroy
   belongs_to :study_period
   
   cattr_reader :per_page

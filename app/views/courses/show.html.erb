@@ -2,24 +2,19 @@
 <p>You can add and remove modalities in this window.</p>
 <table border="0" cellspacing="0" cellpadding="5">
 	<tr><th>Type</th><th>Hours</th><th></th></tr>
-	<tr><td>Teaching, Classroom Courses</td><td>21 hours</td><td><a href="">Delete</a></td></tr>
-	<tr><td>Teaching, Distance Learning Classes</td><td>13 hours</td><td><a href="">Delete</a></td></tr>
-	<tr><td>
-		<% @course.modalities.each do |modalities| %>
-		<select>
-		<option value="San Francisco, CA" selected=selected disabled>Select a modality</option>
-		<option value="San Francisco, CA" disabled>Teaching</option>
-		<option value="San Francisco, CA" >Classroom Courses</option>
-		<option value="San Francisco, CA" >Distance Learning Courses</option>
-		<option value="San Francisco, CA" >Practical Case Studies</option>
-		<option value="San Francisco, CA" disabled>Assessments</option>
-		<option value="San Francisco, CA" >Examinations</option>
-		<option value="San Francisco, CA" >Practical Case Studies</option>
-		<option value="San Francisco, CA" >Individual Orals</option>
-	</select>
+	
+	<% @course.modas.each do |m| %>
+		<tr>
+			<td><%= m.modality.name %></td>
+			<td><%= m.volume %> hours</td>
+			<td><%= link_to 'Delete', m, :confirm => 'Are you sure?', :method => :delete %></td></tr>
+	<% end %>
+	<tr>
+		<% form_tag '/modas/create' do %>
+			<%= hidden_field_tag 'moda[course_id]', @course.id.to_s %>
+			<td><%= select :moda, :modality_id, Modality.all.collect{|p| [p.name, p.id]}%></td>
+			<td><%= text_field_tag 'moda[volume]', '', :style => 'width:40px' %> hours</td>	
+			<td><%= submit_tag 'Add' %></td>
 		<% end %>
-	</td>
-	<td><input type="text" name="some_name" value="" id="some_name" style="width:40px"> hours</td>
-	<td><a href=""><input type="submit" name="some_name" value="Add" id="some_name"></a></td>
 	</tr>
 </table>

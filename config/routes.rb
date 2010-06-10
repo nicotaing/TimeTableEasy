@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :modas
+
   map.resources :study_periods
 
   map.resources :modalities

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100610022642
+# Schema version: 20100610093702
 #
 # Table name: rooms
 #

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100610022642
+# Schema version: 20100610093702
 #
 # Table name: modalities
 #
@@ -11,5 +11,5 @@
 #
 
 class Modality < ActiveRecord::Base
-  has_many :courses, :dependent => :destroy
+  has_many :modalities
 end

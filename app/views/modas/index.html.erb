@@ -1,0 +1,18 @@
+<h1>Listing modas</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @modas.each do |moda| %>
+  <tr>
+    <td><%= link_to 'Show', moda %></td>
+    <td><%= link_to 'Edit', edit_moda_path(moda) %></td>
+    <td><%= link_to 'Destroy', moda, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New moda', new_moda_path %>
