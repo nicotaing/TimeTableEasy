@@ -1,8 +1,8 @@
 class CreateStudyPeriods < ActiveRecord::Migration
   def self.up
     create_table :study_periods do |t|
-      t.datetime :startdate
-      t.datetime :enddate
+      t.date :startdate
+      t.date :enddate
 
       t.timestamps
     end

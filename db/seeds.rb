@@ -201,16 +201,16 @@ end
 ###
 
 #Computer Science
-StudyPeriod.create( :startdate => "09/01/2010", :enddate => "12/31/2010", :cursus_id => 1 )
-StudyPeriod.create( :startdate => "01/01/2011", :enddate => "06/30/2011", :cursus_id => 1 )
+StudyPeriod.create( :name => "Semester 1",:startdate => "09/01/2010", :enddate => "12/31/2010", :cursus_id => 1 )
+StudyPeriod.create( :name => "Semester 2",:startdate => "01/01/2011", :enddate => "06/30/2011", :cursus_id => 1 )
 
 #MBA
-StudyPeriod.create( :startdate => "09/05/2010", :enddate => "01/05/2011", :cursus_id => 2 )
-StudyPeriod.create( :startdate => "01/05/2011", :enddate => "07/05/2011", :cursus_id => 2 )
+StudyPeriod.create( :name => "Semester 3",:startdate => "09/05/2010", :enddate => "01/05/2011", :cursus_id => 2 )
+StudyPeriod.create( :name => "Semester 4",:startdate => "01/05/2011", :enddate => "07/05/2011", :cursus_id => 2 )
 
 #Medicine
-StudyPeriod.create( :startdate => "09/10/2010", :enddate => "01/10/2011", :cursus_id => 3 )
-StudyPeriod.create( :startdate => "01/11/2011", :enddate => "07/05/2011", :cursus_id => 3 )
+StudyPeriod.create( :name => "Semester 1",:startdate => "09/10/2010", :enddate => "01/10/2011", :cursus_id => 3 )
+StudyPeriod.create( :name => "Semester 2",:startdate => "01/11/2011", :enddate => "07/05/2011", :cursus_id => 3 )
 
 ###
 ##Classes

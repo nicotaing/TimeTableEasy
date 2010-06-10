@@ -21,6 +21,21 @@ class CoursesController < ApplicationController
     end
   end
   
+  def create
+    @course = Course.new(params[:course])
+
+    respond_to do |format|
+      if @course.save
+        flash[:notice] = 'Course was successfully created.'
+        format.html { redirect_to('/manage/cursus') }
+        format.xml  { render :xml => @course, :status => :created, :location => @course }
+      else
+        format.html { redirect_to('/manage/cursus') }
+        format.xml  { render :xml => @course.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
   def show
     @course = Course.find(params[:id])
     @title = @course.name
