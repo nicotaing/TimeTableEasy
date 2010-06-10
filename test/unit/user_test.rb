@@ -26,6 +26,7 @@
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  classe_id           :integer
 #
 
 require 'test_helper'

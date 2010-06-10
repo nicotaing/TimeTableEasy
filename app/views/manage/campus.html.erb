@@ -74,6 +74,7 @@
 													class="child-of-node-<%= i %>-<%= j %>-<%= k %>">
 										    	<td colspan="4"><%= classe.name %></td>
 													<td class="actions">
+														<%= link_to 'Manage Students', "javascript:popUp('/classes/#{classe.id}')" %>
 														<%= link_to 'Delete', classe, :confirm => 'Are you sure?', :method => :delete %>
 													</td>
 										  </tr>

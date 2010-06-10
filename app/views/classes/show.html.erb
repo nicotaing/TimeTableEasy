@@ -1,3 +1,20 @@
+<h1><%= @classe.campus.name %> > <%= @classe.study_period.cursus.name %> > <%= @classe.study_period.name %> > <%= @classe.name %></h1>
+<p>You can add and remove students in this window.</p> 
 
-<%= link_to 'Edit', edit_classe_path(@classe) %> |
-<%= link_to 'Back', classes_path %>
+<table border="0" cellspacing="0" cellpadding="5"> 
+	<tr><th>ID</th><th>Lastname, Firstname</th><th></th></tr> 
+	<% @classe.users.each do |student| %>
+		<tr>
+			<td><%= student.id %></td><td><%= student.last_name %>, <%= student.first_name %></td>
+			<td><%= link_to 'Delete', '/classes/remove_student/' + student.id.to_s %></td>
+		</tr> 
+	<% end %> 
+	<tr>
+		<td colspan="3">
+			<% form_tag "/classes/add_student/" + @classe.id.to_s do %>
+				<%= select :user, :id, User.all.collect{|p| [p.id.to_s + " - " + p.last_name+", " + p.first_name, p.id]}, {:disabled => " "} %>
+				<%= submit_tag 'Add' %>
+			<% end %> 
+		</td>
+	</tr> 
+</table> 
