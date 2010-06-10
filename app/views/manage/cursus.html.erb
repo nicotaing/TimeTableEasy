@@ -37,11 +37,11 @@
 			<td class="title" style="vertical-align:top;">Course</td>
 			<td>
 				<% form_tag	'/courses' do %>
-					<%= select :course, 
-										 :study_period_id, 
+					<%= select "cursus", 
+										 "id", 
 										Cursus.all.collect{|p| [p.name, p.id]}, {}, 
 										{:id => 'add_course_cursus_id'}	%>
-					<select id="add_course_study_period_id" disabled=disabled>
+					<select id="add_course_study_period_id" name="course[study_period_id]" disabled=disabled>
 						<option disabled>Select a Study Period</option>
 					</select>
 					<%= text_field_tag 'course[name]' %>
