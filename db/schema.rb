@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100610093702) do
+ActiveRecord::Schema.define(:version => 20100610111634) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20100610093702) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "classe_id"
+    t.integer  "course_id"
   end
 
   add_index "users", ["classe_id"], :name => "index_users_on_classe_id"

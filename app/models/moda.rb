@@ -15,7 +15,5 @@ class Moda < ActiveRecord::Base
   belongs_to :course
   belongs_to :modality
   
-  
   validates_numericality_of :volume
-  
 end

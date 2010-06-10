@@ -6,14 +6,32 @@ class UsersController < ApplicationController
   end
   
   def new
+    #redirect_to '/' if @current_user.role != 'admin'
     @user = User.new
+    
+    role = params[:role]
+    
+    if role == 'admin'
+      @title = "New Administator"
+      render :new_admin, :layout => 'popup'
+    elsif role == 'cm'
+      @title = "New Campus Manager"
+      render :new_cm, :layout => 'popup'
+    elsif role == 'teacher'
+      @title = "New Teacher"
+      render :new_teacher, :layout => 'popup'
+    else
+      @title = "New Student"
+      render :new_student, :layout => 'popup'
+    end    
   end
   
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+      flash[:notice] = "Account created!"
+      @title = "Success!"
+      render :new_success, :layout => 'popup'
     else
       render :action => :new
     end

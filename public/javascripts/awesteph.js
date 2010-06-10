@@ -217,6 +217,24 @@ $(document).ready(function() {
 		$('#add_classe_submit').attr('disabled',''); 
 	});
 	
+	/*
+	* MANAGE Users
+	*/
+	// new user
+	$("#new_user_role").click(function() {
+		// active the button
+		$('#new_user_submit').attr('disabled',''); 
+	});
+	$("#new_user_submit").click(function() {
+		var role = $("#new_user_role").val();
+		popUpUser('/users/new?role='+role);
+	});
+	// view profile
+	$("#view_profile").click(function() {
+		var user_id = $("#view_profile_id").val();
+		popUpUser('/users/edit/'+user_id);
+	});
+	
 });
 
 

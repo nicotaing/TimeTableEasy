@@ -1,0 +1,44 @@
+<% form_for @user, :url => {:action => :create}  do |f| %>
+
+	<%= hidden_field_tag 'user[role]', 'admin' %>
+
+<%= f.error_messages %>
+
+<table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
+	<tr>
+		<td class="title" style="vertical-align:top;">Lastname</td>
+		<td><%= f.text_field :last_name %></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Firstname</td>
+		<td><%= f.text_field :first_name %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Email Address</td>
+		<td><%= f.text_field :email %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+	<td class="title" style="vertical-align:top;">Avatar</td>
+		<td><%= f.file_field :avatar %><br<span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Password</td>
+		<td><%= f.password_field :password %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Password (Confirmation)</td>
+		<td><%= f.password_field :password_confirmation %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;"></td><td style="width:70%;">
+		<input type="submit" name="Create Event" value="Save" id="Create Event"> or <a href="javascript: self.close()">Cancel</a></td>
+		<td class="help"></td>
+	</tr>
+</table>
+<% end %>

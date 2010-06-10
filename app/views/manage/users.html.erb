@@ -4,30 +4,37 @@
 	</tr>
 	<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
 		<tr><td class="title" style="vertical-align:top;">New user</td><td>
-			<% form_tag "users/new" do %>
-			<select name="role">
+			<select id="new_user_role">
 				<option value="0" selected=selected disabled>Select Role</option>
 				<option value="admin" >Administrator</option>
 				<option value="cm" >Campus Manager</option>
 				<option value="teacher" >Teacher</option>
 				<option value="student" >Student</option>
 			</select>
-			<input type="button" onClick="javascript: popUpUser('http://www.facebook.com');" id="addUserButton" value="Add">
-			</td><td class="help"></td>
-			<% end %>
-		</tr>
-		<tr><td class="title" style="vertical-align:top;">Display only</td><td>
-			<select>
-				<option value="San Francisco, CA" selected=selected disabled>Select Role</option>
-				<option value="San Francisco, CA" >Administrators</option>
-				<option value="San Francisco, CA" >Campus Managers</option>
-				<option value="San Francisco, CA" >Teachers</option>
-				<option value="San Francisco, CA" >Students</option>
-			</select><input type="submit" name="some_name" value="Apply" id="some_name">
+			<input type="button" id="new_user_submit" value="Add" disabled>
 			</td><td class="help"></td>
 		</tr>
-		<tr><td class="title" style="vertical-align:top;">ID</td><td>
-			<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="View Profile" id="some_name">
+		<tr>
+			<td class="title" style="vertical-align:top;">Display only</td>
+			<td>
+				<% form_tag "/manage/users", :method => :get do %>
+				<select name="filter">
+					<option value="0" disabled>Select Role</option>
+					<option value="admin" <%= "selected=selected" if params[:filter] == 'admin' %> >Administrator</option>
+					<option value="cm" <%= "selected=selected" if params[:filter] == 'cm' %> >Campus Manager</option>
+					<option value="teacher" <%= "selected=selected" if params[:filter] == 'teacher' %> >Teacher</option>
+					<option value="student" <%= "selected=selected" if params[:filter] == 'student' %> >Student</option>
+					<%= submit_tag "Apply" %>
+				</select>
+				<% end %>
+			</td>
+			<td class="help"></td>
+		</tr>
+		<tr>
+			<td class="title" style="vertical-align:top;">ID</td>
+			<td>
+				<input type="text" name="some_name" value="" id="view_profile_id">
+				<input type="submit" name="some_name" value="View Profile" id="view_profile">
 			</td><td class="help"></td>
 		</tr>
 		<tr>
