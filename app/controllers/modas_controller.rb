@@ -2,11 +2,29 @@ class ModasController < ApplicationController
   # GET /modas
   # GET /modas.xml
   def index
-    @modas = Moda.all
+    
+    if params[:course_id]
+      @course = Course.find(params[:course_id])
+      @modas = Moda.find(:all, :conditions => ["course_id = #{@course.id}"])
+    else
+      @modas = Moda.all
+    end
 
+    modas = []
+    @modas.each do |moda|
+      modas << {
+        :id => moda.id, 
+        :modality_id => moda.modality_id, 
+        :modality => Modality.find(moda.modality_id).name, 
+        :course_id => moda.course_id, 
+        :course => Course.find(moda.course_id).name, 
+        :volume => moda.volume }
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @modas }
+      format.js   { render :json => modas }
     end
   end
 
@@ -18,6 +36,7 @@ class ModasController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @moda }
+      format.js  { render :json => @moda }
     end
   end
 

@@ -151,15 +151,51 @@ $(document).ready(function() {
 	});
 	
 	// when choose a subject
-	$("#event_class").click(function() {
-		// active the subjects
-		$('#event_modality_id').attr('disabled',''); 
+	$("#event_course").click(function() {
+		var course_id = $("#event_course").val()
+		// get courses
+		$.getJSON('/modas.js?course_id='+course_id, function(data) {
+			var options = '';
+			$.each(data, function(i,moda){
+				options += '<option value="'+ moda.id +'" >'+ moda.modality +'</option>';
+			});
+			if (options == ''){
+				options = '<option disabled>No modalities</option>';
+				$('#event_modality_id').html(options);
+				$('#event_modality_id').attr('disabled','disabled');
+			}else{
+				$('#event_modality_id').html(options);
+				$('#event_modality_id').attr('disabled','');
+			}
+		});
+		
+		// active
 		$('#event_starttime_1i').attr('disabled',''); 
 		$('#event_starttime_2i').attr('disabled','');
 		$('#event_starttime_3i').attr('disabled','');
 		$('#event_starttime_4i').attr('disabled','');
 		$('#event_starttime_5i').attr('disabled','');
 		$('#event_lasts').attr('disabled','');
+	});
+	
+	$("#event_modality_id").click(function() {
+		var moda_id = $("#event_modality_id").val()
+		// get courses
+		$.getJSON('/modas/show/'+moda_id+'.js', function(data) {
+			$('#hours_remaining').html(data.moda.remaining); 
+			$('#hours_total').html(data.moda.volume); 
+			$('#bar_1').html(data.moda.per1); 
+			$('#bar_2').html(data.moda.per2); 
+		});
+		
+		// active
+		$('#event_starttime_1i').attr('disabled',''); 
+		$('#event_starttime_2i').attr('disabled','');
+		$('#event_starttime_3i').attr('disabled','');
+		$('#event_starttime_4i').attr('disabled','');
+		$('#event_starttime_5i').attr('disabled','');
+		$('#event_lasts').attr('disabled','');
+		$('#create_event').attr('disabled','');
 	});
 		
 	/*

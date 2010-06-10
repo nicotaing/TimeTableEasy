@@ -11,7 +11,7 @@
 			<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>	
 			<tr>
 				<td class="title">Campus</td><td>		
-					<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
+					<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}.insert(0,["Select a Campus",0]), {:disabled => 0}%>
 				</td><td class="help"></td>
 			</tr>
 		<% else %>	
@@ -27,14 +27,6 @@
 		<tr><td class="title">Class</td><td>
 			<select id="event_class" disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
-				<option value="San Francisco, CA" disabled>B3</option>
-				<option value="San Francisco, CA" >Class A</option>
-				<option value="San Francisco, CA" disabled>M1</option>
-				<option value="San Francisco, CA" >Class A</option>
-				<option value="San Francisco, CA" >Class B</option>
-				<option value="San Francisco, CA" disabled>M2</option>
-				<option value="San Francisco, CA" >Class A</option>
-				<option value="San Francisco, CA" >Class B</option>>
 			</select>
 			</td><td class="help"></td>
 		</tr>	
@@ -50,12 +42,20 @@
 				</td><td class="help"></td>
 			</tr>
 
-			<tr><td class="title">Modality</td><td>
-				<%= select :event, :modality_id, Modality.all.collect{|p| [p.name, p.id]}, :html_options => {:disabled => "disabled"} %>
-				</td><td class="help"></td>
+			<tr>
+				<td class="title">Modality</td>
+				<td><%= select :event, :modality_id, Modality.all.collect{|p| [p.name, p.id]}, :html_options => {:disabled => "disabled"} %></td>
+				<td class="help"></td>
 			</tr>
-			<tr><td class="title"></td><td colspan="2">
-					<img src="img/pb_g.png" width="2" height="10" alt="Pb G"><img src="img/pb_cv.png" width="85" height="10" alt="Pb Cv"><img src="img/pb_cb.png" width="15" height="10" alt="Pb Cb"><img src="img/pb_d.png" width="2" height="10" alt="Pb D">&#160;&#160;<b style="color:green">12 hours remaining</b> (Total: 80 hours)
+			
+			<tr>
+				<td class="title"></td>
+				<td colspan="2">
+					<img src="img/pb_g.png" width="2" height="10" alt="Pb G">
+					<img id="bar_1" src="img/pb_cv.png" width="85" height="10" alt="Pb Cv">
+					<img id="bar_2" src="img/pb_cb.png" width="15" height="10" alt="Pb Cb">
+					<img src="img/pb_d.png" width="2" height="10" alt="Pb D">
+					<b style="color:green"><span id="hours_remaining">1</span> hours remaining</b> (Total: <span id="hours_total">80</span> hours)
 				</td>
 			</tr>
 			
@@ -107,7 +107,7 @@
 			<tr>
 				<td class="title" style="vertical-align:top;"></td>
 				<td>
-					<input type="submit" name="Create Event" value="Create Event" id="Create Event" disabled="disabled"> or <a href="index_loggued.html">Cancel</a>
+					<input type="submit" name="Create Event" value="Create Event" id="create_event" disabled="disabled"> or <a href="index_loggued.html">Cancel</a>
 				</td>
 				<td class="help"></td>
 			</tr>
