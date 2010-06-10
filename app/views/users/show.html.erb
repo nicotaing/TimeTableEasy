@@ -1,39 +1,50 @@
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
+<table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
+	<tr>
+		<td class="title" style="vertical-align:top;">ID</td>
+		<td><%= @user.id %></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Lastname</td>
+		<td><%= @user.last_name %></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Firstname</td>
+		<td><%= @user.first_name %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Email Address</td>
+		<td><%= @user.email %><span class="help"></span>
+		</td><td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Avatar</td>
+			<td><% if @user.avatar.url == '/avatars/original/missing.png' %>
+				<img/>
+			<% else %>
+				<%= image_tag @user.avatar.url(:thumb) %>
+			<% end %><span class="help"></span></td>
+			<td class="help"></td>
+	</tr>
+	<% if @user.role = "student" || @user.role = "teacher" %>
+	<tr>
+		<td class="title">Campus</td>
+		<td><%= @user.campus.name %></td>
+		<td class="help"></td>
+	</tr>
+	<% elsif  @user.role = "student" %>
+	<tr>
+		<td class="title">Cursus</td>
+		<td><%= @user.classe.study_period.cursus.name %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title">Class</td>
+		<td><%= @user.classe.name %></td>
+		<td class="help"></td>
+	</tr>
+	<% end %>
 
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
-
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
-
-
-<%= link_to 'Edit', edit_account_path %>
-
-
+</table>

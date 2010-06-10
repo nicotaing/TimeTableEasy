@@ -1,82 +1,47 @@
-
 <table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
 	<tr>
-	<td class="title" style="vertical-align:top;">ID</td><td>
-	<input type="text" name="some_name" value="2345343" id="some_name" disabled></span>
+		<td class="title" style="vertical-align:top;">ID</td>
+		<td><%= f.text_field :id %></span></td>
+		<%=f.hidden_field :id %>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Lastname</td>
+		<td><%= f.text_field :last_name %></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Firstname</td>
+		<td><%= f.text_field :first_name %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<tr>
+		<td class="title" style="vertical-align:top;">Email Address</td>
+		<td><%= f.text_field :email %><span class="help"></span>
 		</td><td class="help"></td>
 	</tr>
 	<tr>
-	<td class="title" style="vertical-align:top;">Lastname</td><td>
-	<input type="text" name="some_name" value="" id="some_name"></span>
+	<td class="title" style="vertical-align:top;">Avatar</td>
+		<td><%= f.file_field :avatar %><span class="help"></span></td>
+		<td class="help"></td>
+	</tr>
+	<% if @user.role = "student" || @user.role = "teacher" %>
+	<tr>
+		<td class="title">Campus</td><td>
+		<%= select :user, :campus_id, Campus.all.collect{|p| [p.name, p.id]}, {}, { :disabled => "disabled" }%>
 		</td><td class="help"></td>
 	</tr>
+	<% elsif  @user.role = "student" %>
 	<tr>
-	<td class="title" style="vertical-align:top;">Firstname</td><td>
-	<input type="text" name="some_name" value="" id="some_name"><span class="help"></span>
-	</td><td class="help"></td>
-	</tr>
-	<tr>
-	<td class="title" style="vertical-align:top;">Email Address</td><td>
-	<input type="text" name="some_name" value="" id="some_name"><span class="help"></span>
-	</td><td class="help"></td>
+		<td class="title">Cursus</td>
+		<td><%= @user.classe.study_period.cursus.name %><span class="help"></span></td>
+		<td class="help"></td>
 	</tr>
 	<tr>
-	<td class="title" style="vertical-align:top;">Avatar</td><td>
-		<input type="file" name="xxxx" size="xxxx"
-		maxlength="xxxx" accept="xxxx"><span class="help"></span>
-	</td><td class="help"></td>
+		<td class="title">Class</td>
+		<td><%= @user.classe.name %></td>
+		<td class="help"></td>
 	</tr>
-	<tr><td class="title">Campus</td><td>
-		<select>
-			<option value="San Francisco, CA" selected=selected disabled>Select a campus</option>
-			<option value="San Francisco, CA" disabled>USA</option>
-			<option value="San Francisco, CA" >San Francisco, CA</option>
-			<option value="San Francisco, CA" >Portland, OR</option>
-			<option value="San Francisco, CA" >New York City, NY</option>
-			<option value="San Francisco, CA" disabled>FRANCE</option>
-			<option value="San Francisco, CA" >Paris</option>
-			<option value="San Francisco, CA">Caen</option>
-			<option value="San Francisco, CA" >Nantes</option>
-			<option value="San Francisco, CA" >Marseilles</option>
-			<option value="San Francisco, CA">Bordeaux</option>
-		</select>
-		</td><td class="help"></td>
-	</tr>
-	<tr><td class="title">Cursus</td><td>
-		<select>
-			<option value="San Francisco, CA" selected=selected disabled>Select a cursus</option>
-			<option value="San Francisco, CA" >Master of Science – IT</option>
-			<option value="San Francisco, CA" >Master of Science – Finance</option>
-			<option value="San Francisco, CA" >Master of Science – Gogo dancer</option>
-		</select>
-		</td><td class="help"></td>
-	</tr>
-	<tr><td class="title">Class</td><td>
-		<select>
-			<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
-			<option value="San Francisco, CA" disabled>B3</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" disabled>M1</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" >Class B</option>
-			<option value="San Francisco, CA" disabled>M2</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" >Class B</option>>
-		</select>
-		</td><td class="help"></td>
-	</tr>
-	<tr>
-	<td class="title" style="vertical-align:top;">Password</td><td>
-	<input type="password" name="some_name" value="" id="some_name"><span class="help"></span>
-	</td><td class="help"></td>
-	</tr>
-	<tr>
-	<td class="title" style="vertical-align:top;">Password (Confirmation)</td><td>
-	<input type="password" name="some_name" value="" id="some_name"><span class="help"></span>
-	</td><td class="help"></td>
-	</tr>
-	<tr><td class="title" style="vertical-align:top;"></td><td style="width:70%;">
-			<input type="submit" name="Create Event" value="Save" id="Create Event"> or <a href="index_loggued.html">Cancel</a>
-			</td><td class="help"></td>
-		</tr>
+	<% end %>
+
 </table>
