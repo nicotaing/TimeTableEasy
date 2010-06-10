@@ -79,8 +79,7 @@
 							<tr id="node-<%= i %>-<%= j %>-<%= k %>" class="child-of-node-<%= i %>-<%= j %>">
 						    	<td colspan="4"><%= c.name %></td>
 									<td class="actions">
-										<a href="javascript:popUp('popup-manage-cursus-modalities.html')">
-											Manage Modalities
+											<%= link_to 'Manage Modalities', "javascript:popUp('/courses/#{c.id}')" %>
 										</a> or 
 										<%= link_to 'Delete', c, :confirm => 'Are you sure?', :method => :delete %>
 									</td>

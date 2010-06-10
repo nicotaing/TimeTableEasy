@@ -1,8 +1,25 @@
-<p>
-  <b>Name:</b>
-  <%=h @courses.name %>
-</p>
-
-<%= link_to 'Back', courses_path %>
-
-
+<h1><%= @course.study_period.cursus.name %> > <%= @course.study_period.name %> > <%= @course.name %></h1>
+<p>You can add and remove modalities in this window.</p>
+<table border="0" cellspacing="0" cellpadding="5">
+	<tr><th>Type</th><th>Hours</th><th></th></tr>
+	<tr><td>Teaching, Classroom Courses</td><td>21 hours</td><td><a href="">Delete</a></td></tr>
+	<tr><td>Teaching, Distance Learning Classes</td><td>13 hours</td><td><a href="">Delete</a></td></tr>
+	<tr><td>
+		<% @course.modalities.each do |modalities| %>
+		<select>
+		<option value="San Francisco, CA" selected=selected disabled>Select a modality</option>
+		<option value="San Francisco, CA" disabled>Teaching</option>
+		<option value="San Francisco, CA" >Classroom Courses</option>
+		<option value="San Francisco, CA" >Distance Learning Courses</option>
+		<option value="San Francisco, CA" >Practical Case Studies</option>
+		<option value="San Francisco, CA" disabled>Assessments</option>
+		<option value="San Francisco, CA" >Examinations</option>
+		<option value="San Francisco, CA" >Practical Case Studies</option>
+		<option value="San Francisco, CA" >Individual Orals</option>
+	</select>
+		<% end %>
+	</td>
+	<td><input type="text" name="some_name" value="" id="some_name" style="width:40px"> hours</td>
+	<td><a href=""><input type="submit" name="some_name" value="Add" id="some_name"></a></td>
+	</tr>
+</table>
