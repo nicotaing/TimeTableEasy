@@ -66,7 +66,7 @@ User.find_or_create_by_email(
   :avatar_content_type => "image/png", 
   :avatar_file_size => 50939, 
   :avatar_updated_at => "2010-06-08 07:34:48",
-  :class_id => 14
+  :classe_id => 14
 ).save!
 # sylvain@globus.com / password
 User.find_or_create_by_email(
@@ -81,7 +81,7 @@ User.find_or_create_by_email(
   :avatar_content_type => "image/jpeg", 
   :avatar_file_size => 50939, 
   :avatar_updated_at => "2010-06-08 07:34:48",
-  :class_id => 4
+  :classe_id => 4
 ).save!
 # stephane@globus.com / password
 User.find_or_create_by_email(
@@ -96,7 +96,7 @@ User.find_or_create_by_email(
   :avatar_content_type => "image/png", 
   :avatar_file_size => 50939, 
   :avatar_updated_at => "2010-06-08 07:34:48",
-  :class_id => 17
+  :classe_id => 17
 ).save!
 # nicolas@globus.com / password
 User.find_or_create_by_email(
@@ -111,7 +111,7 @@ User.find_or_create_by_email(
   :avatar_content_type => "image/jpeg", 
   :avatar_file_size => 50939, 
   :avatar_updated_at => "2010-06-08 07:34:48",
-  :class_id => 18
+  :classe_id => 18
 ).save!
 
 # mark@globus.com / password 
