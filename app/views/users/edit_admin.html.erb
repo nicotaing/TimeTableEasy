@@ -5,7 +5,7 @@
 <table border="0" cellspacing="0" cellpadding="5" id="crud" class="blank">
 	<tr>
 		<td class="title" style="vertical-align:top;">ID</td>
-		<td><%= f.text_field :id %></span></td>
+		<td><%= f.text_field :id, :disabled => "disabled" %></span></td>
 		<%=f.hidden_field :id %>
 		<td class="help"></td>
 	</tr>
@@ -26,27 +26,13 @@
 	</tr>
 	<tr>
 	<td class="title" style="vertical-align:top;">Avatar</td>
-		<td><%= f.file_field :avatar %><span class="help"></span></td>
-		<td class="help"></td>
-	</tr>
-	<% if @user.role = "student" ||  @user.role = "teacher" %>
-	<tr>
-		<td class="title">Campus</td><td>
-		<%= select :user, :campus_id, Campus.all.collect{|p| [p.name, p.id]}, {}, { :disabled => "disabled" }%>
+		<td><%= f.file_field :avatar %><br<span class="help"></span>
 		</td><td class="help"></td>
 	</tr>
-	<% elsif  @user.role = "student" %>
-	<tr>
-		<td class="title">Cursus</td>
-		<td><%= @user.classe.study_period.cursus.name %><span class="help"></span></td>
-		<td class="help"></td>
+	<tr><td class="title">Campus</td><td>
+		<%= select :user, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
+		</td><td class="help"></td>
 	</tr>
-	<tr>
-		<td class="title">Class</td>
-		<td><%= @user.classe.name %></td>
-		<td class="help"></td>
-	</tr>
-	<% end %>
 	<tr>
 		<td class="title" style="vertical-align:top;">Password</td>
 		<td><%= f.password_field :password %><span class="help"></span>

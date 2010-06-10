@@ -37,10 +37,12 @@ class UsersController < ApplicationController
         render :edit_teacher, :layout => 'popup'
       end
     
-    elsif @user.role == @current_user.role  
+    elsif @current_user.role == 'admin' && @user.role == 'admin'
+      render :edit_admin, :layout => 'popup'
+    elsif @user.id == @current_user.id 
       render :edit_his_own_info, :layout => 'popup'
-    elsif @user.role == "student"
-      render :show_student, :layout => 'popup'
+    else
+      render :show, :layout => 'popup'
     end
     
   end
