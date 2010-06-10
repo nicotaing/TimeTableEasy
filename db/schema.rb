@@ -44,9 +44,6 @@ ActiveRecord::Schema.define(:version => 20100609224824) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "event_series" because of following StandardError
-#   Unknown type 'id' for column 'creator_id'
-
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starttime"

@@ -16,7 +16,7 @@
 				M1 @ San Francisco<br>
 			<% end %>
 	
-			<%= link_to "Edit Profile", edit_account_path %>&#160;&#183;&#160;<%= link_to "Log out", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+			<%= link_to "Edit Profile", "javascript: popUpUser('/users/edit/#{@current_user.id}')" %>&#160;&#183;&#160;<%= link_to "Log out", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
 	</div>
 	<div id="actions">
 		<ul>
