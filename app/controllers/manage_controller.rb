@@ -21,7 +21,18 @@ class ManageController < ApplicationController
   def users
     @title = "Manage"
     @tab_users = 'active'
-    @users = User.all
+    
+    if params[:filter] == "admin"
+      @users = User.find_all_by_role("admin")
+    elsif params[:filter] == "cm"
+      @users = User.find_all_by_role("cm")
+    elsif params[:filter] == "teacher"
+      @users = User.find_all_by_role("teacher")
+    elsif params[:filter] == "student"
+      @users = User.find_all_by_role("student")
+    else
+      @users = User.all
+    end
   end
   
 end
