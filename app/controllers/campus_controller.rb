@@ -73,7 +73,7 @@ class CampusController < ApplicationController
     @campus.destroy
 
     respond_to do |format|
-      format.html { redirect_to(campus_url) }
+      format.html { redirect_to('/manage/campus') }
       format.xml  { head :ok }
     end
   end

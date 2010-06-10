@@ -47,7 +47,9 @@
 					<% @campus.each do |campus| %>
 						<tr id="node-<%= i %>">
 					    <td colspan="4"><%= campus.name %></td>
-							<td class="actions"><a href="">Delete</a></td>
+							<td class="actions">
+								<%= link_to 'Delete', campus, :confirm => 'Are you sure?', :method => :delete %>
+							</td>
 					  </tr>
 			
 						<% j = 1 %>
@@ -59,39 +61,27 @@
 			
 							<% k = 1 %>
 							<% cursus.study_periods.each do |sp| %>
-								<tr id="node-<%= i %>-<%= j %>-<%= k %>" class="child-of-node-<%= i %>-<%= j %>">
-							    	<td colspan="4"><%= sp.name %> (<%= sp.startdate %> to <%= sp.enddate %> )</td>
-										<td class="actions">
-											<%= link_to 'Delete', sp, :confirm => 'Are you sure?', :method => :delete %>
-										</td>
-							  </tr>
-
-								<% l = 1 %>
-								<% sp.courses.each do |c| %>
-									<tr id="node-<%= i %>-<%= j %>-<%= k %>-<%= l %>" class="child-of-node-<%= i %>-<%= j %>-<%= k %>">
-								    	<td colspan="4"><%= c.name %></td>
-											<td class="actions">
-												<a href="javascript:popUp('popup-manage-cursus-modalities.html')">
-													Manage Modalities
-												</a> or 
-												<%= link_to 'Delete', c, :confirm => 'Are you sure?', :method => :delete %>
-											</td>
+							
+								<% unless campus.classes_with_study_period_id(sp.id).empty? %>
+							
+									<tr id="node-<%= i %>-<%= j %>-<%= k %>" class="child-of-node-<%= i %>-<%= j %>">
+								    	<td colspan="4"><%= sp.name %> (<%= sp.startdate %> to <%= sp.enddate %> )</td>
 								  </tr>
 								
-									<% m = 1 %>
-									<% campus.classes_with_study_period_id(sp.id).each do |classe| %>
-										<tr id="node-<%= i %>-<%= j %>-<%= k %>-<%= l %>-<%= m %>" 
-												class="child-of-node-<%= i %>-<%= j %>-<%= k %>-<%= l %>">
-									    	<td colspan="4"><%= classe.name %></td>
-												<td class="actions">
-													<%= link_to 'Delete', classe, :confirm => 'Are you sure?', :method => :delete %>
-												</td>
-									  </tr>
+									<% l = 1 %>
+										<% campus.classes_with_study_period_id(sp.id).each do |classe| %>
+											<tr id="node-<%= i %>-<%= j %>-<%= k %>-<%= l %>" 
+													class="child-of-node-<%= i %>-<%= j %>-<%= k %>">
+										    	<td colspan="4"><%= classe.name %></td>
+													<td class="actions">
+														<%= link_to 'Delete', classe, :confirm => 'Are you sure?', :method => :delete %>
+													</td>
+										  </tr>
+										<% l = l + 1 %>
+									<% end %>	
 									
-										<% m = m + 1 %>
-									<% end %>
-									<% l = l + 1 %>
 								<% end %>	
+									
 							<% k = k + 1 %>
 							<% end %>
 						<% j = j + 1 %>
