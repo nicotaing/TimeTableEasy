@@ -90,4 +90,36 @@ class ClassesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def add_student
+    @classe = Classe.find(params[:id])
+    @user = User.find(params[:user][:id])
+    
+    @user.classe_id = @classe.id
+    if @user.save
+      flash[:notice] = "Account updated!"
+      @title = "Success!"
+      redirect_to "/classes/#{@classe.id}"
+    else
+      @title = "Update failed"
+      render :failure, :layout => 'popup'
+    end
+  end
+  
+  def remove_student
+    @user = User.find(params[:id])
+    old_classe_id = @user.classe_id 
+    @user.classe_id = nil
+    if @user.save
+      flash[:notice] = "Account updated!"
+      @title = "Success!"
+      redirect_to "/classes/#{old_classe_id}"
+    else
+      @title = "Update failed"
+      render :failure, :layout => 'popup'
+    end
+  end
+  
+  
+  
 end

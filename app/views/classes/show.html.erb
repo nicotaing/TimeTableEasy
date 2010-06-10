@@ -1,24 +1,20 @@
-<h1>San Francisco, CA > Master of Science - IT > B1 > B1-A</h1> 
-
+<h1><%= @classe.campus.name %> > <%= @classe.study_period.cursus.name %> > <%= @classe.study_period.name %> > <%= @classe.name %></h1>
 <p>You can add and remove students in this window.</p> 
 
 <table border="0" cellspacing="0" cellpadding="5"> 
 	<tr><th>ID</th><th>Lastname, Firstname</th><th></th></tr> 
-	
 	<% @classe.users.each do |student| %>
 		<tr>
 			<td><%= student.id %></td><td><%= student.last_name %>, <%= student.first_name %></td>
-			<td><a href="">Delete</a></td>
+			<td><%= link_to 'Delete', '/classes/remove_student/' + student.id.to_s %></td>
 		</tr> 
 	<% end %> 
 	<tr>
 		<td colspan="3">
-			<%= select :user, :classe_id, User.all.collect{|p| [p.id + "-" + p.last_name, p.id]}%>
-			<select> 
-		<option value="San Francisco, CA" selected=selected disabled></option> 
-		<option value="San Francisco, CA" >34534 - Mouriesse, Alick</option> 
-		<option value="San Francisco, CA" >43245 - Chirac, Jacques</option> 
-	</select> <input type="submit" name="some_name" value="Add" id="some_name">
+			<% form_tag "/classes/add_student/" + @classe.id.to_s do %>
+				<%= select :user, :id, User.all.collect{|p| [p.id.to_s + " - " + p.last_name+", " + p.first_name, p.id]}, {:disabled => " "} %>
+				<%= submit_tag 'Add' %>
+			<% end %> 
 		</td>
 	</tr> 
 </table> 
