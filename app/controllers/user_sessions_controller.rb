@@ -5,6 +5,7 @@ class UserSessionsController < ApplicationController
   def new
     @title = "Login"
     @user_session = UserSession.new
+    render :layout => "login"
   end
   
   def create
@@ -13,7 +14,7 @@ class UserSessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       redirect_back_or_default '/events/'
     else
-      render :action => :new
+      redirect_to '/login'
     end
   end
   
