@@ -33,29 +33,6 @@
 		<%= select :user, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
 		</td><td class="help"></td>
 	</tr>
-	<tr><td class="title">Cursus</td><td>
-		<select>
-			<option value="San Francisco, CA" selected=selected disabled>Select a cursus</option>
-			<option value="San Francisco, CA" >Master of Science – IT</option>
-			<option value="San Francisco, CA" >Master of Science – Finance</option>
-			<option value="San Francisco, CA" >Master of Science – Gogo dancer</option>
-			</td><td class="help"></td>
-		</select>
-	</tr>
-	<tr><td class="title">Class</td><td>
-		<select>
-			<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
-			<option value="San Francisco, CA" disabled>B3</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" disabled>M1</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" >Class B</option>
-			<option value="San Francisco, CA" disabled>M2</option>
-			<option value="San Francisco, CA" >Class A</option>
-			<option value="San Francisco, CA" >Class B</option>>
-		</select>
-		</td><td class="help"></td>
-	</tr>
 	<tr>
 		<td class="title" style="vertical-align:top;">Password</td>
 		<td><%= f.password_field :password %><span class="help"></span>

@@ -110,6 +110,21 @@ User.find_or_create_by_email(
   :avatar_updated_at => "2010-06-08 07:34:48"
 ).save!
 
+# mark@globus.com / password 
+User.find_or_create_by_email(
+  :email => "mark@globus.com",
+  :first_name => "Mark",
+  :last_name  => "Lusnar",
+  :password => "password",
+  :password_confirmation => "password",
+  :role => "teacher",
+  :campus_id => Campus.find_by_name("San Francisco").id,
+  :avatar_file_name => "nicolas.png", 
+  :avatar_content_type => "image/jpeg", 
+  :avatar_file_size => 50939, 
+  :avatar_updated_at => "2010-06-08 07:34:48"
+).save!
+
 ### University Events
 Event.create(
   :title => "House Party",

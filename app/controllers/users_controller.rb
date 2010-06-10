@@ -31,6 +31,10 @@ class UsersController < ApplicationController
       
       if @user.role == "student"
         render :edit_student, :layout => 'popup'
+      elsif @user.role == "cm"
+        render :edit_cm, :layout => 'popup'
+      elsif @user.role == "teacher"
+          render :edit_teacher, :layout => 'popup'
       end
     
     elsif @user.role == @current_user.role  
@@ -42,12 +46,15 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:user][:id])# makes our views "cleaner" and more consistent
+    
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      redirect_to edit_users_path(@current_user)
+      @title = "Success!"
+      render :success, :layout => 'popup'
     else
-      render :action => :edit
+      @title = "Update failed"
+      render :edit_student, :layout => 'popup'
     end
   end
   
