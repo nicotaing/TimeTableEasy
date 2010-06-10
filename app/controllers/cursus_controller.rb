@@ -46,7 +46,7 @@ class CursusController < ApplicationController
     respond_to do |format|
       if @cursus.save
         flash[:notice] = 'Cursus was successfully created.'
-        format.html { redirect_to(@cursus) }
+        format.html { redirect_to('/manage/cursus') }
         format.xml  { render :xml => @cursus, :status => :created, :location => @cursus }
       else
         format.html { render :action => "new" }

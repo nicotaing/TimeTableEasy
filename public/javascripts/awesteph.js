@@ -165,8 +165,22 @@ $(document).ready(function() {
 	
 	
 	
-	
-	
+	/*
+	* MANAGE CURSUS
+	*/
+	$("#add_course_cursus_id").click(function() {
+		//alert('hello');
+		// get study periods
+		var cursus_id = $("#event_class").val();
+		$.getJSON('/study_periods.js?cursus_id='+cursus_id, function(data) {
+			var options = '';
+			$.each(data, function(i,item){
+				options += '<option value="'+ item.course.id +'" >'+ item.course.name +'</option>';
+			});
+			$('#add_course_study_period_id').html(options);
+		});
+		$('#add_course_study_period_id').attr('disabled',''); 
+	});
 	
 	 
 });

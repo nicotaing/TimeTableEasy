@@ -1,32 +1,51 @@
 <table border="0" cellspacing="0" cellpadding="5" id="crud">
+	
 	<tr>
 		<%= render :partial => 'tab' %>
 	</tr>
-	<tr><td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
-		<tr><td class="title" style="vertical-align:top;">Cursus</td><td>
-			<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="Add Cursus" id="some_name">
-			</td><td class="help"></td>
-		</tr>
-		<tr><td class="title" style="vertical-align:top;">Study Period</td><td>
-			<select>
-				<option disabled>Select a Cursus</option>
-				<option>Master of Science — IT</option>
-			</select>
-			<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="Add Study Period" id="some_name">
-			</td><td class="help"></td>
-		</tr>
-		<tr><td class="title" style="vertical-align:top;">Course</td><td>
-			<select>
-				<option disabled>Select a Cursus</option>
-				<option>Master of Science — IT</option>
-			</select><select>
-			<option disabled>Select a Study Period</option>
-			<option>B1</option>
-			<option>B2</option>
-			<option>B3</option>
-			<option>M1</option>
-			<option>M2</option>
-		</select>
+	
+	<tr>
+		<td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td>
+	</tr>
+	
+	<tr>
+		<td class="title" style="vertical-align:top;">Cursus</td>
+		<td>
+			<% form_tag	'/cursus' do %>
+				<%= text_field_tag 'cursus[name]' %>
+				<%= submit_tag 'Add Cursus' %>
+			<% end %>
+		</td>
+		<td class="help"></td>
+	</tr>
+	
+	<tr>
+		<td class="title" style="vertical-align:top;">Study Period</td>
+		<td>
+			<% form_tag	'/study_period' do %>
+				<%= select :study_period, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]}%>
+				<%= text_field_tag 'study_period[name]' %>
+				<%= submit_tag 'Add Study Period' %>
+			<% end %>
+		</td>
+		<td class="help"></td>
+	</tr>
+	
+		<tr>
+			<td class="title" style="vertical-align:top;">Course</td>
+			<td>
+				<%= select :study_period, 
+									 :cursus_id, 
+									Cursus.all.collect{|p| [p.name, p.id]}, {}, 
+									{:id => 'add_course_cursus_id'}	%>
+				<select id="add_course_study_period_id" disabled=disabled>
+					<option disabled>Select a Study Period</option>
+					<option>B1</option>
+					<option>B2</option>
+					<option>B3</option>
+					<option>M1</option>
+					<option>M2</option>
+				</select>
 			<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="Add Course" id="some_name">
 			</td><td class="help"></td>
 		</tr>
@@ -68,5 +87,7 @@
 				<% end %>
 				</tr>
 			</table>
-		</div></td></tr>
+		</div>
+		</td>
+	</tr>
 </table>
