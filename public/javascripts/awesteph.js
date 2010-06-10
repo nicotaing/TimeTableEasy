@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	// Display the calendar
 	$('#calendar').fullCalendar({
-		editable: true,
+		editable: false,
 		height: 580,
 		header: {
 			left: '',

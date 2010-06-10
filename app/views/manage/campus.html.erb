@@ -26,8 +26,8 @@
 		<td class="title" style="vertical-align:top;">Class</td>
 		<td>		
 			<% form_tag	'/classes' do %>
-				<%= select :classe, :campus_id, Campus.all.collect{|p| [p.name, p.id]}%>
-				<%= select :add_classe, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]}%>
+				<%= select :classe, :campus_id, Campus.all.collect{|p| [p.name, p.id]}.insert(0,["Campus",0]), :disabled => 0 %>
+				<%= select :add_classe, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]}.insert(0,["Cursus",0]), :disabled => 0 %>
 				<select id="add_classe_study_period_id" name="classe[study_period_id]" disabled=disabled>
 					<option disabled>Select a Study Period</option>
 				</select>
