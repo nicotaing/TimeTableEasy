@@ -27,7 +27,7 @@ class CampusController < ApplicationController
     
     respond_to do |format| 
       if @campus.save
-        format.html { redirect_to(@campus, :notice => 'Campus was successfully created.') }
+        format.html { redirect_to('/manage/campus/', :notice => 'Campus was successfully created.') }
         format.xml  { render :xml => @campus, :status => :created, :location => @campus }
       else
         format.html { render :action => "new" }

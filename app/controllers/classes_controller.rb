@@ -52,7 +52,7 @@ class ClassesController < ApplicationController
     respond_to do |format|
       if @classe.save
         flash[:notice] = 'Classe was successfully created.'
-        format.html { redirect_to(@classe) }
+        format.html { redirect_to('/manage/campus') }
         format.xml  { render :xml => @classe, :status => :created, :location => @classe }
       else
         format.html { render :action => "new" }

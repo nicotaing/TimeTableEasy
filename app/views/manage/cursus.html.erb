@@ -60,14 +60,18 @@
 				<% @cursus.each do |cursus| %>
 					<tr id="node-<%= i %>">
 				    <td colspan="4"><%= cursus.name %></td>
-						<td class="actions"><a href="">Delete</a></td>
+						<td class="actions">
+							<%= link_to 'Delete', cursus, :confirm => 'Are you sure?', :method => :delete %>
+						</td>
 				  </tr>
 				
 					<% j = 1 %>
 					<% cursus.study_periods.each do |sp| %>
 						<tr id="node-<%= i %>-<%= j %>" class="child-of-node-<%= i %>">
 					    	<td colspan="4"><%= sp.name %> (<%= sp.startdate %> to <%= sp.enddate %> )</td>
-								<td class="actions"><a href="">Delete</a></td>
+								<td class="actions">
+									<%= link_to 'Delete', sp, :confirm => 'Are you sure?', :method => :delete %>
+								</td>
 					  </tr>
 					
 						<% k = 1 %>
@@ -78,7 +82,7 @@
 										<a href="javascript:popUp('popup-manage-cursus-modalities.html')">
 											Manage Modalities
 										</a> or 
-										<a href="">Delete</a>
+										<%= link_to 'Delete', c, :confirm => 'Are you sure?', :method => :delete %>
 									</td>
 						  </tr>
 							<% k = k + 1 %>

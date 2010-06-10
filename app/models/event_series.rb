@@ -1,19 +1,20 @@
 # == Schema Information
-# Schema version: 20100608022458
 #
 # Table name: event_series
 #
-#  id         :integer         not null, primary key
-#  frequency  :integer         default(1)
-#  period     :string(255)     default("monthly")
-#  starttime  :datetime
-#  endtime    :datetime
-#  all_day    :boolean
-#  created_at :datetime
-#  updated_at :datetime
-#  category   :string(255)
-#  creator_id :
-#  campus_id  :integer
+#  id           :integer         not null, primary key
+#  frequency    :integer         default(1)
+#  period       :string(255)     default("monthly")
+#  starttime    :datetime
+#  endtime      :datetime
+#  all_day      :boolean         default(FALSE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  category     :string(255)
+#  creator_id   :
+#  campus_id    :integer
+#  location     :string(255)
+#  professor_id :string(255)
 #
 
 class EventSeries < ActiveRecord::Base

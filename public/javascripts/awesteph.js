@@ -165,6 +165,7 @@ $(document).ready(function() {
 	/*
 	* MANAGE CURSUS
 	*/
+	// Add course
 	$("#add_course_cursus_id").click(function() {
 		// get study periods
 		var cursus_id = $("#add_course_cursus_id").val();
@@ -182,10 +183,40 @@ $(document).ready(function() {
 				$('#add_course_study_period_id').attr('disabled',''); 
 			}
 		});
-		
 	});
 	
-	 
+	/*
+	* MANAGE Campus
+	*/
+	// Add class
+	// when choose a cursus
+	$("#add_classe_cursus_id").click(function() {
+		// get study periods
+		var campus_id = $("#classe_campus_id").val();
+		var cursus_id = $("#add_classe_cursus_id").val();
+		
+		$.getJSON('/study_periods.js?cursus_id='+cursus_id, function(data) {
+			var options = '';
+			$.each(data, function(i,item){
+				options += '<option value="'+ item.study_period.id +'" >'+ item.study_period.name +'</option>';
+			});			
+			if (options == ''){
+				options = '<option disabled>No Study Period</option>';
+				$('#add_classe_study_period_id').html(options);
+				$('#add_classe_study_period_id').attr('disabled','disabled');
+			}else{
+				$('#add_classe_study_period_id').html(options);
+				$('#add_classe_study_period_id').attr('disabled',''); 
+			}
+		});
+	});
+	// when choose a study period
+	$("#add_classe_study_period_id").click(function() {
+		// active the subjects
+		$('#classe_name').attr('disabled',''); 
+		$('#add_classe_submit').attr('disabled',''); 
+	});
+	
 });
 
 

@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20100608022458
 #
 # Table name: events
 #
@@ -7,7 +6,7 @@
 #  title           :string(255)
 #  starttime       :datetime
 #  endtime         :datetime
-#  all_day         :boolean
+#  all_day         :boolean         default(FALSE)
 #  created_at      :datetime
 #  updated_at      :datetime
 #  description     :text
@@ -17,6 +16,9 @@
 #  creator_id      :integer
 #  campus_id       :integer
 #  category        :string(255)
+#  location        :string(255)
+#  modality_id     :string(255)
+#  professor_id    :string(255)
 #
 
 class Event < ActiveRecord::Base

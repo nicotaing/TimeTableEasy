@@ -1,14 +1,15 @@
 # == Schema Information
-# Schema version: 20100608022458
+# Schema version: 20100609224824
 #
 # Table name: study_periods
 #
 #  id         :integer         not null, primary key
-#  startdate  :datetime
-#  enddate    :datetime
+#  startdate  :date
+#  enddate    :date
 #  created_at :datetime
 #  updated_at :datetime
 #  cursus_id  :integer
+#  name       :string(255)
 #
 
 class StudyPeriod < ActiveRecord::Base
