@@ -25,8 +25,8 @@
 			<% form_tag	'/study_periods' do %>
 				<%= select :study_period, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]} %>
 				<%= text_field_tag 'study_period[name]' %><br/>
-				<%= date_select("study_period", "starttime") %> to 
-				<%= date_select("study_period", "endtime") %>
+				<%= date_select("study_period", "startdate") %> to 
+				<%= date_select("study_period", "enddate") %>
 				<%= submit_tag 'Add' %>
 			<% end %>
 		</td>
@@ -36,16 +36,19 @@
 		<tr>
 			<td class="title" style="vertical-align:top;">Course</td>
 			<td>
-				<%= select :study_period, 
-									 :cursus_id, 
-									Cursus.all.collect{|p| [p.name, p.id]}, {}, 
-									{:id => 'add_course_cursus_id'}	%>
-				<select id="add_course_study_period_id" disabled=disabled>
-					<option disabled>Select a Study Period</option>
-				</select>
-			<input type="text" name="some_name" value="" id="some_name">
-			<input type="submit" name="some_name" value="Add Course" id="some_name">
-			</td><td class="help"></td>
+				<% form_tag	'/courses' do %>
+					<%= select :course, 
+										 :study_period_id, 
+										Cursus.all.collect{|p| [p.name, p.id]}, {}, 
+										{:id => 'add_course_cursus_id'}	%>
+					<select id="add_course_study_period_id" disabled=disabled>
+						<option disabled>Select a Study Period</option>
+					</select>
+					<%= text_field_tag 'course[name]' %>
+					<%= submit_tag 'Add Course' %>
+			</td>
+			<% end %>
+			<td class="help"></td>
 		</tr>
 		
 		<tr>
@@ -56,23 +59,21 @@
 				<% i = 1 %>
 				<% @cursus.each do |cursus| %>
 					<tr id="node-<%= i %>">
-				    <td colspan="2"><%= cursus.name %></td>
+				    <td colspan="4"><%= cursus.name %></td>
 						<td class="actions"><a href="">Delete</a></td>
 				  </tr>
 				
 					<% j = 1 %>
 					<% cursus.study_periods.each do |sp| %>
 						<tr id="node-<%= i %>-<%= j %>" class="child-of-node-<%= i %>">
-					    	<td colspan="2"><%= sp.name %></td>
-								<td colspan="2"><%= sp.startdate.class %></td>
-								<td colspan="2"><%= sp.enddate %></td>
+					    	<td colspan="4"><%= sp.name %> (<%= sp.startdate %> to <%= sp.enddate %> )</td>
 								<td class="actions"><a href="">Delete</a></td>
 					  </tr>
 					
 						<% k = 1 %>
 						<% sp.courses.each do |c| %>
 							<tr id="node-<%= i %>-<%= j %>-<%= k %>" class="child-of-node-<%= i %>-<%= j %>">
-						    	<td colspan="2"><%= c.name %></td>
+						    	<td colspan="4"><%= c.name %></td>
 									<td class="actions">
 										<a href="javascript:popUp('popup-manage-cursus-modalities.html')">
 											Manage Modalities

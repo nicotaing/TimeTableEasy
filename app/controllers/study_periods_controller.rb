@@ -51,10 +51,10 @@ class StudyPeriodsController < ApplicationController
     respond_to do |format|
       if @study_period.save
         flash[:notice] = 'StudyPeriod was successfully created.'
-        format.html { redirect_to(@study_period) }
+        format.html { redirect_to('/manage/cursus') }
         format.xml  { render :xml => @study_period, :status => :created, :location => @study_period }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to('/manage/cursus') }
         format.xml  { render :xml => @study_period.errors, :status => :unprocessable_entity }
       end
     end
