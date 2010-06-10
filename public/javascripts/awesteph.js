@@ -161,25 +161,28 @@ $(document).ready(function() {
 		$('#event_starttime_5i').attr('disabled','');
 		$('#event_lasts').attr('disabled','');
 	});
-	
-	
-	
-	
+		
 	/*
 	* MANAGE CURSUS
 	*/
 	$("#add_course_cursus_id").click(function() {
-		//alert('hello');
 		// get study periods
-		var cursus_id = $("#event_class").val();
+		var cursus_id = $("#add_course_cursus_id").val();
 		$.getJSON('/study_periods.js?cursus_id='+cursus_id, function(data) {
 			var options = '';
 			$.each(data, function(i,item){
-				options += '<option value="'+ item.course.id +'" >'+ item.course.name +'</option>';
-			});
-			$('#add_course_study_period_id').html(options);
+				options += '<option value="'+ item.study_period.id +'" >'+ item.study_period.name +'</option>';
+			});			
+			if (options == ''){
+				options = '<option disabled>No Study Period</option>';
+				$('#add_course_study_period_id').html(options);
+				$('#add_course_study_period_id').attr('disabled','disabled');
+			}else{
+				$('#add_course_study_period_id').html(options);
+				$('#add_course_study_period_id').attr('disabled',''); 
+			}
 		});
-		$('#add_course_study_period_id').attr('disabled',''); 
+		
 	});
 	
 	 

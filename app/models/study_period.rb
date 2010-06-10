@@ -12,7 +12,7 @@
 #
 
 class StudyPeriod < ActiveRecord::Base
-  attr_accessible :startdate, :enddate, :cursus_id
+  attr_accessible :name, :startdate, :enddate, :cursus_id
   
   has_many :classes, :dependent => :destroy
   has_many :courses, :dependent => :destroy

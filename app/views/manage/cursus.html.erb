@@ -22,10 +22,12 @@
 	<tr>
 		<td class="title" style="vertical-align:top;">Study Period</td>
 		<td>
-			<% form_tag	'/study_period' do %>
-				<%= select :study_period, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]}%>
-				<%= text_field_tag 'study_period[name]' %>
-				<%= submit_tag 'Add Study Period' %>
+			<% form_tag	'/study_periods' do %>
+				<%= select :study_period, :cursus_id, Cursus.all.collect{|p| [p.name, p.id]} %>
+				<%= text_field_tag 'study_period[name]' %><br/>
+				<%= date_select("study_period", "starttime") %> to 
+				<%= date_select("study_period", "endtime") %>
+				<%= submit_tag 'Add' %>
 			<% end %>
 		</td>
 		<td class="help"></td>
@@ -40,16 +42,15 @@
 									{:id => 'add_course_cursus_id'}	%>
 				<select id="add_course_study_period_id" disabled=disabled>
 					<option disabled>Select a Study Period</option>
-					<option>B1</option>
-					<option>B2</option>
-					<option>B3</option>
-					<option>M1</option>
-					<option>M2</option>
 				</select>
-			<input type="text" name="some_name" value="" id="some_name"><input type="submit" name="some_name" value="Add Course" id="some_name">
+			<input type="text" name="some_name" value="" id="some_name">
+			<input type="submit" name="some_name" value="Add Course" id="some_name">
 			</td><td class="help"></td>
 		</tr>
-		<tr><td colspan="3"><div style="border : solid 2px #999999 solid; background : rgba(255,255,255,0.5); color : #333333; width : 100%; height : 450px;overflow : auto; ">
+		
+		<tr>
+			<td colspan="3">
+				<div style="border : solid 2px #999999 solid; background : rgba(255,255,255,0.5); color : #333333; width : 100%; height : 450px;overflow : auto; ">
 			<table id="tree">
 				
 				<% i = 1 %>
@@ -63,6 +64,8 @@
 					<% cursus.study_periods.each do |sp| %>
 						<tr id="node-<%= i %>-<%= j %>" class="child-of-node-<%= i %>">
 					    	<td colspan="2"><%= sp.name %></td>
+								<td colspan="2"><%= sp.startdate.class %></td>
+								<td colspan="2"><%= sp.enddate %></td>
 								<td class="actions"><a href="">Delete</a></td>
 					  </tr>
 					

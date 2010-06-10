@@ -1,0 +1,12 @@
+<h1>Editing study_period</h1>
+
+<% form_for(@study_period) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @study_period %> |
+<%= link_to 'Back', study_periods_path %>
