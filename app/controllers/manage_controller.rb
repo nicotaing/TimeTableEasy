@@ -3,12 +3,14 @@ class ManageController < ApplicationController
   
   # University
   def university
+    redirect_to '/' unless @current_user.role == 'admin'
     @title = "Manage"
     @tab_university = 'active'
   end
   
   # Campus
   def campus
+    redirect_to '/' unless @current_user.role == 'admin'
     @title = "Manage"
     @tab_campus = 'active'
     @campus = Campus.all
@@ -16,6 +18,7 @@ class ManageController < ApplicationController
   
   # Cursus
   def cursus
+    redirect_to '/' unless @current_user.role == 'admin' || @current_user.role == "cm"
     @title = "Manage"
     @tab_cursus = 'active'
     @cursus = Cursus.all
@@ -23,6 +26,7 @@ class ManageController < ApplicationController
   
   # Users
   def users
+    redirect_to '/' unless @current_user.role == 'admin' || @current_user.role == "cm"
     @title = "Manage"
     @tab_users = 'active'
     

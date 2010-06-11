@@ -84,7 +84,7 @@ class StudyPeriodsController < ApplicationController
     @study_period.destroy
 
     respond_to do |format|
-      format.html { redirect_to(study_periods_url) }
+      format.html { redirect_to('/manage/cursus') }
       format.xml  { head :ok }
     end
   end
