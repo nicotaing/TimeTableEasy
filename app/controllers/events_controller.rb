@@ -36,8 +36,7 @@ class EventsController < ApplicationController
       end
 
     end
-    
-    
+
     @event.creator_id = @current_user.id
     
     respond_to do |format| 
@@ -45,7 +44,16 @@ class EventsController < ApplicationController
         format.html { redirect_to("/events", :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
-        format.html { render :action => "new" }
+        if params[:event][:category] == "university" 
+          @tab_university = 'active'
+        elsif params[:event][:category] == "campus" 
+          @tab_campus = 'active'   
+        elsif params[:event][:category] == "class"
+          @tab_class = 'active'      
+        else              
+          @tab_personal = 'active'
+        end
+        format.html { render :action => "new_#{params[:event][:category]}" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
     end

@@ -28,15 +28,21 @@ class ManageController < ApplicationController
     
     if params[:filter] == "admin"
       @users = User.find_all_by_role("admin")
+      @user_id = User.find_all_by_role("admin").collect{|p| [p.id.to_s, p.id]}
     elsif params[:filter] == "cm"
       @users = User.find_all_by_role("cm")
+      @user_id = User.find_all_by_role("cm").collect{|p| [p.id.to_s, p.id]}
     elsif params[:filter] == "teacher"
       @users = User.find_all_by_role("teacher")
+      @user_id = User.find_all_by_role("teacher").collect{|p| [p.id.to_s, p.id]}
     elsif params[:filter] == "student"
       @users = User.find_all_by_role("student")
+      @user_id = User.find_all_by_role("student").collect{|p| [p.id.to_s, p.id]}
     else
       @users = User.all
+      @user_id = User.all.collect{|p| [p.id.to_s, p.id]}
     end
   end
+
   
 end

@@ -33,7 +33,7 @@
 		<tr>
 			<td class="title" style="vertical-align:top;">ID</td>
 			<td>
-				<%= select :view_profile, :id, User.all.collect{|p| [p.id.to_s, p.id]} %>
+				<%= select :view_profile, :id, @user_id %>
 				<input type="submit" name="some_name" value="View Profile" id="view_profile">
 			</td><td class="help"></td>
 		</tr>

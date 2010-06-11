@@ -19,7 +19,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
-  map.event_new_university '/event_new_university', :controller => 'events', :action => 'event_new_university'
   
   map.resource  :account, :controller => "users"
   map.resources :users
