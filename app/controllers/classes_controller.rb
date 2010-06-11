@@ -4,7 +4,17 @@ class ClassesController < ApplicationController
   def index
     
     campus_id = params[:campus_id]
-    if campus_id
+    cursus_id = params[:cursus_id]
+    
+    if campus_id && cursus_id 
+      classes = Classe.find_all_by_campus_id(campus_id)
+      @classes = []
+      classes.each do |c|
+        if c.study_period.cursus.id == cursus_id
+          @classes<< c.study_period.cursus
+        end
+      end
+    elsif campus_id
       @classes = Classe.find(:all, :conditions => ["campus_id = #{campus_id}"])
     else
       @classes = Classe.all
