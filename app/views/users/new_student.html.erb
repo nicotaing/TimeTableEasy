@@ -41,9 +41,12 @@
 		<td class="help"></td>
 	</tr>
 	<tr>
-		<td class="title">Class</td>
-		<td><%= select :user, :classe_id, Campus.all.collect{|p| [p.name, p.id]}%></td>
-		<td class="help"></td>
+		<tr><td class="title">Class</td><td>
+			<select name="user[classe_id]" id="event_class" disabled="disabled">
+				<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
+			</select>
+			</td><td class="help"></td>
+		</tr>
 	</tr>
 	<tr>
 		<td class="title" style="vertical-align:top;">Password</td>

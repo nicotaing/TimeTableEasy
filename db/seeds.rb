@@ -147,6 +147,42 @@ Event.create(
   :category => "university"
 )
 
+Event.create(
+  :title => "WebEx Meeting",
+  :starttime => "Mon, 14 Jun 2010 18:00:00 UTC +00:00",
+  :endtime => "Mon, 14 Jun 2010 20:00:00 UTC +00:00",
+  :description => "Discuss university growth",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+
+Event.create(
+  :title => "GALA",
+  :starttime => "Sat, 19 Jun 2010 20:00:00 UTC +00:00",
+  :endtime => "Sun, 20 Jun 2010 02:00:00 UTC +00:00",
+  :description => "Come party with us!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+
+Event.create(
+  :title => "Open House",
+  :starttime => "Fri, 18 Jun 2010 14:00:00 UTC +00:00",
+  :endtime => "Fri, 18 Jun 2010 18:00:00 UTC +00:00",
+  :description => "Come visit with us!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+
+Event.create(
+  :title => "President Annual Speech",
+  :starttime => "Wed, 16 Jun 2010 10:00:00 UTC +00:00",
+  :endtime => "Wed, 16 Jun 2010 11:00:00 UTC +00:00",
+  :description => "Come visit with us!",
+  :creator_id => User.find_by_email("admin@globus.com").id,
+  :category => "university"
+)
+
 ### Campus Events
 # Paris
 Event.create(
