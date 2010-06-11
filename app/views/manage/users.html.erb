@@ -47,7 +47,14 @@
 						<td class="number"><%= user.id %></td>
 						<td class="lastname"><%= user.last_name %></td>
 						<td class="firstname"><%= user.first_name %></td>
-						<td><%= user.role %></td>
+						<% 
+						@role = case user.role
+							when "admin" then "Administrator"
+							when "cm" then "Campus Manager"
+							when "student" then "Student"
+							when "teacher" then "Teacher"
+						end	%>
+						<td><%= @role %></td>
 						<td class="actions">
 							<%= link_to 'More Details', "javascript:popUpUser('/users/edit/#{user.id}')" %> or
 							<%= link_to 'Delete', user, :confirm => 'Are you sure?', :method => :delete %>
