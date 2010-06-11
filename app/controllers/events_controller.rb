@@ -243,19 +243,16 @@ class EventsController < ApplicationController
   end
   
   def generate_ical
-    @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and 
-                                                  endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and 
-                                                  creator_id = #{@current_user.id} and 
-                                                  category = 'personal'"])
+    @events = Event.all
     
     cal = Icalendar::Calendar.new
     cal.custom_property("METHOD","PUBLISH")
     @events.each do |e|
       event = Icalendar::Event.new
-      event.start = e.start.strftime("%Y%m%dT%H%M%S")
-      event.end = e.end.strftime("%Y%m%dT%H%M%S")
-      event.summary = e.summary
-      event.description = e.summary
+      event.start = e.starttime.strftime("%Y%m%dT%H%M%S")
+      event.end = e.endtime.strftime("%Y%m%dT%H%M%S")
+      event.summary = e.title
+      event.description = e.description
       event.url = "http://yourwebsite.com"
       event.add_comment("More info at http://yourwebsite.com")
       cal.add event

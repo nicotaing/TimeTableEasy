@@ -22,7 +22,7 @@
 		<tr>
 			<td class="title">Cursus</td>
 			<td>
-				<select id="event_cursus" disabled="disabled">
+				<select id="event_cursus" <%= 'disabled="disabled"' if @current_user.role == "admin" %>>
 					<option value="San Francisco, CA" selected=selected disabled>Select a cursus</option>
 				</select>
 			</td>

@@ -280,18 +280,3 @@ $(document).ready(function() {
 	
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
