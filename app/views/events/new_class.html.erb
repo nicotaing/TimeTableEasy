@@ -56,7 +56,7 @@
 				<td class="title"></td>
 				<td colspan="2">
 					<img src="/images/pb_g.png" width="2" height="10" alt="Pb G"><img id="bar_1" src="/images/pb_cv.png" width="85" height="10" alt="Pb Cv"><img id="bar_2" src="/images/pb_cb.png" width="15" height="10" alt="Pb Cb"><img src="/images/pb_d.png" width="2" height="10" alt="Pb D">
-					<b style="color:green"><span id="hours_remaining">1</span> hours remaining</b> (Total: <span id="hours_total">80</span> hours)
+					<b ><span id="hours_remaining">1</span> hours remaining</b> (Total: <span id="hours_total">80</span> hours)
 				</td>
 			</tr>
 			
@@ -78,14 +78,28 @@
 		<tr><td colspan="3"><span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>
 		<tr>
 			<td class="title">Teacher</td><td colspan="2">
-			<%= select :event, :professor_id, User.all.collect{|p| [p.first_name+" "+p.last_name, p.id]}, :html_options => {:disabled => "disabled"} %>
+				<select id="event_course">
+					<option value="0" selected=selected>Select a teacher</option>
+					<option value="1" >Minerva McGonagall</option>
+					<option value="2" >Rubeus Hagrid</option>
+					<option value="3" >Remus Lupin</option>
+					<option value="4" >Filius Flitwick</option>
+					<option value="5" >Sybill Trelawney</option>
+				</select>
 			<span class="help">Only available teachers are displayed.</span>
 			</td>
 		</tr>
 		<tr>
 			<td class="title">Room</td>
 			<td colspan="2">
-				<%= select :event, :room_id, Room.all.collect{|p| [p.name, p.id]}, :html_options => {:disabled => "disabled"} %>
+				<select id="event_course">
+					<option value="San Francisco, CA" selected=selected>Select a room</option>
+					<option value="San Francisco, CA" >Room 101</option>
+					<option value="San Francisco, CA" >Room 102</option>
+					<option value="San Francisco, CA" >Room 103</option>
+					<option value="San Francisco, CA" >Room 104</option>
+					<option value="San Francisco, CA" >Room 105</option>
+				</select>
 			<span class="help">Only available room are displayed.</span>
 			</td>
 		</tr>

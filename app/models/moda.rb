@@ -21,10 +21,9 @@ class Moda < ActiveRecord::Base
     hours_planned = 0
     @events = Event.find(:all, :conditions => ["moda_id = #{self.id}"])
     @events.each do |event|
-      hours_planned = ((event.starttime - event.endtime)/24/60).to_i + hours_planned
+      hours_planned = (event.endtime - event.starttime)/1.hours + hours_planned
     end
     self.volume - hours_planned
-    1
   end
   
 end

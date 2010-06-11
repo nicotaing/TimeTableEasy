@@ -3,14 +3,7 @@
 	<%=f.hidden_field :category %>
 	<%=f.hidden_field :id %>
 
-	<table border="0" cellspacing="0" cellpadding="5" id="crud">	
-		<% if @current_user.role == "admin" || @current_user.role == "cm" %>	
-			<tr>
-				<td colspan="3">
-					<span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
-				</td>
-			</tr>
-		<% end %>
+	<table border="0" cellspacing="0" cellpadding="5" id="truc">	
 		<tr>
 			<td class="title">When ?</td>
 			<td colspan="2"><%=f.datetime_select :starttime %></td>
@@ -33,11 +26,6 @@
 			</td>
 		</tr>
 		
-			<tr>
-				<td colspan="3">
-					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
-				</td>
-			</tr>
 			<tr>
 			
 				<td class="title" style="vertical-align:top;">Title</td>
@@ -63,11 +51,6 @@
 				<td class="help"></td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					<span style="padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span>
-				</td>
-			</tr>
-			<tr>
 				<td class="title" style="vertical-align:top;"></td>
 				<td>
 					<%=f.submit 'Update' %>
@@ -76,5 +59,11 @@
 				<td class="help"></td>
 			</tr>
 	</table>
-
+	<style>
+	table#truc,
+	table#truc tr,
+	table#truc tr td{
+		border:0px;
+	}
+	</style>
 <% end %>
