@@ -114,7 +114,7 @@ class EventsController < ApplicationController
           :end => "#{event.endtime.iso8601}", 
           :allDay => event.all_day, 
           :recurring => (event.event_series_id)? true: false,
-          :className => 'class',
+          :className => 'courses',
           :url => "/events/edit/#{event.id}"}
       end
     end

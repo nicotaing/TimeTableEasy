@@ -103,5 +103,9 @@ class Event < ActiveRecord::Base
     endtime - starttime
   end
   
+  def diff
+    self.endtime - self.starttime
+  end
+  
 end
 
