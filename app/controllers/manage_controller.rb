@@ -1,23 +1,27 @@
 class ManageController < ApplicationController
   before_filter :require_user
   
+  # University
   def university
     @title = "Manage"
     @tab_university = 'active'
   end
   
+  # Campus
   def campus
     @title = "Manage"
     @tab_campus = 'active'
     @campus = Campus.all
   end
   
+  # Cursus
   def cursus
     @title = "Manage"
     @tab_cursus = 'active'
     @cursus = Cursus.all
   end
   
+  # Users
   def users
     @title = "Manage"
     @tab_users = 'active'

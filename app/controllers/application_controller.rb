@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   
   private
+    
+    # Authentication
+    
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -34,6 +37,8 @@ class ApplicationController < ActionController::Base
         return false
       end
     end
+    
+    # Store location
     
     def store_location
       session[:return_to] = request.request_uri

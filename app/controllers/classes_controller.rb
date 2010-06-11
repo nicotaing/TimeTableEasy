@@ -91,6 +91,8 @@ class ClassesController < ApplicationController
     end
   end
   
+  # Add a student to the class
+  # Parameter : user_id
   def add_student
     @classe = Classe.find(params[:id])
     @user = User.find(params[:user][:id])
@@ -106,6 +108,8 @@ class ClassesController < ApplicationController
     end
   end
   
+  # Remove a student to the class
+  # Parameter : user_id
   def remove_student
     @user = User.find(params[:id])
     old_classe_id = @user.classe_id 

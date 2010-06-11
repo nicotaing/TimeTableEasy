@@ -1,5 +1,4 @@
 class CampusController < ApplicationController
-  
   before_filter :require_user
   
   def index
@@ -52,8 +51,6 @@ class CampusController < ApplicationController
     @title = "Editing "+ @campus.name + " Campus"
   end
   
-  # PUT /campus/1
-  # PUT /campus/1.xml
   def update
     @campus = Campus.find(params[:id])
 

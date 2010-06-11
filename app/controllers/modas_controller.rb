@@ -1,3 +1,4 @@
+# Modalities linked to a course
 class ModasController < ApplicationController
   # GET /modas
   # GET /modas.xml

@@ -3,8 +3,6 @@ class CoursesController < ApplicationController
   
   def index
     @title = "Courses List"
-    #@courses = Course.all
-    #@courses = Course.paginate :page => params[:page]
     
     classe_id = params[:classe_id]
     if classe_id
@@ -58,12 +56,14 @@ class CoursesController < ApplicationController
     end
   end
   
+  # Hours remaining
   def remaining
     @course = Course.find(26)
     
     render :text => @course.has_currently
   end
   
+  # Hours used
   def hours
     @course = Course.find(params[:id])
     

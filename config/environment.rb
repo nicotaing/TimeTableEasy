@@ -25,4 +25,5 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
+# Pagination plugin
 require "will_paginate"
