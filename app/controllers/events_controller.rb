@@ -99,10 +99,24 @@ class EventsController < ApplicationController
       end
     end
     
-    # TODO: Classes
-    if @current_user.role = 'student'
-      
-      
+    # Classes
+    if @current_user.role == 'student'
+      @events = Event.find(:all, :conditions => ["starttime >= '#{Time.at(params['start'].to_i).to_formatted_s(:db)}' and 
+                                                    endtime <= '#{Time.at(params['end'].to_i).to_formatted_s(:db)}' and 
+                                                    classe_id = #{@current_user.classe_id} and 
+                                                    category = 'class'"] )
+      @events.each do |event|
+        events << {
+          :id => event.id, 
+          :title => event.title, 
+          :description => event.description || "Some cool description here...", 
+          :start => "#{event.starttime.iso8601}", 
+          :end => "#{event.endtime.iso8601}", 
+          :allDay => event.all_day, 
+          :recurring => (event.event_series_id)? true: false,
+          :className => 'class',
+          :url => "/events/edit/#{event.id}"}
+      end
     end
     
     # Personal
