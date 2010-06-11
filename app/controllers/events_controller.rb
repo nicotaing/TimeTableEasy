@@ -28,17 +28,12 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(params[:event])
-    
-    if params[:event][:category] != "class"
+    @event.creator_id = @current_user.id
       
-      if params[:event][:all_day] == "false" 
-        @event.endtime = @event.starttime + params[:event][:endtime].to_i.hours
-      end
-
+    if params[:event][:all_day] == "false" 
+      @event.endtime = @event.starttime + params[:event][:endtime].to_i.hours
     end
 
-    @event.creator_id = @current_user.id
-    
     respond_to do |format| 
       if @event.save
         format.html { redirect_to("/events", :notice => 'Event was successfully created.') }

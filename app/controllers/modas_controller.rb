@@ -10,7 +10,7 @@ class ModasController < ApplicationController
     else
       @modas = Moda.all
     end
-
+    
     modas = []
     @modas.each do |moda|
       modas << {
@@ -19,12 +19,14 @@ class ModasController < ApplicationController
         :modality => Modality.find(moda.modality_id).name, 
         :course_id => moda.course_id, 
         :course => Course.find(moda.course_id).name, 
-        :volume => moda.volume }
+        :total => moda.volume,
+        :remaining => moda.remaining
+        }
     end
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @modas }
+      format.xml  { render :xml => modas }
       format.js   { render :json => modas }
     end
   end
@@ -33,11 +35,22 @@ class ModasController < ApplicationController
   # GET /modas/1.xml
   def show
     @moda = Moda.find(params[:id])
+    moda = []
+      moda << {
+        :id => @moda.id, 
+        :modality_id => @moda.modality_id, 
+        :modality => Modality.find(@moda.modality_id).name, 
+        :course_id => @moda.course_id, 
+        :course => Course.find(@moda.course_id).name, 
+        :total => @moda.volume,
+        :remaining => @moda.remaining
+        }
+
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @moda }
-      format.js  { render :json => @moda }
+      format.js  { render :json => moda }
     end
   end
 

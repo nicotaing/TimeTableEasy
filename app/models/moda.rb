@@ -16,4 +16,14 @@ class Moda < ActiveRecord::Base
   belongs_to :modality
   
   validates_numericality_of :volume
+  
+  def remaining
+    hours_planned = 0
+    @events = Event.find(:all, :conditions => ["moda_id = #{self.id}"])
+    @events.each do |event|
+      hours_planned = hours_planne + event.diff_between.hours
+    end
+    self.volume - hours_planned
+  end
+  
 end

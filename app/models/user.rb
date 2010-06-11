@@ -31,10 +31,11 @@
 #
 
 class User < ActiveRecord::Base
+  # Authentication
   acts_as_authentic
+  # Avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "48x48>" }
+  # Relationships
   belongs_to :classe
   belongs_to :campus
-
-  
 end
