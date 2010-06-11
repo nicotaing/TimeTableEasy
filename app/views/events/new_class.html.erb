@@ -1,6 +1,7 @@
 <% form_for @event, :url => {:action => :create} do |f| %>
 
 	<%=f.hidden_field :category, :value => 'class' %>
+	<%=f.hidden_field :title, :value => "Class" %>
 
 	<table border="0" cellspacing="0" cellpadding="5" id="crud">
 		<tr>
@@ -12,7 +13,7 @@
 				<td colspan="3"><span style=" margin-top:-3px; border-bottom:1px dotted #999999; font-size:1px; display:block;">&#160;<span></td></tr>	
 			<tr>
 				<td class="title">Campus</td><td>		
-					<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}.insert(0,["Select a Campus",0]), {:disabled => 0}%>
+					<%= select :event, :campus_id, Campus.all.collect{|p| [p.name, p.id]}.insert(0,["Select a campus",0]), {:disabled => 0}%>
 				</td><td class="help"></td>
 			</tr>
 		<% else %>	
@@ -28,7 +29,7 @@
 			<td class="help"></td>
 		</tr>
 		<tr><td class="title">Class</td><td>
-			<select id="event_class" disabled="disabled">
+			<select name="event[classe_id]" id="event_class" disabled="disabled">
 				<option value="San Francisco, CA" selected=selected disabled>Select a class</option>
 			</select>
 			</td><td class="help"></td>
@@ -47,17 +48,14 @@
 
 			<tr>
 				<td class="title">Modality</td>
-				<td><%= select :event, :modality_id, Modality.all.collect{|p| [p.name, p.id]}, :html_options => {:disabled => "disabled"} %></td>
+				<td><%= select :event, :moda_id, Modality.all.collect{|p| [p.name, p.id]}.insert(0,["Select a modality",0]), :html_options => {:disabled => "disabled"} %></td>
 				<td class="help"></td>
 			</tr>
 			
 			<tr>
 				<td class="title"></td>
 				<td colspan="2">
-					<img src="img/pb_g.png" width="2" height="10" alt="Pb G">
-					<img id="bar_1" src="img/pb_cv.png" width="85" height="10" alt="Pb Cv">
-					<img id="bar_2" src="img/pb_cb.png" width="15" height="10" alt="Pb Cb">
-					<img src="img/pb_d.png" width="2" height="10" alt="Pb D">
+					<img src="/images/pb_g.png" width="2" height="10" alt="Pb G"><img id="bar_1" src="/images/pb_cv.png" width="85" height="10" alt="Pb Cv"><img id="bar_2" src="/images/pb_cb.png" width="15" height="10" alt="Pb Cb"><img src="/images/pb_d.png" width="2" height="10" alt="Pb D">
 					<b style="color:green"><span id="hours_remaining">1</span> hours remaining</b> (Total: <span id="hours_total">80</span> hours)
 				</td>
 			</tr>
@@ -97,7 +95,7 @@
 			<tr>
 				<td class="title" style="vertical-align:top;">Notes</td>
 				<td>
-					<textarea name="Name" rows="4" cols="40"></textarea>
+					<textarea name="event[description]" rows="4" cols="40"></textarea>
 				</td>
 				<td class="help"></td>
 			</tr>

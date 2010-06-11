@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100610111634) do
+ActiveRecord::Schema.define(:version => 20100611040614) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20100610111634) do
     t.string   "location"
     t.string   "modality_id"
     t.string   "professor_id"
+    t.integer  "moda_id"
+    t.integer  "classe_id"
   end
 
   add_index "events", ["course_id"], :name => "index_events_on_course_id"
