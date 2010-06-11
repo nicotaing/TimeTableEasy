@@ -6,10 +6,10 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>TimeTableEasy</title>
 	<%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'jquery', 'fullcalendar', 'gcal', 'application', 'awesteph' %>
+  	<%= javascript_include_tag 'jquery', 'fullcalendar', 'gcal', 'application', 'awesteph' %>
 	<%= javascript_include_tag 'jquery-ui-custom', 'jquery.treeTable' %>
 	
-  <%= stylesheet_link_tag "styles", 'fullcalendar', 'jquery-ui', 'dialog','jquery.treeTable' %>
+  	<%= stylesheet_link_tag "styles", 'fullcalendar', 'jquery-ui', 'dialog','jquery.treeTable' %>
 
 	<script type="text/javascript">
 
@@ -26,17 +26,6 @@
 	function popUpUser(url) {
 		window.open(url, 'userDetails','toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=600,height=600;');
 		return false;
-	}
-	  
-	function getSelectedValue() {
-		var value = document.getElementById('selectUserRole').value;
-		return value
-	}
-	
-	function changeUrl(){
-		value = getSelectedValue();
-		test = document.getElementById('addUserButton').
-		alert(test);
 	}
 	</script>
 

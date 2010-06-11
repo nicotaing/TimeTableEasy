@@ -271,6 +271,7 @@ $(document).ready(function() {
 		popUpUser('/users/edit/'+user_id);
 	});
 	
+	
 });
 
 
