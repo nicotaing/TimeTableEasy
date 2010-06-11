@@ -3,10 +3,8 @@ class CursusController < ApplicationController
   # GET /cursus.xml
   def index
     
-    campus = params[:campus_id]
+    campus_id = params[:campus_id]
     if campus_id
-      @classes = Classe.find_all_by_campus_id(campus_id)
-      #@cursus = Cursus.find(:all, :conditions => ["study_period_id = #{@classe.study_period.id}"])
       @cursus = Cursus.find_by_sql ["SELECT DISTINCT c.*
       FROM cursus c, study_periods sp, classes cl, campus ca
       WHERE c.id=sp.cursus_id AND sp.id = cl.study_period_id AND cl.campus_id = ca.id AND ca.id = ?", campus_id]
