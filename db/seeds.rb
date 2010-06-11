@@ -225,6 +225,19 @@ Event.create(
 )
 
 ###
+##Modalities
+###
+["Lectures", "E-Learning", "Pratical Case Studies"].each do |m|
+  Modality.create( :name => m, :is_exam => false )
+end
+["Examinations", "Pratical Case Studies", "Individual Orals"].each do |m|
+  Modality.create( :name => m, :is_exam => true )
+end
+
+
+
+
+###
 #Cursus
 ###
 
@@ -260,15 +273,7 @@ Campus.all.each do |c|
 end
 
 
-###
-##Modalities
-###
-["Lectures", "E-Learning", "Pratical Case Studies"].each do |m|
-  Modality.create( :name => m, :is_exam => false )
-end
-["Examinations", "Pratical Case Studies", "Individual Orals"].each do |m|
-  Modality.create( :name => m, :is_exam => true )
-end
+
 
 ###
 ##Courses

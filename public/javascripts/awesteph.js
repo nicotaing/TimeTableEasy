@@ -104,10 +104,12 @@ $(document).ready(function() {
 	*
 	*/
 	$('#event_moda_id').attr('disabled','disabled');
+	
 	// when choose a campus
 	$("#event_campus_id").click(function() {
+		var campus_id = $("#event_campus_id").val();
 		// get cursus
-		$.getJSON('/cursus.js', function(data) {
+		$.getJSON('/cursus.js?campus_id='+campus_id, function(data) {
 			var options = '<option value="0" disabled>Select a cursus</option>';
 			$.each(data, function(i,item){
 				options += '<option value="'+ item.cursus.id +'" >'+ item.cursus.name +'</option>';
